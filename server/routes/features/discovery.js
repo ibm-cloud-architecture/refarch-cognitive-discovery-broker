@@ -1,6 +1,10 @@
 const cfenv = require('cfenv');
 const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
 const extend = require('extend');
+const vcapServices = require('vcap_services');
+const express = require('express');
+
+var app = express();
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
