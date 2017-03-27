@@ -3,8 +3,11 @@ const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
 const extend = require('extend');
 const vcapServices = require('vcap_services');
 const express = require('express');
+const async = require('async');
 
 var app = express();
+
+const router = express.Router();
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
@@ -14,10 +17,10 @@ var discConfig = extend(config.discovery, vcapServices.getCredentials('discovery
 var discovery = new DiscoveryV1({
   username: discConfig.username,
   password: discConfig.password,
-  version_date: discConfig.version_date
+  version_date: '2016-12-15'
 });
 
-app.get('/api/all', function(req, res) {
+router.get('/all', function(req, res) {
 	discovery.query({
     environment_id: discConfig.environment_id,
     collection_id: discConfig.collection_id
@@ -30,7 +33,7 @@ app.get('/api/all', function(req, res) {
    });
 });
 
-app.post('/api/company/product', function(req, res) {
+router.post('/company/product', function(req, res) {
 	var productQuery;
 	var companyQuery;
 
@@ -40,8 +43,8 @@ app.post('/api/company/product', function(req, res) {
 	else companyQuery = "blekko.urlrank>1,blekko.chrondate>1482901200,blekko.chrondate<1488258000"
 
 	discovery.query({
-    environment_id: "ee16acaa-19cb-412a-b0e4-cfcb21989805",
-    collection_id: "0b0bfb4b-1a9f-4f63-99f9-d1816759c9ef",
+    environment_id: discConfig.environment_id,
+    collection_id: discConfig.collection_id,
     count: "5",
     query: productQuery,
     filter: companyQuery,
@@ -76,3 +79,5 @@ app.post('/api/company/product', function(req, res) {
         }
    });
 });
+
+module.exports = router;

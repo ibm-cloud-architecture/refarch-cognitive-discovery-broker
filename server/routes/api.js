@@ -18,11 +18,11 @@ const discoveryBroker = require('./features/discovery');
 
 const router = express.Router();
 
+router.use('/discovery', discoveryBroker);
+
 /* GET api listing. */
 router.get('/', (req, res) => {
   res.send('API supported: GET /api/all; POST /api/company/product');
 });
-
-
 
 module.exports = router;

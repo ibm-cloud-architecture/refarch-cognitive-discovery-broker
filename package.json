@@ -24,6 +24,7 @@
     "@angular/router": "^3.4.0",
     "cfenv": "^1.0.x",
     "body-parser": "^1.15.0",
+    "async": "^2.2.0",
   "cookie-parser": "^1.4.1",
   "express": "^4.13.x",
   "express-session": "1.13.0",
@@ -51,6 +52,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
-    "typescript": "~2.0.0"
+    "typescript": "~2.2.2"
   }
 }

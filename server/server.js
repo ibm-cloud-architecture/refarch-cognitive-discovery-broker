@@ -2,7 +2,7 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
-var cfenv = require('cfenv');
+const cfenv = require('cfenv');
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 
