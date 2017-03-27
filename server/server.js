@@ -17,6 +17,8 @@ const api = require('./routes/api');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.set('json spaces', 2);
+
 // Point static path to dist
 app.use(express.static(path.join(__dirname, '../dist')));
 
