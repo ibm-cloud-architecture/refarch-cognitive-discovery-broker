@@ -3,12 +3,11 @@
     	<h2 style="color:darkblue">Watson Discovery Demo</h2>
   	</div>
     <div class="container">
+        <h4 style="color:darkblue">Search Supplier and Product</h4>
     	<form #searchForm="ngForm" (ngSubmit)="supplierSearch(company.value, product.value)">
         	<p>
             	<label>Company:</label>
             	<input #company type="text" required>
-        	</p>
-        	<p>
             	<label>Product:</label>
             	<input #product type="text" required>
         	</p>
@@ -16,6 +15,14 @@
             	<button type="submit" [disabled]="!searchForm.valid">Submit</button>
         	</p>
     	</form>
+    </div>
+    <div class="container">
+        <h4 style="color:darkblue">Get All Recent Watson News</h4>
+        <form #getallForm="ngForm" (ngSubmit)="supplierAll()">
+            <p>
+                <button type="submit" [disabled]="!getallForm.valid">Get All News</button>
+            </p>
+        </form>
     </div>
     <footer>
       <p>&copy; IBM | Cloud Architecture Service Engineering | 3/15/2017  {{version}} </p>

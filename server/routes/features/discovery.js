@@ -39,8 +39,8 @@ router.post('/company/product', function(req, res) {
 
 	if (req.body.product) productQuery = req.body.product + ",language:english";
 	else  productQuery = "language:english";
-	if (req.body.company) companyQuery = "blekko.urlrank>1,blekko.chrondate>1482901200,blekko.chrondate<1488258000,enrichedTitle.entities.text:" + req.body.company;
-	else companyQuery = "blekko.urlrank>1,blekko.chrondate>1482901200,blekko.chrondate<1488258000"
+	if (req.body.company) companyQuery = "blekko.urlrank>1,blekko.chrondate>1482901200,enrichedTitle.entities.text:" + req.body.company;
+	else companyQuery = "blekko.urlrank>1,blekko.chrondate>1482901200"
 
 	discovery.query({
     environment_id: discConfig.environment_id,
