@@ -36,7 +36,7 @@ router.get('/all', function(req, res) {
 router.post('/company/product', function(req, res) {
 	var productQuery;
 	var companyQuery;
-
+  console.log(req.body);
 	if (req.body.product) productQuery = req.body.product + ",language:english";
 	else  productQuery = "language:english";
 	if (req.body.company) companyQuery = "blekko.urlrank>1,blekko.chrondate>1482901200,enrichedTitle.entities.text:" + req.body.company;
@@ -61,9 +61,10 @@ router.post('/company/product', function(req, res) {
   ]
   }, function(err, response) {
         if (err) {
-          console.error(err);
+          console.error("Error "+err);
         } else {
         	var returnJSON = [];
+          console.log("Discovery response "+response.results)
         	async.forEach(response.results, function(result, callback) {
         		returnEntities = [];
           		async.forEach(result.enrichedTitle.entities, function(entity, callback) {

@@ -1,0 +1,17 @@
+<div class='row'>
+
+  <table *ngIf="results">
+    <tr>
+      <th>Title</th>
+      <th>Score</th>
+      <th>Sentiment</th>
+      <th>Url</th>
+    </tr>
+    <tr *ngFor="let r of results">
+      <td>{{r.title}}</td>
+      <td>{{r.score}}</td>
+      <td>{{r.sentiment}}</td>
+      <td><a href={{r.url}}>url</a></td>
+    </tr>
+  </table>
+</div>
