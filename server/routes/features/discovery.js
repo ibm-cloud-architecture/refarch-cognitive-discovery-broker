@@ -17,7 +17,7 @@ var discConfig = extend(config.discovery, vcapServices.getCredentials('discovery
 var discovery = new DiscoveryV1({
   username: discConfig.username,
   password: discConfig.password,
-  version_date: '2016-12-15'
+  version_date: discConfig.version_date
 });
 
 router.get('/all', function(req, res) {
