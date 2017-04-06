@@ -2,7 +2,7 @@
 
 This project implements a micro service deployable as a Cloud Foundry application on bluemix to facade Watson Discovery service as there is always needs to support data mapping between the raw json response from Watson and the user interface consumer of those data. Therefore this broker exposes REST api that user interface born on cloud or coaches within IBM BPM process can consume.
 The concept of broker is presented in the IBM Cognitive Reference Architecture for Engagement and Discovery as illustrated in the figure below:
-![WDS Reference Architecture](doc/WDS-ra.png) with the 'Discovery Application' icon.
+![WDS Reference Architecture]({{site.url}}{% link doc/WDS-ra.png %}) with the 'Discovery Application' icon.
 
 # Current Version
 This version is under development. You can fork it for your own purpose and develop by reusing the code. If you want to contribute please submit a pull request on this repository.
@@ -34,7 +34,7 @@ app.get('*', (req, res) => {
 });
 ```
 
-When the URL is based as /api/discovery the module in charge is routes/features/discovery.js. This code uses the watson cloud develop api for nodejs. 
+When the URL is based as /api/discovery the module in charge is routes/features/discovery.js. This code uses the watson cloud develop api for nodejs.
 
 # Build
 Be sure to run the npm installation to get the dependent javascript modules
@@ -58,7 +58,7 @@ Then use a web browser to http://localhost:6010 which should display a simple fo
 # Deploy to bluemix
 We will not go over the detail on how to create a cloud foundry application in bluemix but you need to do the following steps
 * create a nodejs SDK cloud foundry application, be sure to use a name not in conflict with existing application under the mybluemix.net domain.
-![alt text](doc/bmx-cf-nodesdk.png "Bluemix Cloud Foundry App")
+![alt text]({{site.url}}{% link doc/bmx-cf-nodesdk.png %} "Bluemix Cloud Foundry App")
 * Using cloud foundry command line interface login to your region, organization and space.
 ```
 cf login
