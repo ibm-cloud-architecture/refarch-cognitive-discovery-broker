@@ -2,7 +2,7 @@
 
 This project implements a micro service deployable as a Cloud Foundry application on bluemix to facade Watson Discovery service as there is always needs to support data mapping between the raw json response from Watson and the user interface consumer of those data. Therefore this broker exposes REST api that user interface born on cloud or coaches within IBM BPM process can consume.
 The concept of broker is presented in the IBM Cognitive Reference Architecture for Engagement and Discovery as illustrated in the figure below:
-![WDS Reference Architecture]({{site.url}}{% link doc/WDS-ra.png %}) with the 'Discovery Application' icon.
+![WDS Reference Architecture](doc/WDS-ra.png) with the 'Discovery Application' icon.
 
 # Current Version
 This version is under development. You can fork it for your own purpose and develop by reusing the code. If you want to contribute please submit a pull request on this repository.
@@ -17,7 +17,7 @@ Be sure to have setup Cloud Foundry Command line interface and bluemix CLI too.
 /api/company/production
 
 # Code explanation
-The client folder includes the angular 2 user interface. The server folder includes the nodejs microservice. This server side code use express and its middleware mechanism. The interesint parts are explain in the snippet below:
+The client folder includes the angular 2 user interface. The server folder includes the nodejs microservice. This server side code use express and its middleware mechanism. The interesting parts are explain in the snippet below:
 ```
 // As the server exposes REST api to be consumed by the UI we delegate to a separate api module
 const api = require('./routes/api');
@@ -58,7 +58,7 @@ Then use a web browser to http://localhost:6010 which should display a simple fo
 # Deploy to bluemix
 We will not go over the detail on how to create a cloud foundry application in bluemix but you need to do the following steps
 * create a nodejs SDK cloud foundry application, be sure to use a name not in conflict with existing application under the mybluemix.net domain.
-![alt text]({{site.url}}{% link doc/bmx-cf-nodesdk.png %} "Bluemix Cloud Foundry App")
+![Bluemix Cloud Foundry App](doc/bmx-cf-nodesdk.png)
 * Using cloud foundry command line interface login to your region, organization and space.
 ```
 cf login
