@@ -3,6 +3,6 @@ applications:
   memory: 256M
   instances: 1
   domain: mybluemix.net
-  name: CBODiscoveryMicro
-  host: CBODiscoveryMicro
+  name: refarch-wds-broker
+  host: refarch-wds-broker
   disk_quota: 1024M

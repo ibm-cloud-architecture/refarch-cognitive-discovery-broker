@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('json spaces', 2);
 
-// Point static path to dist
+// Point static path to dist where angular 2 compiled js reside
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // Set our api routes

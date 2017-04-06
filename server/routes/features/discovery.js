@@ -1,5 +1,5 @@
 const cfenv = require('cfenv');
-const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
+const watson = require('watson-developer-cloud');
 const extend = require('extend');
 const vcapServices = require('vcap_services');
 const express = require('express');
@@ -14,9 +14,10 @@ var appEnv = cfenv.getAppEnv();
 var config = require('../env.json');
 
 var discConfig = extend(config.discovery, vcapServices.getCredentials('discovery'));
-var discovery = new DiscoveryV1({
+var discovery = watson.discovery({
   username: discConfig.username,
   password: discConfig.password,
+  version: discConfig.version,
   version_date: discConfig.version_date
 });
 
@@ -71,7 +72,11 @@ router.post('/company/product', function(req, res) {
           			returnEntities.push(entity.text);
           			callback();
           		}, function(err) {
-          			returnJSON.push({score: result.score, url: result.url, title: result.title,sentiment:result.docSentiment.score, entities: returnEntities});
+                // data mapping can be done here
+          			returnJSON.push({score: result.score,
+                  url: result.url,
+                  title: result.title,
+                  sentiment:result.docSentiment.score, entities: returnEntities});
           			callback();
           		});
           	}, function(err) {
