@@ -30,10 +30,9 @@ module.exports = {
     var queryTime = new Date;
     queryTime = Math.floor(queryTime.getTime()/1000) - 1209600;
     if (query.product) productQuery = query.product + ",language:english";
+    if (query.product) productQuery = query.product + ",language:english";
     else  productQuery = "language:english";
-    if (query.company) companyQuery = "blekko.urlrank>1,blekko.chrondate>" + queryTime + ",enrichedTitle.entities.text:" + query.company;
-    else companyQuery = "blekko.urlrank>1,blekko.chrondate>" + queryTime;
-
+    
     const params = {
       count: 5,
       return: 'title,docSentiment,enrichedTitle.text,url,host,enrichedTitle.entities.text',
@@ -41,6 +40,12 @@ module.exports = {
       aggregations: [].concat(entities, sentiments, mentions),
       filter: companyQuery
     };
+    if (query.company) {
+      params.filter = 'blekko.hostrank>20,blekko.chrondate>' + queryTime + ',enrichedTitle.entities.text:' + query.company;
+    }
+    else {
+      params.filter = 'blekko.hostrank>20,blekko.chrondate>' + queryTime;
+    }
     return params;
   },
 };
