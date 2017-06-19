@@ -12,7 +12,8 @@ To be able to run this Watson Discovery broker you need your own instance of a b
 
 Be sure to have setup Cloud Foundry Command line interface and bluemix CLI too.
 
-
+# Skill set
+To understand how to build a Discovery collection for weather content go to this [tutorial](doc/tutorial/wds-lab.md)
 # REST APIs exposed
 /api/company/production
 /api/weather
