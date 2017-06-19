@@ -9,7 +9,7 @@ You can create and configure a Discovery service instance by using either the Di
 The standard development path for using Watson Discovery is presented in the following diagram
 ![D-Flow](discovery-flow.png)
 
-To summarize to be able to do search / query we need content, that needs to be injected and persisted in *collection*. We are addressing these steps in this lab.
+To summarize: to be able to do search / query we need content, that needs to be injected and persisted in *collection*. We are addressing these steps in this lab.
 
 We organize this tutorial in layers to address different skill set.
 
@@ -26,7 +26,10 @@ For developer the following skill set is assumed
 * nodejs/express js
 
 # Table of content
-* [create a Watson Discovery Instance]()
+* [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-1---create-a-watson-discovery-instance)
+* [Prepare Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-2---prepare-documents)
+* [Execute search]()
+* []()
 
 # Configure Discovery Service
 The Watson Discovery Service or WDS is listed under the Watson section of the Bluemix catalog. Before you start you need to create a service instance.
@@ -52,10 +55,15 @@ The Discovery service includes a complete set of online tools **the Discovery To
 The Discovery service tooling has been designed to save time by eliminating the need to use APIs to configure and populate your service. This lets application developers concentrate on creating high value ways for end users to experience the Discovery Service.In the Discovery service, the content that you upload is stored in a collection that is part of your environment. You must create the environment and collection before you can upload your content. So create the collection name it **Weather**
 ![Create collection](wds-collection.png)  
 
-## Step 2 - Prepare Documents
-The use case is related to hurricane knowledge.
+Each collection you create is a logical division of your data in the environment. Each collection will be queried independently when you get to the point of delivering results.
 
-##
+# Step 2 - Prepare Documents
+The use case is related to hurricane knowledge. Searching for source of knowledge can be done by looking to company's internal document store and other public content. The following URLs were used:
+* https://www.osha.gov/dts/weather/hurricane/
+*
+
+# Step 3 - Doing some query
+
 
 # Configure Watson Discovery Service via APIs
 
