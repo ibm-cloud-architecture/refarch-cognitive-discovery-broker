@@ -11,8 +11,6 @@ The standard development path for using Watson Discovery is presented in the fol
 
 To summarize: to be able to do search / query we need content, that needs to be injected and persisted in *collection*. We are addressing these steps in this lab.
 
-We organize this tutorial in layers to address different skill set.
-
 The labs files used for creating collection of documents are under the wds-docs folder, see the section about [document preparation](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-2---prepare-documents).
 
 
@@ -20,13 +18,14 @@ The labs files used for creating collection of documents are under the wds-docs 
 # Table of content
 At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business user can use a customer bluemix web application to enter query related to a specific subject, like weather, and you will understand what Discovery is doing behind the scene. The sections are:
 
-* [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-1---create-a-watson-discovery-instance)
-* [Prepare Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-2---prepare-documents)
-* [Execute search](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-3---doing-some-query)
-* [Improve Accurancy]()
+* [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-1---create-a-watson-discovery-instance)
+* [Prepare Data / Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-2---prepare-documents)
+* [Execute query](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
+* [Add more content and advanced queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
+* [Improve Relevance]()
 
 # Prerequisites
-For beginner you need to:
+We organize this tutorial in layers to address different skill set. For beginner you need to:
 * Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
 * Do this tutorial from steps 1 to 6 so you will be able to understand how Discovery works
 
@@ -71,17 +70,17 @@ The Discovery service tooling has been designed to save time by eliminating the 
 
 Each collection you create is a logical division of your data in the environment. Each collection will be queried independently when you get to the point of delivering results.
 
-## Task 2 - Prepare Documents
+## Task 2 - Prepare Data / Documents
 As illustrated in the development path diagram above, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
 
-Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images,... so we may need to prepare the document, we will address that in later section []().  First, from the web browser, we can *print* the page as pdf file. This page was saved for you already as pdf document in wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
+Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section []().  First, from the web browser, we can *print* the page as pdf file. This page was saved for you already as pdf document in wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
 
 Using the Discovery Tooling, select your *weather* collection then from the main page use the Add data to this collection drag and drop
 ![Collection Main](collection-main.png)
 
 You should get a message about successful upload. So let do a simple query.
 
-## Task 3 - Doing some query
+## Task 3 - Doing first query
 As soon as one document is uploaded you can start doing some query in plain language. Select your collection from the Discovery tooling main page, then using the *Query this collection* button on the top left, you should reach the *My data insights* page:
 ![](wds-insights1.png)
 
@@ -204,14 +203,21 @@ You can remove *Sentiment Analysis* in the text field as for the weather semanti
 ![](wds-cfg-add-enrish.png)
 
 ### Normalize
-The last step in customizing your configuration file is doing **normalization**. From Discovery Tooling you can select the 'do not publish empty content'. 
+The last step in customizing your configuration file is doing **normalization**. From Discovery Tooling you can select the 'do not publish empty content'.
 
-## Step 5 - Add more content
-We want to add a second pdf coming from a research paper
+## Task 5 - Add more content and do more advanced queries
+We want to add a second pdf coming from a research paper about the major findings within the business development research
+field and the disaster research field, for evaluating business vulnerability to natural disasters. In the wds-doc folder upload the document `Zhang_et_al-2009-Disasters.pdf` to the Weather collection.
+
+### Advanced queries
+
+### Preparing document
+
+
 
 The following URLs were used:  
 
-* https://www.osha.gov/dts/weather/hurricane/
+
 * http://www.nhc.noaa.gov/prepare/ready.php
 * https://www.ready.gov/hurricanes
 * http://www.nhc.noaa.gov/prepare/ready.php
