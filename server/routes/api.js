@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 const express = require('express');
-const discoveryBroker = require('./features/discovery');
-
+const discoveryNewsBroker = require('./features/wds-news');
+const discoveryWeatherBroker = require('./features/wds-weather');
 const router = express.Router();
 
-router.use('/discovery', discoveryBroker);
+router.use('/discovery', discoveryNewsBroker);
+router.use('/weather', discoveryWeatherBroker);
 
 /* GET api listing. */
 router.get('/', (req, res) => {
   res.send('API supported: GET /api/all; POST /api/company/product');
 });
+
+
 
 module.exports = router;

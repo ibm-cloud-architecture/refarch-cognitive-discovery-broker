@@ -1,28 +1,22 @@
-const cfenv = require('cfenv');
-const extend = require('extend');
+
 const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
-const vcapServices = require('vcap_services');
 const express = require('express');
 const async = require('async');
 
 const queryBuilder = require('./query-builder');
 
 var app = express();
-
 const router = express.Router();
 
-// get the app environment from Cloud Foundry
-var appEnv = cfenv.getAppEnv();
-var config = require('../env.json');
+const config = require('../env.json');
 
-const discConfig = extend(config.discovery, vcapServices.getCredentials('discovery'));
 const discovery = new DiscoveryV1({
-  username: discConfig.username,
-  password: discConfig.password,
-  version_date: discConfig.version_date,
+  username: config.discovery.username,
+  password: config.discovery.password,
+  version_date: config.discovery.version_date,
   path: {
-    environment_id: discConfig.environment_id,
-    collection_id: discConfig.collection_id
+    environment_id: config.discovery.environment_id,
+    collection_id: config.discovery.collection_id
   },
   qs: { aggregation: `[${queryBuilder.aggregations.join(',')}]` },
 });
