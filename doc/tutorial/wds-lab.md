@@ -66,31 +66,51 @@ The Discovery service tooling has been designed to save time by eliminating the 
 Each collection you create is a logical division of your data in the environment. Each collection will be queried independently when you get to the point of delivering results.
 
 # Step 2 - Prepare Documents
-The use case is related to hurricane knowledge. Searching for source of knowledge can be done by looking to company's internal document store and other public content. The following URLs were used:  
+As illustrated in the development path diagram above, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
+
+Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images,... so we may need to prepare the document, we will address that in later section []().  First, from the web browser, we can *print* the page as pdf file. This page was saved for you already as pdf document in wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
+
+Using the Discovery Tooling, select your *weather* collection then from the main page use the Add data to this collection drag and drop
+![Collection Main](collection-main.png)
+
+You should get a message about successful upload. So let do a simple query.
+
+# Step 3 - Doing some query
+As soon as one document is uploaded you can start doing some query in plain language. Select your collection from the Discovery tooling main page, then the *Query this collection* button on the top left, you should reach the *My data insights* page:
+![](wds-insights1.png)
+
+**Top keywords** displays the most important topics in your documents, discovered by the Keyword Extraction enrichment.
+
+On the left side it is possible to filter out the content based on enrichment done by the document ingestion step.
+
+The following diagram illustrate a document section we want to search for: ![](basic-section.png). Using the *Build your own query*, you reach the *Ask a question in plain language and enter the query: **What to do when hurricane is 6 hours from arriving?**   
+When creating a query, you can be as vague or as specific as you want. The more specific the query, the more targeted the results.
+
+The following diagram illustrates the JSON responses returned
+
+![](wds-query1.png)
+
+We can see the passage text does not perfectly match the expected section. But very close, so the default conversion works. Passages are short, relevant excerpts extracted from the full documents returned by your query. These targeted passages are extracted from the text fields of the documents in your collection.
+
+
+# Step 4 - Understanding configuration
+
+
+# Step 5 - Add more content
+We want to add a second pdf coming from research paper on how
+
+The following URLs were used:  
 
 * https://www.osha.gov/dts/weather/hurricane/
 * http://www.nhc.noaa.gov/prepare/ready.php
 * https://www.ready.gov/hurricanes
 * http://www.nhc.noaa.gov/prepare/ready.php
 ...
-The content was saved as pdf document under the *wds-docs* folder, and can be uploaded to the new created collection via drag and drop using the Discovery Tooling:  
-
-![Upload](doc-upload.png)
+# Step 5 - Changing configuration
+The preferred format for input document is html.
 
 ## View enrichments and Adjust the configuration
 By default, Discovery will enrich (add cognitive metadata to) the text field of your ingested documents with semantic information collected by these six Watson functions: Entity Extraction, Keyword Extraction, Taxonomy Classification, Concept Tagging, Relation Extraction, and Sentiment Analysis.
-
-# Step 3 - Doing some query
-As soon as one document is uploaded you can start doing some query in plain language. Select your collection from the discovery tooling main page you should reach the *My data insights* page:
-![](wds-insights.png)
-
-On the left side it is possible to filter out the metadata created by the semantic extraction. For example for the future weather related query, **sentiment** may not be important. 
-
-The following
-
-![](wds-query1.png)
-
-or using specific query.
 
 # Configure Watson Discovery Service via APIs
 
