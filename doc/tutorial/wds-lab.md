@@ -17,7 +17,7 @@ The labs files used for creating collection of documents are under the wds-docs 
 
 # Prerequisites
 For beginner you need to:
-* Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net and create a Bluemix account if you do not have one.
+* Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and create a Bluemix account if you do not have one.
 * To create the Discovery content and be able to search within the knowledge base, follow the steps 1 to 3
 
 For developer the following are assumed
@@ -92,9 +92,37 @@ The following diagram illustrates the JSON responses returned
 
 We can see the passage text does not perfectly match the expected section. But very close, so the default conversion works. Passages are short, relevant excerpts extracted from the full documents returned by your query. These targeted passages are extracted from the text fields of the documents in your collection.
 
+The very interesting content is in the JSON results which lists the generated semantic analysis like *Taxonomy, Keywords, Entities*
+
+![](json-results.png)
+
+During the ingestion step all of your documents are converted to JSON before they are enriched and indexed. Microsoft Word and PDF documents are converted to HTML first, then JSON.
+
+By default, Discovery will enrich (add cognitive metadata to) the text field of your ingested documents with semantic information collected by these six Watson functions: Entity Extraction, Keyword Extraction, Taxonomy Classification, Concept Tagging, Relation Extraction, and Sentiment Analysis.
+Expand the JSON tags by clicking on the triangle icons before the tags to view all transformations on the right side panel.
 
 # Step 4 - Understanding configuration
+Collections are associated with configuration. Configuration controls how the **Convert, Enrich, and Normalize** steps are performed during document ingestion.
 
+From the main page of the **Weather** collection, use the Switch hyperlink to prepare for a new configuration
+![](collection-main.png)
+
+Then use the *Create new configuration* link, and finally in the next form enter a configuration name:
+![](create-cfg.png)
+
+The first step is the document conversion. Depending of the source type, you can specify the conversion rules:  
+
+![](wds-cfg-convert.png)
+
+For *pdf, and Microsoft Word* the conversion rules are based on the font type and size to assess the heading type. This is the less efficient format as input because some document may use header 1 font size differently. The range font size should help to address this problem. But the preferred format for input document is html.
+
+The HTML rules are applied to input HTML documents but also to *pdf and Word* converted documents. The default HTML rules should be good enough.
+
+Finally for JSON, you can control the attributes you need to keep. For example the *html* view of the document may not be needed for our case, so use the **Move, merge, copy or remove fields* choice as illustrated below:
+
+![](wds-cfg-json.png)
+
+The second configuration is related to **Enrichment**.
 
 # Step 5 - Add more content
 We want to add a second pdf coming from research paper on how
@@ -106,8 +134,8 @@ The following URLs were used:
 * https://www.ready.gov/hurricanes
 * http://www.nhc.noaa.gov/prepare/ready.php
 ...
-# Step 5 - Changing configuration
-The preferred format for input document is html.
+# Step 6 - Changing configuration
+
 
 ## View enrichments and Adjust the configuration
 By default, Discovery will enrich (add cognitive metadata to) the text field of your ingested documents with semantic information collected by these six Watson functions: Entity Extraction, Keyword Extraction, Taxonomy Classification, Concept Tagging, Relation Extraction, and Sentiment Analysis.
