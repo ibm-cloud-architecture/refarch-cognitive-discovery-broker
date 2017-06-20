@@ -15,29 +15,35 @@ We organize this tutorial in layers to address different skill set.
 
 The labs files used for creating collection of documents are under the wds-docs folder, see the section about [document preparation](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-2---prepare-documents).
 
+
+
+# Table of content
+At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business user can use a customer bluemix web application to enter query related to a specific subject, like weather, and you will understand what Discovery is doing behind the scene. The sections are:
+
+* [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-1---create-a-watson-discovery-instance)
+* [Prepare Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-2---prepare-documents)
+* [Execute search](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-3---doing-some-query)
+* [Improve Accurancy]()
+
 # Prerequisites
 For beginner you need to:
-* Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and create a Bluemix account if you do not have one.
-* To create the Discovery content and be able to search within the knowledge base, follow the steps 1 to 3
+* Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
+* Do this tutorial from steps 1 to 6 so you will be able to understand how Discovery works
 
 For developer the following are assumed
 * Having a Bluemix account, how to search the service catalog and how to create services
 * Using Bluemix command line interface
 * Programming in nodejs & expressjs
 * Having a github account and how to use git commands
-* Prepare the Discovery service as described in steps 1 to 3
-
-# Table of content
-* [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-1---create-a-watson-discovery-instance)
-* [Prepare Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-2---prepare-documents)
-* [Execute search](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-3---doing-some-query)
-* [Improve Accurancy]()
+* Prepare the Discovery service as described in steps 1 to 5
+* Develop custom knowledge with steps 7 to 9
+* Use broker code to integrate with Watson Discovery
 
 # Configure Discovery Service
 The Watson Discovery Service or WDS is listed under the Watson section of the Bluemix catalog. Before you start you need to create a service instance.
 
 
-## Step 1 - Create a Watson Discovery Instance
+## Task 1 - Create a Watson Discovery Instance
 This will allow you to create an environment where you can create one or more data collections into which you can add your own content and associate with a configuration.
 1- Select “Catalog” from the top right corner to view the service catalog.  
 
@@ -65,7 +71,7 @@ The Discovery service tooling has been designed to save time by eliminating the 
 
 Each collection you create is a logical division of your data in the environment. Each collection will be queried independently when you get to the point of delivering results.
 
-# Step 2 - Prepare Documents
+## Task 2 - Prepare Documents
 As illustrated in the development path diagram above, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
 
 Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images,... so we may need to prepare the document, we will address that in later section []().  First, from the web browser, we can *print* the page as pdf file. This page was saved for you already as pdf document in wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
@@ -75,13 +81,13 @@ Using the Discovery Tooling, select your *weather* collection then from the main
 
 You should get a message about successful upload. So let do a simple query.
 
-# Step 3 - Doing some query
-As soon as one document is uploaded you can start doing some query in plain language. Select your collection from the Discovery tooling main page, then the *Query this collection* button on the top left, you should reach the *My data insights* page:
+## Task 3 - Doing some query
+As soon as one document is uploaded you can start doing some query in plain language. Select your collection from the Discovery tooling main page, then using the *Query this collection* button on the top left, you should reach the *My data insights* page:
 ![](wds-insights1.png)
 
 **Top keywords** displays the most important topics in your documents, discovered by the Keyword Extraction enrichment.
 
-On the left side it is possible to filter out the content based on enrichment done by the document ingestion step.
+On the left side it is possible to filter out the content based on enrichment done by the document ingestion step. See
 
 The following diagram illustrate a document section we want to search for: ![](basic-section.png). Using the *Build your own query*, you reach the *Ask a question in plain language and enter the query: **What to do when hurricane is 6 hours from arriving?**   
 When creating a query, you can be as vague or as specific as you want. The more specific the query, the more targeted the results.
@@ -101,7 +107,7 @@ During the ingestion step all of your documents are converted to JSON before the
 By default, Discovery will enrich (add cognitive metadata to) the text field of your ingested documents with semantic information collected by these six Watson functions: Entity Extraction, Keyword Extraction, Taxonomy Classification, Concept Tagging, Relation Extraction, and Sentiment Analysis.
 Expand the JSON tags by clicking on the triangle icons before the tags to view all transformations on the right side panel.
 
-# Step 4 - Understanding configuration
+## Task 4 - Understanding configuration
 Collections are associated with configuration. Configuration controls how the **Convert, Enrich, and Normalize** steps are performed during document ingestion.
 
 From the main page of the **Weather** collection, use the Switch hyperlink to prepare for a new configuration
@@ -110,22 +116,98 @@ From the main page of the **Weather** collection, use the Switch hyperlink to pr
 Then use the *Create new configuration* link, and finally in the next form enter a configuration name:
 ![](create-cfg.png)
 
+### Convert
 The first step is the document conversion. Depending of the source type, you can specify the conversion rules:  
 
 ![](wds-cfg-convert.png)
 
 For *pdf, and Microsoft Word* the conversion rules are based on the font type and size to assess the heading type. This is the less efficient format as input because some document may use header 1 font size differently. The range font size should help to address this problem. But the preferred format for input document is html.
 
-The HTML rules are applied to input HTML documents but also to *pdf and Word* converted documents. The default HTML rules should be good enough.
+The HTML rules are applied to input HTML documents but also to *pdf and Word* converted documents. The default HTML rules should work for most case.
 
-Finally for JSON, you can control the attributes you need to keep. For example the *html* view of the document may not be needed for our case, so use the **Move, merge, copy or remove fields* choice as illustrated below:
+Finally for JSON, you can control the attributes you need to keep. For example the *html* view of the document may not be needed, so use the **Move, merge, copy or remove fields* choice as illustrated below:
 
 ![](wds-cfg-json.png)
 
-The second configuration is related to **Enrichment**.
+### Enrich
+The second configuration is related to **Enrich** step.
+![](wds-cfg-enrish.png)
+By default, Discovery will enrich (add cognitive metadata to) the **text** field of your ingested documents with semantic information collected by these six Watson functions - Entity Extraction, Keyword Extraction, Taxonomy Classification, Concept Tagging, Relation Extraction, and Sentiment Analysis.
 
-# Step 5 - Add more content
-We want to add a second pdf coming from research paper on how
+For example *Entity extraction* adds semantic knowledge to content to help understand the subject and context of the text that is being analyzed. In the example below, the term 'Hurricane' was classified as 'NaturalDisaster' with a 86% relevance.
+
+```JSON
+{
+      "type": "NaturalDisaster",
+      "relevance": 0.86074,
+      "sentiment": {
+        "type": "negative",
+        "score": -0.551763,
+        "mixed": false
+      },
+      "count": 13,
+      "text": "Hurricane",
+      "disambiguated": {
+        "name": "Tropical cyclone",
+        "dbpedia": "http://dbpedia.org/resource/Tropical_cyclone",
+        "freebase": "http://rdf.freebase.com/ns/m.07r2x",
+        "yago": "http://yago-knowledge.org/resource/Tropical_cyclone"
+      }
+    },
+```
+
+Discovery automatically identifies and ranks keywords in the document which could be used when indexing data, generating tag clouds, or when searching
+
+Taxonomy classification is very important to classify content into a hierarchical taxonomy. The example below  is telling us that the document section related to Hurricane can be classified as meteorological disaster at 71% relevance, while it is not really a earthquake. The label is the detected taxonomy category.
+
+```JSON
+"taxonomy":[
+			{
+				"label": "/science/weather/meteorological disaster/hurricane",
+				"score": 0.711586,
+				"confident": false
+			},
+			{
+				"confident": false,
+				"label": "/science/geology/seismology/earthquakes",
+				"score": 0.396216
+			},
+			{
+				"confident": false,
+				"label": "/science/weather",
+				"score": 0.318234
+			}
+		],
+```
+
+Concept tagging understands how concepts relate, and can identify concepts that are not directly referenced in the text, it enables higher level analysis of input content than just basic keyword identification.
+
+```JSON
+ "concepts": [
+  {
+    "text": "Emergency management",
+    "relevance": 0.984327,
+    "dbpedia": "http://dbpedia.org/resource/Emergency_management",
+    "freebase": "http://rdf.freebase.com/ns/m.052yrz"
+  },
+  {
+    "text": "Emergency evacuation",
+    "relevance": 0.938583,
+    "dbpedia": "http://dbpedia.org/resource/Emergency_evacuation",
+    "freebase": "http://rdf.freebase.com/ns/m.058th7"
+  }
+]
+
+```
+
+You can remove *Sentiment Analysis* in the text field as for the weather semantic we may not need it. As of curiosity, you can also look at the **Add enrichments** to see the options available:
+![](wds-cfg-add-enrish.png)
+
+### Normalize
+The last step in customizing your configuration file is doing **normalization**. From Discovery Tooling you can select the 'do not publish empty content'. 
+
+## Step 5 - Add more content
+We want to add a second pdf coming from a research paper
 
 The following URLs were used:  
 
@@ -134,14 +216,17 @@ The following URLs were used:
 * https://www.ready.gov/hurricanes
 * http://www.nhc.noaa.gov/prepare/ready.php
 ...
-# Step 6 - Changing configuration
+
+## Step 6 -
 
 
-## View enrichments and Adjust the configuration
-By default, Discovery will enrich (add cognitive metadata to) the text field of your ingested documents with semantic information collected by these six Watson functions: Entity Extraction, Keyword Extraction, Taxonomy Classification, Concept Tagging, Relation Extraction, and Sentiment Analysis.
+
 
 # Configure Watson Discovery Service via APIs
+We will use API to do training set and test set to validate accuracy.
+https://watson-api-explorer.mybluemix.net/apis/discovery-v1
 
+## Step 7 - Training with API
 
 # Link between Conversation and Discovery
 To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned.
@@ -149,3 +234,4 @@ To support long tail interaction, Watson Discovery in conjunction with Conversat
 # References
 * [Discovery main page](https://www.ibm.com/watson/developercloud/discovery.html)
 * Discovery [API](https://www.ibm.com/watson/developercloud/discovery/api/v1/#introduction)
+* Mix of Image Recognition and Discovery  http://watson.ted.com/
