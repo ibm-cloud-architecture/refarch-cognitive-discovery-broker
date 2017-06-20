@@ -5,19 +5,24 @@ The concept of broker is presented in the IBM Cognitive Reference Architecture f
 ![WDS Reference Architecture](doc/WDS-ra.png)
 
 # Current Version
-This version is under development. You can fork it for your own purpose and develop by reusing the code. If you want to contribute please submit a pull request on this repository.
+This version is under development. You can fork it for your own purpose and develop your own solution by reusing the code. If you want to contribute please submit a pull request on this repository. The contribution guidelines are [here](https://github.com/ibm-cloud-architecture/refarch-cognitive#contribute)
 
 # Pre requisites
 To be able to run this Watson Discovery broker you need your own instance of a bluemix Watson Discovery Service. Once you have created this service rename the server/routes/env-templ.json to env.json and modify the userid, password, environment_id and collection_id to point to your own service.
 
-Be sure to have setup Cloud Foundry Command line interface and bluemix CLI too.
+Be sure to have setup Cloud Foundry Command line interface and bluemix CLI.
 
 # Skill set
-To understand how to build a Discovery collection for weather content go to this [tutorial](doc/tutorial/wds-lab.md)
-# REST APIs exposed
-/api/company/production
-/api/weather
+To understand how to build a **Discovery** collection the following [tutorial](doc/tutorial/wds-lab.md) will help to go step by step with weather related corpus. The audience of this tutorial is for beginner and advanced developer
 
+# REST APIs exposed
+The broker code offers two entry points and mapping user interface:
+| Description | API  | User interface |
+| ----------- | ---- | -------------- |
+|  | /api/company/production | Query news |
+|  | /api/weather | Weather |
+
+---
 # Code explanation
 The client folder includes the angular 2 user interface, the user interface is used for demonstration purpose. As micro service the more important part is on the server side.
 

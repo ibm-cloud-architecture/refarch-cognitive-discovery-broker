@@ -11,24 +11,25 @@ The standard development path for using Watson Discovery is presented in the fol
 
 To summarize: to be able to do search / query we need content, that needs to be injected and persisted in *collection*. We are addressing these steps in this lab.
 
-The labs files used for creating collection of documents are under the wds-docs folder, see the section about [document preparation](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#step-2---prepare-documents).
-
-
+The labs files used for creating collection of documents are under the wds-docs folder.
 
 # Table of content
 At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business user can use a customer bluemix web application to enter query related to a specific subject, like weather, and you will understand what Discovery is doing behind the scene. The sections are:
 
 * [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-1---create-a-watson-discovery-instance)
-* [Prepare Data / Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-2---prepare-documents)
+* [Prepare Data / Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-2---prepare-data--documents)
 * [Execute query](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
 * [Add more content and advanced queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
 * [Improve Relevance]()
 
 # Prerequisites
-We organize this tutorial in layers to address different skill set. For beginner you need to:
+We organize this tutorial in layers to address different skill set.
+
+For beginner you need to:
 * Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
 * Do this tutorial from steps 1 to 6 so you will be able to understand how Discovery works
 
+---
 For developer the following are assumed
 * Having a Bluemix account, how to search the service catalog and how to create services
 * Using Bluemix command line interface
@@ -73,7 +74,7 @@ Each collection you create is a logical division of your data in the environment
 ## Task 2 - Prepare Data / Documents
 As illustrated in the development path diagram above, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
 
-Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section []().  First, from the web browser, we can *print* the page as pdf file. This page was saved for you already as pdf document in wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
+Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#preparing-document).  First, from the web browser, we can *print* the page as pdf file. This page was saved as pdf document, for you already, in wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
 
 Using the Discovery Tooling, select your *weather* collection then from the main page use the Add data to this collection drag and drop
 ![Collection Main](collection-main.png)
@@ -207,11 +208,12 @@ The last step in customizing your configuration file is doing **normalization**.
 
 ## Task 5 - Add more content and do more advanced queries
 We want to add a second pdf coming from a research paper about the major findings within the business development research
-field and the disaster research field, for evaluating business vulnerability to natural disasters. In the wds-doc folder upload the document `Zhang_et_al-2009-Disasters.pdf` to the Weather collection.
+field and the disaster research field, for evaluating business vulnerability to natural disasters. In the wds-doc folder upload the document `Zhang_et_al-2009-Disasters.pdf` to the Weather collection. 
 
 ### Advanced queries
 
 ### Preparing document
+
 
 
 
