@@ -285,7 +285,7 @@ In this exercise we will use the API Explorer tool to get comfortable with the A
 (1) Obtain the connection to your discovery service instance
 (2) use one of the standard HTTP requests like GET, PUT, POST, DELETE with parameters appropriate for the given invocation
 
-Open a browser and access the Watson API Explorer page  https://watson-api-explorer.mybluemix.net/.
+Open a browser and access the Watson API Explorer page  https://watson-api-explorer.mybluemix.net/. The screenshot of the page is shown below (wds-lab-api-explorer-1.png)
 
 
 
