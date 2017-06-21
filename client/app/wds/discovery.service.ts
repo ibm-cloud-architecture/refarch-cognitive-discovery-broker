@@ -31,7 +31,7 @@ export class DiscoveryService {
    urlSearchParams.append('query', query);
    let body = urlSearchParams.toString();
 
-   return this.http.post('/api/weather', body, options)
+   return this.http.post('/api/weather/query', body, options)
      .map((res: Response) => res.json())
      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
  }
