@@ -13,6 +13,8 @@ To summarize: to be able to do search / query we need content, that needs to be 
 
 The labs files used for creating collection of documents are under the wds-docs folder.
 
+The current working application to demonstrate the end product of this tutorial is here: [WDS Broker on Bluemix](https://refarch-wds-broker.mybluemix.net/)  
+
 # Table of content
 At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business user can use a customer bluemix web application to enter query related to a specific subject, like weather, and you will understand what Discovery is doing behind the scene. The sections are:
 
@@ -22,22 +24,30 @@ At the end of this tutorial you will be able to create a Discovery service and t
 * [Add more content and advanced queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
 * [Improve Relevance]()
 
-# Prerequisites
+
+# Tutorial Structure
 We organize this tutorial in layers to address different skill set.
+Level 0 - Data ingestion, Discovery tooling, and simple querying, seeing the output in the browser
+Level 1 - Collection configuration, enrichment, filters, content / data preparation
+Level 2 - API based access and refinement of results, Watson knowledge Studio, Watson API explorer, CURL or nodejs script to use API
+Level 3 - Advanced topics. Explore the Discovery broker,  connecting discovery and conversation, using Speech To Text
 
-For beginner you need to:
+For beginner you need to do this tutorial from steps 1 to 6, which map to level 0 so you will be able to understand how Discovery works.
+
+For developer
+* Prepare the Discovery service as described in steps 1 to 5
+* Develop custom knowledge with steps 7 to 9
+* Use broker code to integrate with Watson Discovery
+
+
+# Prerequisites
 * Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
-* Do this tutorial from steps 1 to 6 so you will be able to understand how Discovery works
 
----
 For developer the following are assumed
 * Having a Bluemix account, how to search the service catalog and how to create services
 * Using Bluemix command line interface
 * Programming in nodejs & expressjs
 * Having a github account and how to use git commands
-* Prepare the Discovery service as described in steps 1 to 5
-* Develop custom knowledge with steps 7 to 9
-* Use broker code to integrate with Watson Discovery
 
 # Configure Discovery Service
 The Watson Discovery Service or WDS is listed under the Watson section of the Bluemix catalog. Before you start you need to create a service instance.
@@ -208,9 +218,10 @@ The last step in customizing your configuration file is doing **normalization**.
 
 ## Task 5 - Add more content and do more advanced queries
 We want to add a second pdf coming from a research paper about the major findings within the business development research
-field and the disaster research field, for evaluating business vulnerability to natural disasters. In the wds-doc folder upload the document `Zhang_et_al-2009-Disasters.pdf` to the Weather collection. 
+field and the disaster research field, for evaluating business vulnerability to natural disasters. In the wds-doc folder upload the document `Zhang_et_al-2009-Disasters.pdf` to the Weather collection.
 
 ### Advanced queries
+Discovery comes with a query language ...
 
 ### Preparing document
 
