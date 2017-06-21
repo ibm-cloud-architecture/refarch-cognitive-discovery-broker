@@ -52,10 +52,10 @@ module.exports = {
   */
   buildForWeather(userQuestion){
     const params = {
-      count: 5,
-      return: 'title,enrichedTitle.text,url,host,enrichedTitle.entities.text',
-      query: userQuestion,
-      aggregations: [].concat(entities, sentiments, mentions)
+      count: 3,
+      passages: true,
+      natural_language_query:userQuestion
     };
+    return params;
   }
 };

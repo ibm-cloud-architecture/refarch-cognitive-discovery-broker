@@ -16,14 +16,16 @@ const discovery = new DiscoveryV1({
 });
 
 router.post('/query', function(req, res) {
+  console.log("Weather:"+req.body.query);
   const params = queryBuilder.buildForWeather(req.body.query);
   console.log(params);
   discovery.query(params, function(err, response) {
     if (err) {
       console.error("Error "+err);
+
     } else {
-      console.log("Discovery response "+response.results);
-      res=response.results;
+      console.log("Discovery response "+JSON.stringify(response, null, 2));
+      res.json(response);
     }
   });
 });
