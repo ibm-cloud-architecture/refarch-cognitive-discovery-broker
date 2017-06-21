@@ -354,7 +354,79 @@ Now click “Try it out” button. The result should look like the following.
 
 ![wds-lab-api-explorer-testconfig-resp-11](wds-lab-api-explorer-testconfig-resp-11.png)
 
+|To verify that you worked through the exercise, test the configuration for the file “CDC_Plan_Hurricanes.pdf” and provide the relevance score for the concept “wind shear”.|
 
+As a next exercise, let us try working with collections. Collections are the most important, and fundamental artifacts you need in order to be able to make queries and use the features of discovery service. 
+
+Click on “List collections”. Provide the right value of the input field “environment_id” and click “Try it out”. To make sure this works correctly, you may want to go back to the tooling and create one or more collections, and try this API again. In the response section you should see all the collections.
+
+The request part of the API should look like the following:
+
+![wds-lab-api-explorer-listcollection-req-12](wds-lab-api-explorer-listcollection-req-12.png)
+
+The response should look somewhat like the following:
+
+![wds-lab-api-explorer-listcollection-resp-13](wds-lab-api-explorer-listcollection-resp-13.png)
+
+As you can see, I have two collections namely “HurricaneInfoCollection” and “InitialTestCollection”. Your results may vary depending on how many collections you created prior to invoking this API.
+
+Now let us create a new collection using API and verify it was created. You can verify it using the tooling as well as using the API invocation like we did above with ‘List Collections”. 
+
+Go ahead and expand the API “Create a collection” and configure the request with input parameters like environment_id etc. Click on the text box with label “Example Value” (right next to “body” input field). That will copy the skeleton body into the input text field. Pick a name for your collection and description (feel free to leave the configuration_id) and click on “Try it out”. The following screenshot shows the request for creating a collection “AnimalKingdomCollection”.
+
+![wds-lab-api-explorer-createcoll-req-14](wds-lab-api-explorer-createcoll-req-14.png)
+
+The response should look like the following:
+
+![wds-lab-api-explorer-createcoll-resp-15](wds-lab-api-explorer-createcoll-resp-15.png)
+
+Now go back to the tooling and verify this collection shows up in the list of collections.  Launch the discovery tooling from the UI using “Launch tool” button –
+
+![wds-lab-api-explorer-disctooling-16](wds-lab-api-explorer-disctooling-16.png)
+
+In the resulting screen you should be able to see the newly created collection.
+
+![wds-lab-api-explorer-disctooling-coll-17](wds-lab-api-explorer-disctooling-coll-17.png)
+
+Now invoke the “List collections” API again and verify this newly collection creation shows up in the response section. 
+
+Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined along with the screenshots.
+
+•	Go back to the tooling as shown above and click on the AnimalKingdomCollection (or the one you just created, if you used a different name). You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
+
+![wds-lab-api-explorer-disctooling-collid-18](wds-lab-api-explorer-disctooling-collid-18.png)
+
+•	Invoke the API “List collections” and retrieve the collection_id. The response is shown in the following screenshot along with the collection_id.
+
+![wds-lab-api-explorer-listenv-collid-19](wds-lab-api-explorer-listenv-collid-19.png)
+
+Once you get the collection_id using one of the methods outlined above, use that to invoke the API “Delete a collection”. Now go to the tooling and make sure the collection is deleted, and optionally you can try the “List collections” API again to verify the newly created collection no longer shows in the response.
+
+At this point you should be able to try additional APIs without the help of screenshots. You should also be able to retrieve things like environment_id, collection_id etc. From this point onwards the remaining instructions will assume you can create a collection, retrieve the metadata about the collection.
+
+Now let us try adding a new document through the APIs. Create a new collection for this purpose, or you can work with one of your existing collections. The following example uses a newly created collection called “StormCollection”. It is easier if you stick with the same subject (like hurricane, storm, cyclones, weather etc.) because you can use one of the existing documents provided with this tutorial. 
+
+Let us use the API to add the document “FloodSmart_FEMA.pdf” which is included in the data set. Expand the API “Add a document” and fill in the input parameters. You can leave the configuration, metadata etc. empty. Choose the file “FloodSmart_FEMA.pdf” using the “Browse…” button. The input parameters should be configured as shown in the following screenshot (with the exception of environment_id and collection_id which will be unique to your own environment and collection)
+
+![wds-lab-api-explorer-adddoc-req-20](wds-lab-api-explorer-adddoc-req-20.png)
+
+Click on “Try it out” and look at the response. The response may involve the status set to “processing”. That’s okay because the API returns immediately while the document is being processed and included in the collection. The sample response is shown in the screenshot below, with the “status” field of the JSON response highlighted using a rectangle.
+
+![wds-lab-api-explorer-adddoc-resp-21](wds-lab-api-explorer-adddoc-resp-21.png)
+
+Go back to the tooling, and open the collection (in this example, StormCollection, but you may have chosen a different name) and verify it shows a document has been added. A screenshot is shown below highlighting the document count.
+
+![wds-lab-api-explorer-adddoc-verify-22](wds-lab-api-explorer-adddoc-verify-22.png)
+
+You can issue a simple query related to this document and make sure it works. Ofcourse there is only one document in the collection, so the number of queries you can issue will be limited to the content addressed in the “FloodSmart_FEMA.pdf” file.
+
+As the last step, let us see how to issue queries using the APIs. Expand the “Query documents” API and fill in the input fields. In addition to the usual mandatory ones like environment_id and collection_id, you also need to provide value for either the “query” field (in structured format) or “natural_language_query” (in natural language) to test this part. Optionally you can also provide values for “filter”, “passages” etc. Assuming you used the FloodSmart_FEMA.pdf file to add the document, type the text “Do I need flood insurance?” in the “natural_language_query” input field. Click the button “Try it out”, and you should see a response like the following.
+
+![wds-lab-api-explorer-query-resp-23](wds-lab-api-explorer-query-resp-23.png)
+
+Inspect the Response Body to check the results.
+
+|For earning the badge, use the APIs to load the file Hurricane_noaa.pdf, and run the query “What is Saffir-Simpson scale?”. In the result, find the concept “Beaufort scale” and describe the relevance and other details reported in the response.|
 
 # Configure Watson Discovery Service via APIs
 We will use API to do training set and test set to validate accuracy.
