@@ -22,7 +22,7 @@ At the end of this tutorial you will be able to create a Discovery service and t
 * [Prepare Data / Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-2---prepare-data--documents)
 * [Execute query](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
 * [Add more content and advanced queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
-* [Improve Relevance]()
+* [Explore Discovery API](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#Step-6---Explore-Watson-Discovery-API)
 
 
 # Tutorial Structure
@@ -36,9 +36,8 @@ For beginner you need to do this tutorial from steps 1 to 6, which map to level 
 
 For developer
 * Prepare the Discovery service as described in steps 1 to 5
-* Develop custom knowledge with steps 7 to 9
+* Develop custom knowledge with steps 6 to 9
 * Use broker code to integrate with Watson Discovery
-
 
 # Prerequisites
 * Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
@@ -51,7 +50,6 @@ For developer the following are assumed
 
 # Configure Discovery Service
 The Watson Discovery Service or WDS is listed under the Watson section of the Bluemix catalog. Before you start you need to create a service instance.
-
 
 ## Task 1 - Create a Watson Discovery Instance
 This will allow you to create an environment where you can create one or more data collections into which you can add your own content and associate with a configuration.
@@ -236,7 +234,28 @@ The following URLs were used:
 * http://www.nhc.noaa.gov/prepare/ready.php
 ...
 
-## Step 6 -
+## Task 6 - Explore Watson Discovery API
+The objective of this step is to explore the power of Watson Discovery Service APIs. After completing this section, you will be able to perform the following:
+
+1.	Exercise the APIs to create and alter the discovery service instance (including collections and documents)
+2.	Exercise the APIs to issue queries
+3.	Fine tune the results using training
+
+Note: Like the previous sections, this section has certain verification steps that you need to complete to get Think40 credit and earn the badge. These steps are described in shaded boxes.
+
+Watson Discovery Service provides a rich set of APIs to work with the environments, configurations, collections, documents and issuing queries. In the previous section, you explored the same features using the discovery tooling. In this section we will do the same using the APIs.
+
+As you know, Watson Discovery Service provides APIs in various languages like Python, Java, Node and command line option using Curl. The following URL shows all the REST APIs for the Discovery service.
+
+https://www.ibm.com/watson/developercloud/discovery/api/v1/
+
+In this exercise we will use the API Explorer tool to get comfortable with the APIs. You are encouraged to test the APIs using your language of choice on your own. The steps involved in using the APIs are as follows –
+
+(1) Obtain the connection to your discovery service instance
+(2) use one of the standard HTTP requests like GET, PUT, POST, DELETE with parameters appropriate for the given invocation
+
+Open a browser and access the Watson API Explorer page  https://watson-api-explorer.mybluemix.net/.
+
 
 
 
@@ -245,7 +264,9 @@ The following URLs were used:
 We will use API to do training set and test set to validate accuracy.
 https://watson-api-explorer.mybluemix.net/apis/discovery-v1
 
-## Step 7 - Training with API
+## Task 7 - Training with API
+
+## Task 8 - Broker code
 
 # Link between Conversation and Discovery
 To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned.

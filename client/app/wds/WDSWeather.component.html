@@ -3,18 +3,28 @@
       <li class=""><a [routerLink]="['/']">Home</a></li>
   </ul>
 </div>
-<div class="container">
-        <h4 style="color:darkblue">Weather Search</h4>
-    	<form #searchForm="ngForm" (ngSubmit)="supplierSearch(company.value, product.value)">
-        	<p>
-            	<label>Company:</label>
-            	<input #company type="text" required>
-            	<label>Product:</label>
-            	<input #product type="text" required>
-        	</p>
-        	<p>
-            	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
-        	</p>
-    	</form>
+<div class="row">
+      <h4 style="color:darkblue">Weather Search</h4>
+      <div class="roundRect">
+      	<form #searchForm="ngForm" (ngSubmit)="weatherSearch(query)">
+              	<label>Persona:</label>
+                <select class="form-control" [(ngModel)]="selectedPersona" name="selectedPersona" (change)="onSelectPersona()">
+                  <option *ngFor="let p of personas">
+                    {{p}}
+                  </option>
+                </select><br/>
+                <label>Predefined Query:</label>
+                <select  class="form-control" [(ngModel)]="selectedQuery" name="selectedQuery" (change)="onSelectQuery()">
+                  <option *ngFor="let q of queries">
+                    {{q}}
+                  </option>
+                </select><br/>
+              	<label>Query:</label>
+              	<input class="form-control" [(ngModel)]="query" name="query" type="text">
+          	<br/>
+              	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
+
+      	</form>
+      </div>
 		<results [results]="searchResults"></results>
 </div>

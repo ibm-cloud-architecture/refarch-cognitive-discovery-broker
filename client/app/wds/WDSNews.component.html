@@ -5,16 +5,18 @@
 </div>
 <div class="container">
       <h4 style="color:darkblue">Search Supplier and Product</h4>
-    	<form #searchForm="ngForm" (ngSubmit)="supplierSearch(company.value, product.value)">
-        	<p>
-            	<label>Company:</label>
-            	<input #company type="text" required>
-            	<label>Product:</label>
-            	<input #product type="text" required>
-        	</p>
-        	<p>
-            	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
-        	</p>
-    	</form>
+      <div class="roundRect">
+      	<form #searchForm="ngForm" (ngSubmit)="supplierSearch(company.value, product.value)">
+          	<p>
+              	<label>Company:</label>
+              	<input #company type="text" required>
+              	<label>Product:</label>
+              	<input #product type="text" required>
+          	</p>
+          	<p>
+              	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
+          	</p>
+      	</form>
+      </div>
 		<results [results]="searchResults"></results>
 </div>

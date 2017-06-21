@@ -4,7 +4,8 @@ import { SearchResult } from '../model/SearchResult';
 
 @Component({
   selector: 'wdsnews',
-  templateUrl: './WDSNews.component.html'
+  templateUrl: './WDSNews.component.html',
+  styleUrls: ['./wdsbase.component.css']
 })
 export class WDSNewsComponent {
 
@@ -12,7 +13,7 @@ export class WDSNewsComponent {
   searchResults: any;
 
 	supplierSearch(company, product) {
-		this.discoveryService.search(company,product).subscribe(data => {
+		this.discoveryService.searchNews(company,product).subscribe(data => {
       console.log(data);
       this.searchResults=data;
     }, error => {

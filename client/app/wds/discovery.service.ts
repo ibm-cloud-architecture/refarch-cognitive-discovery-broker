@@ -11,7 +11,7 @@ export class DiscoveryService {
   constructor(private http: Http) {
   };
 
-  search(company, product) {
+  searchNews(company, product) {
 		let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
 		let options = new RequestOptions({ headers: headers });
 		let urlSearchParams = new URLSearchParams();
@@ -19,9 +19,20 @@ export class DiscoveryService {
 		urlSearchParams.append('product', product);
 		let body = urlSearchParams.toString();
 
-		return this.http.post('/api/discovery/company/product', body, options)
+		return this.http.post('/api/news/company/product', body, options)
 			.map((res: Response) => res.json())
 			.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 	}
 
+ searchWeather(query) {
+   let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+   let options = new RequestOptions({ headers: headers });
+   let urlSearchParams = new URLSearchParams();
+   urlSearchParams.append('query', query);
+   let body = urlSearchParams.toString();
+
+   return this.http.post('/api/weather', body, options)
+     .map((res: Response) => res.json())
+     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+ }
 }
