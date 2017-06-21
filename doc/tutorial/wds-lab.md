@@ -350,6 +350,10 @@ As a next API, let us try to test a sample document sending it through the conve
 
 ![wds-lab-api-explorer-testconfig-req-10](wds-lab-api-explorer-testconfig-req-10.png)
 
+Now click “Try it out” button. The result should look like the following.
+
+![wds-lab-api-explorer-testconfig-resp-11](wds-lab-api-explorer-testconfig-resp-11.png)
+
 
 
 # Configure Watson Discovery Service via APIs
