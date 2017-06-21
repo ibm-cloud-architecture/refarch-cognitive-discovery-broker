@@ -26,17 +26,18 @@ At the end of this tutorial you will be able to create a Discovery service and t
 
 
 # Tutorial Structure
-We organize this tutorial in layers to address different skill set.
-Level 0 - Data ingestion, Discovery tooling, and simple querying, seeing the output in the browser
-Level 1 - Collection configuration, enrichment, filters, content / data preparation
-Level 2 - API based access and refinement of results, Watson knowledge Studio, Watson API explorer, CURL or nodejs script to use API
-Level 3 - Advanced topics. Explore the Discovery broker,  connecting discovery and conversation, using Speech To Text
+We organize this tutorial in layers to address different skill set.  
 
-For beginner you need to do this tutorial from steps 1 to 6, which map to level 0 so you will be able to understand how Discovery works.
+* **Level 0** - Data ingestion, Discovery tooling, and simple querying, seeing the output in the browser
+* **Level 1** - Collection configuration, enrichment, filters, content / data preparation
+* **Level 2** - API based access and refinement of results, Watson knowledge Studio, Watson API explorer, CURL or nodejs script to use API
+* **Level 3** - Advanced topics. Explore the Discovery broker,  connecting discovery and conversation, using Speech To Text
+
+For beginner you need to do this tutorial from steps 1 to 4, which map to level 0 so you will be able to understand how Discovery works.
 
 For developer
-* Prepare the Discovery service as described in steps 1 to 5
-* Develop custom knowledge with steps 6 to 9
+* Prepare the Discovery service as described in steps 1 to 4
+* Develop custom knowledge with steps 5 to 8
 * Use broker code to integrate with Watson Discovery
 
 # Prerequisites
@@ -48,7 +49,7 @@ For developer the following are assumed
 * Programming in nodejs & expressjs
 * Having a github account and how to use git commands
 
-# Configure Discovery Service
+# Level 0 - Configure Discovery Service
 The Watson Discovery Service or WDS is listed under the Watson section of the Bluemix catalog. Before you start you need to create a service instance.
 
 ## Task 1 - Create a Watson Discovery Instance
@@ -82,9 +83,9 @@ Each collection you create is a logical division of your data in the environment
 ## Task 2 - Prepare Data / Documents
 As illustrated in the development path diagram above, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
 
-Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#preparing-document).  First, from the web browser, we can *print* the page as pdf file. This page was saved as pdf document, for you already, in wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
+Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#preparing-document).  First, from the web browser, we can *print* the page as pdf file. This page was saved as pdf document, for you to use, as wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
 
-Using the Discovery Tooling, select your *weather* collection then from the main page use the Add data to this collection drag and drop
+Using the Discovery Tooling, select your *weather* collection then from the main page use the **Add data to this collection** drag and drop panel
 ![Collection Main](collection-main.png)
 
 You should get a message about successful upload. So let do a simple query.
@@ -97,7 +98,8 @@ As soon as one document is uploaded you can start doing some query in plain lang
 
 On the left side it is possible to filter out the content based on enrichment done by the document ingestion step. See
 
-The following diagram illustrate a document section we want to search for: ![](basic-section.png). Using the *Build your own query*, you reach the *Ask a question in plain language and enter the query: **What to do when hurricane is 6 hours from arriving?**   
+The following diagram illustrates a document section we want to search for: ![Text source](basic-section.png)  
+Using the *Build your own query*, you reach the *Ask a question in plain language* and enter the query: **What to do when hurricane is 6 hours from arriving?**   
 When creating a query, you can be as vague or as specific as you want. The more specific the query, the more targeted the results.
 
 The following diagram illustrates the JSON responses returned
@@ -115,7 +117,17 @@ During the ingestion step all of your documents are converted to JSON before the
 By default, Discovery will enrich (add cognitive metadata to) the text field of your ingested documents with semantic information collected by these six Watson functions: Entity Extraction, Keyword Extraction, Taxonomy Classification, Concept Tagging, Relation Extraction, and Sentiment Analysis.
 Expand the JSON tags by clicking on the triangle icons before the tags to view all transformations on the right side panel.
 
-## Task 4 - Understanding configuration
+## Task 4 - Upload more content
+So far you have worked with one document, you need to upload more content to get better results and being able to do more complex queries.
+
+Using the drag and drop capability in the Collection Main page: ![Collection Main2](collection-main.png)
+ the following documents from the **wds-docs/L0** folder:
+* `Zhang_et_al-2009-Disasters.pdf`  a research paper about the major findings within the business development research
+ field and the disaster research field, for evaluating business vulnerability to natural disasters.
+* TBD
+
+# Level 1 - Collection configuration
+## Task 5 - Understanding configuration
 Collections are associated with configuration. Configuration controls how the **Convert, Enrich, and Normalize** steps are performed during document ingestion.
 
 From the main page of the **Weather** collection, use the Switch hyperlink to prepare for a new configuration
@@ -214,27 +226,46 @@ You can remove *Sentiment Analysis* in the text field as for the weather semanti
 ### Normalize
 The last step in customizing your configuration file is doing **normalization**. From Discovery Tooling you can select the 'do not publish empty content'.
 
-## Task 5 - Add more content and do more advanced queries
-We want to add a second pdf coming from a research paper about the major findings within the business development research
-field and the disaster research field, for evaluating business vulnerability to natural disasters. In the wds-doc folder upload the document `Zhang_et_al-2009-Disasters.pdf` to the Weather collection.
+## Task 6 - Preparing documents and more advanced queries
+Normally with Custom configuration and document conversion capability you should be able to ingest any documents. But we did observe that you need to do some document review and may do some cleaning upfront to get cleaner results.
+
+### Preparing documents
+For example starting with the following PDF file:
+Hurricanes_Ready.pdf, this is a PDF print of the website.
+
+![](huri-ready-web.png)  
+
+Everything inside the red boxes is considered ‘dirty’ and needs to be removed.
+
+This editing can be done in Adabo Acrobat, available via the Mac@IBM App Store application or by exporting the PDF to a Word document and manually editing the content.
+
+To export a pdf to word, an in-between step is needed. First, save the document as a plain-text file. Go to:
+
+![Export to pdf](pdf-export.png)  
+And save the file.  
+Now open the plain-text file in document editor compatible with Microsoft Word. Accept the default setting for conversion. The file should look like this:  
+![Plain text](plain-text.png)  
+Now clean it up by removing all HTML Headers and navigation text.
+![Remove unwanted content](remove-unwanted-content.png)
+The result should be something like this:
+![Brut text](brut-text.png)
+In the next step you need to change the font-size of headers, so Watson Discovery can determine the sections and content.
+
+Make the headers font-size 18, sub-headers in font-size 16 and let the body be as-is.
+
+The result should be like this:
+![Change headers](chg-header.png)
+As a final step, save the file as a PDF on your laptop with the same name as the original PDF document. By using the same name, Watson Discovery will not add it as a second document to the collection but will refresh the originally uploaded document.
+
+Upload it to your **Weather** Collection.
+
 
 ### Advanced queries
 Discovery comes with a query language ...
 
-### Preparing document
 
-
-
-
-The following URLs were used:  
-
-
-* http://www.nhc.noaa.gov/prepare/ready.php
-* https://www.ready.gov/hurricanes
-* http://www.nhc.noaa.gov/prepare/ready.php
-...
-
-## Task 6 - Explore Watson Discovery API
+# Level 2 - API and training
+## Task 7 - Explore Watson Discovery API
 The objective of this step is to explore the power of Watson Discovery Service APIs. After completing this section, you will be able to perform the following:
 
 1.	Exercise the APIs to create and alter the discovery service instance (including collections and documents)
@@ -266,9 +297,10 @@ https://watson-api-explorer.mybluemix.net/apis/discovery-v1
 
 ## Task 7 - Training with API
 
-## Task 8 - Broker code
+# Level 3 - Advanced Topics - Developer centric
+## Task 9 - Broker code explanation
 
-# Link between Conversation and Discovery
+## Link between Conversation and Discovery
 To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned.
 
 # References
