@@ -426,7 +426,7 @@ As the last step, let us see how to issue queries using the APIs. Expand the “
 
 Inspect the Response Body to check the results.
 
-|For earning the badge, use the APIs to load the file Hurricane_noaa.pdf, and run the query “What is Saffir-Simpson scale?”. In the result, find the concept “Beaufort scale” and describe the relevance and other details reported in the response.|
+|For earning the badge, use the APIs to load the file Hurricane_noaa.pdf, and run the query “What is Saffir-Simpson scale?”. In the result, find the concept “Beaufort scale” and describe the relevance and other details reported in the response|
 
 # Configure Watson Discovery Service via APIs
 We will use API to do training set and test set to validate accuracy.
