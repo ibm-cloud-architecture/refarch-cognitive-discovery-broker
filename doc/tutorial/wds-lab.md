@@ -42,6 +42,7 @@ For developer
 
 # Prerequisites
 * Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
+* Execute the Task 1 in advance
 
 For developer the following are assumed
 * Having a Bluemix account, how to search the service catalog and how to create services
@@ -299,32 +300,32 @@ https://watson-api-explorer.mybluemix.net/apis/discovery-v1
 
 ![wds-lab-api-explorer-3](wds-lab-api-explorer-3.png)
 
-In the rest of the remaining exercise we will try a few APIs using this explorer tool. To invoke the APIs, you need the credentials configured with your discovery instance. The steps to get the credentials (username and password) is outlined in one of the earlier sections [refer to that section from here once the documentation is complete]. 
+In the rest of the remaining exercise we will try a few APIs using this explorer tool. To invoke the APIs, you need the credentials configured with your discovery instance. The steps to get the credentials (username and password) is outlined in one of the earlier sections [refer to that section from here once the documentation is complete].
 
 First get your credentials, and input them in the username and password fields at the top right of the page as indicated by a yellow rectangle in the following screenshot. [There is no button like submit or any thing. Just make sure those two fields filled in throughout this exercise. The values are not erased after each API invocation, so you shouldn’t have to fill-in those values each time]
 
-![wds-lab-api-explorer-credentials-4] (wds-lab-api-explorer-credentials-4.png)
+![wds-lab-api-explorer-credentials-4](wds-lab-api-explorer-credentials-4.png)
 
-The credentials you just configured acts as the credential for all the API invocation. 
+The credentials you just configured acts as the credential for all the API invocation.
 
 To start with a simple one, let us list the available environments. On the API page (same page shown above) go to the “Environments” section, and click on “List environments” (on the right most column as highlighted in the following picture).
 
-![wds-lab-api-explorer-listenv-5] (wds-lab-api-explorer-listenv-5.png)
+![wds-lab-api-explorer-listenv-5](wds-lab-api-explorer-listenv-5.png)
 
-The resulting screen with the API details should appear like the following. The details are self explanatory. 
+The resulting screen with the API details should appear like the following. The details are self explanatory.
 
-![wds-lab-api-explorer-listenv-req-6] (wds-lab-api-explorer-listenv-req-6.png)
+![wds-lab-api-explorer-listenv-req-6](wds-lab-api-explorer-listenv-req-6.png)
 
-The first few sections starting from “Implementation Notes” outline the signature and the response structure of the API. The text field “Example Value” shows the example output value for a fictitious “Test environment”. The actual value for this may be different for your case. If you want to see the schema of the output, you can click on the “Model” (greyed option left of the title “Example Value”). That will refresh the text field with the structure of the response. As for the “Parameters” section, don’t change the value for “version” shown in the screen (should be 2016-12-01), as that is the only available version of the discovery service. In the “name” field you can input any value you want, though, for this exercise, you can leave it empty and press the button “Try it out”. This will show you the response like the following. A “Response code” of 200 indicates successful invocation, and with the response filled in the text box “Response Body”. 
-Look at the Curl command, which you can execute from the command prompt if you want (those of you not familiar with Curl, no need to try it because we are testing the APIs using an alternative mechanism, which is this explorer tool). 
+The first few sections starting from “Implementation Notes” outline the signature and the response structure of the API. The text field “Example Value” shows the example output value for a fictitious “Test environment”. The actual value for this may be different for your case. If you want to see the schema of the output, you can click on the “Model” (greyed option left of the title “Example Value”). That will refresh the text field with the structure of the response. As for the “Parameters” section, don’t change the value for “version” shown in the screen (should be 2016-12-01), as that is the only available version of the discovery service. In the “name” field you can input any value you want, though, for this exercise, you can leave it empty and press the button “Try it out”. This will show you the response like the following. A “Response code” of 200 indicates successful invocation, and with the response filled in the text box “Response Body”.
+Look at the Curl command, which you can execute from the command prompt if you want (those of you not familiar with Curl, no need to try it because we are testing the APIs using an alternative mechanism, which is this explorer tool).
 
 Look at the request URL and familiarize yourself as to how the parameters are passed.
 
-Inspect the content of the text box with label “Response Body” to study the output of the API invocation. Depending on the results in your case, you may see a scroll bar on the right edge of the text box – you may need to scroll down to see all the response content. 
+Inspect the content of the text box with label “Response Body” to study the output of the API invocation. Depending on the results in your case, you may see a scroll bar on the right edge of the text box – you may need to scroll down to see all the response content.
 
-![wds-lab-api-explorer-listenv-resp-7] (wds-lab-api-explorer-listenv-resp-7.png)
+![wds-lab-api-explorer-listenv-resp-7](wds-lab-api-explorer-listenv-resp-7.png)
 
-That was a simple API call for you to get a feel for how this works. When you invoke this using Java or Python or Node, the same concept applies, with the only difference being the language specific bindings and constructs. 
+That was a simple API call for you to get a feel for how this works. When you invoke this using Java or Python or Node, the same concept applies, with the only difference being the language specific bindings and constructs.
 
 Now go ahead and collapse this API by clicking on the “List Environments” for this API, and click on “Update an environment”. As for the input values –
 
@@ -333,21 +334,21 @@ Now go ahead and collapse this API by clicking on the “List Environments” fo
 
 With all the input fields filled in, the screen should look like the following. Click on “Try it out” button.
 
-![wds-lab-api-explorer-updateenv-req-8] (wds-lab-api-explorer-updateenv-req-8.png)
+![wds-lab-api-explorer-updateenv-req-8](wds-lab-api-explorer-updateenv-req-8.png)
 
 The response should look similar to the following. Scroll down the response body and study the response values.
 
-![wds-lab-api-explorer-updateenv-resp-9] (wds-lab-api-explorer-updateenv-resp-9.png)
+![wds-lab-api-explorer-updateenv-resp-9](wds-lab-api-explorer-updateenv-resp-9.png)
 
-The above invocation set the name and description, but you can verify that by issuing another API “Get environment info”. 
+The above invocation set the name and description, but you can verify that by issuing another API “Get environment info”.
 
 Click on “Get environment info” and fill the input field “environment_id” with the same value you used above. Click on “Try it out” and inspect the response body. Now you should see the values you set for “name” and “description” fields using the previous API (update an environment).
 
-The sequence of the APIs above illustrates the structure and the invocation mechanism behind the discovery service APIs. 
+The sequence of the APIs above illustrates the structure and the invocation mechanism behind the discovery service APIs.
 
 As a next API, let us try to test a sample document sending it through the conversion, enrichment, and normalization steps. Expand the API “Test configuration”. By now the parameters should be self explanatory to you. Accept the default for “version”, and fill in the values for “environment_id” and “configuration_id” from your specific collection. For the parameter “step”, pick one of the values from the drop down box (this example tests conversion by performing PDF to html_output). Click the “browse” button and choose the file “checklist_2014.pdf” from the dataset provided to you. You are welcome to choose any other file to experiment with this step. Leave the “metadata” field empty, and your parameters should look like the following before invocation.
 
-![wds-lab-api-explorer-testconfig-req-10] (wds-lab-api-explorer-testconfig-req-10.png)
+![wds-lab-api-explorer-testconfig-req-10](wds-lab-api-explorer-testconfig-req-10.png)
 
 
 

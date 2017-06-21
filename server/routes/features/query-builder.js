@@ -23,16 +23,15 @@ module.exports = {
   entities,
   sentiments,
   mentions,
-  build(query, full) {
+  buildForNews(query, full) {
     var productQuery;
     var companyQuery;
     //Creates date two weeks ago for query usage
     var queryTime = new Date;
     queryTime = Math.floor(queryTime.getTime()/1000) - 1209600;
     if (query.product) productQuery = query.product + ",language:english";
-    if (query.product) productQuery = query.product + ",language:english";
     else  productQuery = "language:english";
-    
+
     const params = {
       count: 5,
       return: 'title,docSentiment,enrichedTitle.text,url,host,enrichedTitle.entities.text',
@@ -48,4 +47,15 @@ module.exports = {
     }
     return params;
   },
+  /**
+  For weather the query is the question
+  */
+  buildForWeather(userQuestion){
+    const params = {
+      count: 5,
+      return: 'title,enrichedTitle.text,url,host,enrichedTitle.entities.text',
+      query: userQuestion,
+      aggregations: [].concat(entities, sentiments, mentions)
+    };
+  }
 };

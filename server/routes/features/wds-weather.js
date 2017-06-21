@@ -16,8 +16,7 @@ const discovery = new DiscoveryV1({
 });
 
 router.post('/query', function(req, res) {
-  const params = queryBuilder.build(req.body);
-  console.log(req.body);
+  const params = queryBuilder.buildForWeather(req.body.query);
   console.log(params);
   discovery.query(params, function(err, response) {
     if (err) {

@@ -32,7 +32,7 @@ router.get('/all', function(req, res) {
 });
 
 router.post('/company/product', function(req, res) {
-  const params = queryBuilder.build(req.body);
+  const params = queryBuilder.buildForNews(req.body);
   discovery.query(params, function(err, response) {
     if (err) {
       console.error("Error "+err);
