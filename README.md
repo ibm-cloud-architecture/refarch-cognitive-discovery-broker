@@ -80,6 +80,7 @@ npm install @angular/cli@latest
 
 ```
 Run `ng build` to build the client Angular 2 project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
 If you want to work on the user interface only you can use the command (this is for UI work only and will not succesfully connect to the Bluemix instance - to do that perform the next steps)
 ```
 ng serve
