@@ -48,7 +48,7 @@ For developer the following are assumed
 * Having a Bluemix account, how to search the service catalog and how to create services
 * Using Bluemix command line interface
 * Programming in nodejs & expressjs
-* Having a github account and how to use git commands
+* Having a github account and know how to use git commands
 
 # Clone the repository to your local machine
 ### If you do not have git...
