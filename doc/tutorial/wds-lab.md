@@ -50,6 +50,18 @@ For developer the following are assumed
 * Programming in nodejs & expressjs
 * Having a github account and how to use git commands
 
+# Clone the repository to your local machine
+To clone this repository to your local machine, please use 'git' or a graphical tool like 'sourcetree'.
+Example for git:
+
+Go to a directory where you want the source to be created in, clone the repo:
+```
+mkdir ~/stsa/WatsonDiscovery
+cd ~/stsa/WatsonDiscovery
+git clone https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git
+```
+
+
 # Level 0 - Configure Discovery Service
 The Watson Discovery Service or WDS is listed under the Watson section of the Bluemix catalog. Before you start you need to create a service instance.
 

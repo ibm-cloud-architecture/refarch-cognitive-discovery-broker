@@ -66,14 +66,27 @@ The environemnt information can be found in Collection screen:
 
 And from the Service Credentials screen in the Bluemix Dashboard
 ![Collection information](doc/bmx-service-credentials1.png)
+
+Add the username, password, environment_id, collection_id and configuration_id parameters where needed.
+
 ```
 {
     "discovery": {
         "username": "",
         "password": "",
-        "version_date": "2016-12-15",
+        "version_date": "2016-12-01",
+        "version":"v1",
         "environment_id": "",
         "collection_id": ""
+    },
+    "weatherCollection" : {
+      "username": "",
+      "password": "",
+      "version_date": "2016-12-01",
+      "version":"v1",
+      "environment_id": "",
+      "collection_id": "",
+      "configuration_id":""
     }
 }
 ```
