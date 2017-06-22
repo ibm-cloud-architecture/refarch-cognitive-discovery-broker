@@ -23,10 +23,18 @@ router.post('/query', function(req, res) {
       console.error("Error "+err);
 
     } else {
-    //  console.log("Discovery response "+JSON.stringify(response, null, 2));
+      console.log("Discovery response "+JSON.stringify(response, null, 2));
       res.json(response.results);
     }
   });
+});
+
+
+router.get('/mockup',function(req,res) {
+  console.log("Mockup called");
+  var fs = require('fs');
+  var response = JSON.parse(fs.readFileSync('server/routes/features/rep.json', 'utf8'));
+  res.send(response.results);
 });
 
 module.exports = router;

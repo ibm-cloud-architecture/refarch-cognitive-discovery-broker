@@ -3,7 +3,17 @@
         "username": "",
         "password": "",
         "version_date": "2016-12-15",
+        "version":"v1",
         "environment_id": "",
         "collection_id": ""
-    }
+    },
+        "weatherCollection" : {
+          "username": "",
+          "password": "",
+          "version_date": "2016-12-01",
+          "version":"v1",
+          "environment_id": "",
+          "collection_id": "",
+          "configuration_id":""
+        }
 }
