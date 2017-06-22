@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { DiscoveryService } from './discovery.service';
 import { RoleQuery } from '../model/RoleQuery';
+import {Accordion, AccordionGroup} from './accordion';
 
 @Component({
   selector: 'wdsweather',
   templateUrl: './WDSWeather.component.html',
-  styleUrls: ['./wdsbase.component.css']
+  styleUrls: ['./wdsbase.component.css'],
+
 })
 
 export class WDSWeatherComponent {

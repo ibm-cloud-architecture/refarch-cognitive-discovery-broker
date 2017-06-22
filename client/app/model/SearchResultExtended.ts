@@ -2,5 +2,6 @@ export class SearchResultExtended {
   id : string;
   score : number;
   text : string;
-  title: string;
+  enriched_text : any;
+  extracted_metadata: any;
 }

@@ -11,6 +11,7 @@ import { WDSNewsComponent } from './wds/WDSNewsComponent';
 import { WDSWeatherComponent } from './wds/WDSWeatherComponent';
 import { DiscoveryBaseResultsComponent } from './wds/discoverybaseresults.component';
 import { DiscoveryResultsComponent } from './wds/discoveryresults.component';
+import {Accordion, AccordionGroup} from './wds/accordion';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -26,6 +27,8 @@ const routes: Routes = [
     HomeComponent,
     DiscoveryResultsComponent,
     DiscoveryBaseResultsComponent,
+    Accordion,
+    AccordionGroup,
     WDSNewsComponent,
     WDSWeatherComponent
   ],

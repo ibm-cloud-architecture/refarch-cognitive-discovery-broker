@@ -3,9 +3,9 @@
       <li class=""><a [routerLink]="['/']">Home</a></li>
   </ul>
 </div>
-<div class="container">
+<div class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h4 style="color:darkblue">Weather Search</h4>
       <p>This demonstration proposes to use a Weather collection deployed on Watson Discovery service</p>
       <ul>
@@ -13,7 +13,7 @@
         <li>Or use the query field to enter a free plain english query</li>
       </ul>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="roundRect">
         <!-- (ngSubmit)="weatherSearch(query)" -->
       	<form #searchForm="ngForm" >
@@ -38,16 +38,24 @@
       	</form>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+      <h4>Results</h4>
+      <accordion>
+            <accordion-group [heading]="r.extracted_metadata.title" *ngFor="let r of searchResults" [isGroupOpen]="isGroupOpen">
+                    <baseresult *ngIf="r" [result]="r"></baseresult>
+            </accordion-group>
+      </accordion>
+      <!--
       <div class="panel panel-info" *ngFor="let r of searchResults">
-          <div class="panel-heading" data-toggle="collapse" style="cursor: pointer;" data-target="#rw1">
+          <div class="panel-heading" data-toggle="collapse" style="cursor: pointer;" data-target="#"+{{r.id}}>
             <div class="panel-title">
-              {{r.id}}
+              {{r.extracted_metadata.title}}
             </div>
           </div>
-          <div id="rw1" class="panel-body collapse">
+          <div id="{{r.id}}" class="panel-body collapse">
               <baseresult *ngIf="r" [result]="r"></baseresult>
           </div>
       </div>
+    -->
     </div>
 </div>
