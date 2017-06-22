@@ -60,11 +60,12 @@ ng serve
 
 # Test Locally
 Change the env-temp.json file in ./server/routes/env-templ.json to match your environemnt.
-This information can be found in Collection screen:
+
+The environemnt information can be found in Collection screen:
 ![Collection information](doc/discovery-screen1.png)
 
-And from the Service Credentials screen in the Bluemix Dashboard:
-![Collection information](bmx-service-credentials1.png)
+And from the Service Credentials screen in the Bluemix Dashboard
+![Collection information](doc/bmx-service-credentials1.png)
 ```
 {
     "discovery": {
