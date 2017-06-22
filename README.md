@@ -12,6 +12,17 @@ To be able to run this Watson Discovery broker you need your own instance of a b
 
 Be sure to have setup Cloud Foundry Command line interface and bluemix CLI.
 
+# Clone the repository to your local machine
+To clone this repository to your local machine, please use 'git' or a graphical tool like 'sourcetree'.
+Example for git:
+
+Go to a directory where you want the source to be created in, clone the repo:
+```
+mkdir ~/stsa/WatsonDiscovery
+cd ~/stsa/WatsonDiscovery
+git clone https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git
+```
+
 # Skill set
 To understand how to build a **Discovery** collection the following [tutorial](doc/tutorial/wds-lab.md) will help to go step by step with weather related corpus. The audience of this tutorial is for beginner and advanced developer
 
