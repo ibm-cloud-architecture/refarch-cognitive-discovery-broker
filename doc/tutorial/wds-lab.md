@@ -48,7 +48,31 @@ For developer the following are assumed
 * Having a Bluemix account, how to search the service catalog and how to create services
 * Using Bluemix command line interface
 * Programming in nodejs & expressjs
-* Having a github account and how to use git commands
+* Having a github account and know how to use git commands
+
+# Clone the repository to your local machine
+### If you do not have git...
+Install git on Mac by installing the Command Line Tools for xCode.
+
+To do this, open a terminal and execute the following command.
+```
+xcode-select --install
+```
+
+On Windows:
+Download and install the package from https://git-for-windows.github.io and install it.
+
+### Clone the repository
+To clone this repository to your local machine, please use 'git' or a graphical tool like 'sourcetree'.
+Example for git:
+
+Go to a directory where you want the source to be created in, clone the repo:
+```
+mkdir ~/stsa/WatsonDiscovery
+cd ~/stsa/WatsonDiscovery
+git clone https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git
+cd refarch-cognitive-discovery-broker
+```
 
 # Level 0 - Configure Discovery Service
 The Watson Discovery Service or WDS is listed under the Watson section of the Bluemix catalog. Before you start you need to create a service instance.

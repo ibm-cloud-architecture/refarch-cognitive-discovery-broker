@@ -47,10 +47,37 @@ app.get('*', (req, res) => {
 
 When the URL is based as /api/discovery the module in charge is routes/features/discovery.js. This code uses the watson cloud develop api for nodejs.
 
+# Clone the repository to your local machine
+### If you do not have git...
+Install git on Mac by installing the Command Line Tools for xCode.
+
+To do this, open a terminal and execute the following command.
+```
+xcode-select --install
+```
+
+On Windows:
+Download and install the package from https://git-for-windows.github.io and install it.
+
+### Clone the repository
+To clone this repository to your local machine, please use 'git' or a graphical tool like 'sourcetree'.
+Example for git:
+
+Go to a directory where you want the source to be created in, clone the repo:
+```
+mkdir ~/stsa/WatsonDiscovery
+cd ~/stsa/WatsonDiscovery
+git clone https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git
+cd refarch-cognitive-discovery-broker
+```
+
+
 # Build
 Be sure to run the npm installation to get the dependent javascript modules
 ```
 npm install
+npm install @angular/cli@latest
+
 ```
 Run `ng build` to build the client Angular 2 project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 If you want to work on the user interface only you can use the command
@@ -59,10 +86,55 @@ ng serve
 ```
 
 # Test Locally
-Use the command
+Change the env-temp.json file in ./server/routes/env-templ.json to match your environemnt.
+
+The environemnt information can be found in Collection screen:
+![Collection information](doc/discovery-screen1.png)
+
+And from the Service Credentials screen in the Bluemix Dashboard
+![Collection information](doc/bmx-service-credentials1.png)
+
+Add the username, password, environment_id, collection_id and configuration_id parameters where needed.
+
+```
+{
+    "discovery": {
+        "username": "",
+        "password": "",
+        "version_date": "2016-12-01",
+        "version":"v1",
+        "environment_id": "",
+        "collection_id": ""
+    },
+    "weatherCollection" : {
+      "username": "",
+      "password": "",
+      "version_date": "2016-12-01",
+      "version":"v1",
+      "environment_id": "",
+      "collection_id": "",
+      "configuration_id":""
+    }
+}
+```
+And save the file as env.json
+
+Use the following command to start the local server:
 ```
 npm run dev
 ```
+
+If you run into any npm depency issues, or missing modules, add them using the command
+```
+npm install <missing module>
+```
+
+And rerun the command to start the server
+```
+npm run dev
+```
+
+
 Then use a web browser to http://localhost:6010 which should display a simple form to enter the company name and product name to let Watson search for those information inside the News curated data.
 ![Simple Query](doc/query-results1.png)
 
