@@ -30,11 +30,12 @@
     "express": "^4.13.x",
     "express-session": "1.13.0",
     "extend": "^3.0.0",
+    "hystrixjs": "0.2.0",
+    "nodemon": "^1.11.0",
     "rxjs": "^5.1.0",
     "vcap_services": "^0.1.7",
     "watson-developer-cloud": "^2.x",
-    "zone.js": "^0.7.6",
-    "hystrixjs": "0.2.0"
+    "zone.js": "^0.7.6"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
