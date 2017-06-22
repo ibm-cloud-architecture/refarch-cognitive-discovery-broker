@@ -59,6 +59,25 @@ ng serve
 ```
 
 # Test Locally
+Change the env-temp.json file in ./server/routes/env-templ.json to match your environemnt.
+This information can be found in Collection screen:
+![Collection information](doc/discovery-screen1.png)
+
+And from the Service Credentials screen in the Bluemix Dashboard:
+![Collection information](bmx-service-credentials1.png)
+```
+{
+    "discovery": {
+        "username": "",
+        "password": "",
+        "version_date": "2016-12-15",
+        "environment_id": "",
+        "collection_id": ""
+    }
+}
+```
+And save the file as env.json
+
 Use the command
 ```
 npm run dev

@@ -7,3 +7,27 @@ ldwmbpr:source lennert$ ng --version
     constructor(schema, value, ...fallbacks) {
 Please update your NPM install to the latest version from here:
 https://nodejs.org/dist/v8.1.2/node-v8.1.2.pkg
+
+* If npm commands fail to run, make sure you have the following environment variable set:
+    $ export NODE_PATH=/usr/local/lib/node_modules/
+
+* Make sure you have installed nodemon module for npm
+    $ npm install nodemon --save
+
+* If you get this issue:
+      $ ng serve
+      As a forewarning, we are moving the CLI npm package to "@angular/cli" with the next release,
+      which will only support Node 6.9 and greater. This package will be officially deprecated
+      shortly after.
+
+      To disable this warning use "ng set --global warnings.packageDeprecation=false".
+
+      You have to be inside an angular-cli project in order to use the serve command.
+    Please make sure you install the latest @angular/cli packages:
+      $ npm install -g @angular/cli@latest
+
+* If you get unexpected node issues (missing modules, etc) try running
+    $ npm link e
+    $ npm update
+
+* 
