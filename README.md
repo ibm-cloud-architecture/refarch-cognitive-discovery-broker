@@ -48,17 +48,6 @@ app.get('*', (req, res) => {
 When the URL is based as /api/discovery the module in charge is routes/features/discovery.js. This code uses the watson cloud develop api for nodejs.
 
 # Clone the repository to your local machine
-To clone this repository to your local machine, please use 'git' or a graphical tool like 'sourcetree'.
-Example for git:
-
-Go to a directory where you want the source to be created in, clone the repo:
-```
-mkdir ~/stsa/WatsonDiscovery
-cd ~/stsa/WatsonDiscovery
-git clone https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git
-cd refarch-cognitive-discovery-broker
-```
-
 ### If you do not have git...
 Install git on Mac by installing the Command Line Tools for xCode.
 
@@ -69,6 +58,18 @@ xcode-select --install
 
 On Windows:
 Download and install the package from https://git-for-windows.github.io and install it.
+
+### Clone the repository
+To clone this repository to your local machine, please use 'git' or a graphical tool like 'sourcetree'.
+Example for git:
+
+Go to a directory where you want the source to be created in, clone the repo:
+```
+mkdir ~/stsa/WatsonDiscovery
+cd ~/stsa/WatsonDiscovery
+git clone https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git
+cd refarch-cognitive-discovery-broker
+```
 
 
 # Build
