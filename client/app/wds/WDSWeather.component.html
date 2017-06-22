@@ -4,7 +4,12 @@
   </ul>
 </div>
 <div class="row">
-      <h4 style="color:darkblue">Weather Search</h4>
+  <h4 style="color:darkblue">Weather Search</h4>
+    <div class="col-md-2">
+      <p>Use the form to select a persona and then one of the typical query this persona may do</p>
+      <p>Or use the query field to enter a free plain english query</p>
+    </div>
+    <div class="col-md-4">
       <div class="roundRect">
       	<form #searchForm="ngForm" (ngSubmit)="weatherSearch(query)">
               	<label>Persona:</label>
@@ -23,8 +28,10 @@
               	<input class="form-control" [(ngModel)]="query" name="query" type="text">
           	<br/>
               	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
-
       	</form>
       </div>
-		<results [results]="searchResults"></results>
+    </div>
+    <div class="col-md-6">
+		    <baseresults [results]="searchResults"></baseresults>
+    </div>
 </div>

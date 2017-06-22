@@ -6,10 +6,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
-import { DiscoveryResultsComponent } from './wds/discoveryresults.component';
 import { DiscoveryService } from './wds/discovery.service';
 import { WDSNewsComponent } from './wds/WDSNewsComponent';
 import { WDSWeatherComponent } from './wds/WDSWeatherComponent';
+import { DiscoveryBaseResultsComponent } from './wds/discoverybaseresults.component';
+import { DiscoveryResultsComponent } from './wds/discoveryresults.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     DiscoveryResultsComponent,
+    DiscoveryBaseResultsComponent,
     WDSNewsComponent,
     WDSWeatherComponent
   ],

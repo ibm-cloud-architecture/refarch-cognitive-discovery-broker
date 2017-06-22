@@ -1,28 +1,31 @@
 # Building a Discovery Service for Weather data
 
-IBM [Watson Discovery Service](https://www.ibm.com/watson/developercloud/discovery.html) (WDS) is a Watson service that provides the developers the ability to rapidly add a cognitive, search and content analytics engine to application to identify patterns, trends and insights that drive better decision making.
-The purpose of this section is to show how to set up and configure Watson Discovery Service and how to inject document about weather management like hurricane. Watson Discovery Service is only available on Bluemix.
+IBM [Watson Discovery Service](https://www.ibm.com/watson/developercloud/discovery.html) (WDS) is a Watson service that provides the developers the ability to rapidly add a cognitive, search and content analytics engine to application to identify patterns, trends and insights from **unstructured data**, that drive better decision making.
+The purpose of this section is to show how to set up and configure Watson Discovery Service and how to inject documents about hurricane and weather management. Watson Discovery Service is only available on Bluemix.
 Once created WDS instance allows you to ingest (convert, enrich, clean, normalize), store and query data to extract actionable insights.
 
-You can create and configure a Discovery service instance by using either the Discovery Tooling or the Discovery API. In the beginning of this tutorial we are using the Discovery Tooling to prepare the Discovery content.
+You can create and configure a Watson Discovery service instance by using either the Discovery Tooling or the Discovery API. In the beginning of this tutorial we are using the Discovery Tooling to prepare the Discovery content and perform query, as most users will do, and then we go over the API for doing training, and access the service from a Web Application or a microservice.
 
-The standard development path for using Watson Discovery is presented in the following diagram
-![D-Flow](discovery-flow.png)
+The standard development path for using Watson Discovery is presented in the following diagram:
+![D-Flow.](discovery-flow.png) {#fig:flow}
 
-To summarize: to be able to do search / query we need content, that needs to be injected and persisted in *collection*. We are addressing these steps in this lab.
+To summarize this diagram: to be able to do search / query we need content, that needs to be injected and persisted in *collection*. We are addressing these steps in this lab.
 
 The labs files used for creating collection of documents are under the wds-docs folder.
 
 The current working application to demonstrate the end product of this tutorial is here: [WDS Broker on Bluemix](https://refarch-wds-broker.mybluemix.net/)  
 
 # Table of content
-At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business user can use a customer bluemix web application to enter query related to a specific subject, like weather, and you will understand what Discovery is doing behind the scene. The sections are:
+At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business analysts can use a custom bluemix web application to enter queries related to a specific subject, like weather to find interesting relation, concepts, a solution. As a developer you will have The sections are:
 
 * [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-1---create-a-watson-discovery-instance)
 * [Prepare Data / Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-2---prepare-data--documents)
-* [Execute query](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
-* [Add more content and advanced queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-some-query)
-* [Explore Discovery API](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#Step-6---Explore-Watson-Discovery-API)
+* [Execute query](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-first-query)
+* [Work on more content](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-4---upload-more-content)
+* [Understanding Collection Configuration](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-5---understanding-configuration)
+* [Preparing document and more complex queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-6---preparing-documents-and-more-advanced-queries)
+* [Explore Discovery API](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-7---explore-watson-discovery-api)
+
 
 
 # Tutorial Structure
@@ -33,12 +36,9 @@ We organize this tutorial in layers to address different skill set.
 * **Level 2** - API based access and refinement of results, Watson knowledge Studio, Watson API explorer, CURL or nodejs script to use API
 * **Level 3** - Advanced topics. Explore the Discovery broker,  connecting discovery and conversation, using Speech To Text
 
-For beginner you need to do this tutorial from steps 1 to 4, which map to level 0 so you will be able to understand how Discovery works.
+For beginner you need to do this tutorial for level 0 and 1 which map to tasks from 1 to 6, so you will be able to understand how Discovery works.
 
-For developer
-* Prepare the Discovery service as described in steps 1 to 4
-* Develop custom knowledge with steps 5 to 8
-* Use broker code to integrate with Watson Discovery
+For developer try to do all the 4 levels to get a deep understanding of the service.
 
 # Prerequisites
 * Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
@@ -75,14 +75,14 @@ The Discovery service includes a complete set of online tools **the Discovery To
 
 ![WDS Tooling](wds-launch.png)
 
-The Discovery service tooling has been designed to save time by eliminating the need to use APIs to configure and populate your service. This lets application developers concentrate on creating high value ways for end users to experience the Discovery Service.In the Discovery service, the content that you upload is stored in a collection that is part of your environment. You must create the environment and collection before you can upload your content. So create the collection name it **Weather**   
+The Discovery service Tooling has been designed to save time by eliminating the need to use APIs to configure and populate your service. This lets application developers concentrate on creating high value ways for end users to experience the Discovery Service. In the Discovery service, the content that you upload is stored in a **collection** that is part of an **environment**. You must create the environment and collection before you can upload your content. So use the **Create a data collection** and name your new collection as **Weather**   
 
 ![Create collection](wds-collection.png)  
 
 Each collection you create is a logical division of your data in the environment. Each collection will be queried independently when you get to the point of delivering results.
 
 ## Task 2 - Prepare Data / Documents
-As illustrated in the development path diagram above, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
+As illustrated in the development path diagram above @{fig:flow}, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
 
 Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#preparing-document).  First, from the web browser, we can *print* the page as pdf file. This page was saved as pdf document, for you to use, as wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
 
@@ -356,7 +356,7 @@ Now click “Try it out” button. The result should look like the following.
 
 |To verify that you worked through the exercise, test the configuration for the file “CDC_Plan_Hurricanes.pdf” and provide the relevance score for the concept “wind shear”.|
 
-As a next exercise, let us try working with collections. Collections are the most important, and fundamental artifacts you need in order to be able to make queries and use the features of discovery service. 
+As a next exercise, let us try working with collections. Collections are the most important, and fundamental artifacts you need in order to be able to make queries and use the features of discovery service.
 
 Click on “List collections”. Provide the right value of the input field “environment_id” and click “Try it out”. To make sure this works correctly, you may want to go back to the tooling and create one or more collections, and try this API again. In the response section you should see all the collections.
 
@@ -370,7 +370,7 @@ The response should look somewhat like the following:
 
 As you can see, I have two collections namely “HurricaneInfoCollection” and “InitialTestCollection”. Your results may vary depending on how many collections you created prior to invoking this API.
 
-Now let us create a new collection using API and verify it was created. You can verify it using the tooling as well as using the API invocation like we did above with ‘List Collections”. 
+Now let us create a new collection using API and verify it was created. You can verify it using the tooling as well as using the API invocation like we did above with ‘List Collections”.
 
 Go ahead and expand the API “Create a collection” and configure the request with input parameters like environment_id etc. Click on the text box with label “Example Value” (right next to “body” input field). That will copy the skeleton body into the input text field. Pick a name for your collection and description (feel free to leave the configuration_id) and click on “Try it out”. The following screenshot shows the request for creating a collection “AnimalKingdomCollection”.
 
@@ -388,7 +388,7 @@ In the resulting screen you should be able to see the newly created collection.
 
 ![wds-lab-api-explorer-disctooling-coll-17](wds-lab-api-explorer-disctooling-coll-17.png)
 
-Now invoke the “List collections” API again and verify this newly collection creation shows up in the response section. 
+Now invoke the “List collections” API again and verify this newly collection creation shows up in the response section.
 
 Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined along with the screenshots.
 
@@ -404,7 +404,7 @@ Once you get the collection_id using one of the methods outlined above, use that
 
 At this point you should be able to try additional APIs without the help of screenshots. You should also be able to retrieve things like environment_id, collection_id etc. From this point onwards the remaining instructions will assume you can create a collection, retrieve the metadata about the collection.
 
-Now let us try adding a new document through the APIs. Create a new collection for this purpose, or you can work with one of your existing collections. The following example uses a newly created collection called “StormCollection”. It is easier if you stick with the same subject (like hurricane, storm, cyclones, weather etc.) because you can use one of the existing documents provided with this tutorial. 
+Now let us try adding a new document through the APIs. Create a new collection for this purpose, or you can work with one of your existing collections. The following example uses a newly created collection called “StormCollection”. It is easier if you stick with the same subject (like hurricane, storm, cyclones, weather etc.) because you can use one of the existing documents provided with this tutorial.
 
 Let us use the API to add the document “FloodSmart_FEMA.pdf” which is included in the data set. Expand the API “Add a document” and fill in the input parameters. You can leave the configuration, metadata etc. empty. Choose the file “FloodSmart_FEMA.pdf” using the “Browse…” button. The input parameters should be configured as shown in the following screenshot (with the exception of environment_id and collection_id which will be unique to your own environment and collection)
 
