@@ -82,17 +82,16 @@ The Discovery service Tooling has been designed to save time by eliminating the 
 Each collection you create is a logical division of your data in the environment. Each collection will be queried independently when you get to the point of delivering results.
 
 ## Task 2 - Prepare Data / Documents
-As illustrated in the development path diagram above @{fig:flow}, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
+As illustrated in the development path diagram above, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
 
-Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#preparing-document).  First, from the web browser, we can *print* the page as pdf file. This page was saved as pdf document, for you to use, as wds-docs/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created.
+Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#preparing-document).  First, from the web browser, we can *print* the page as pdf file. This page was saved as pdf document, for you to use, as wds-docs/L0/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created: Using the Discovery Tooling, select your *weather* collection then from the main page use the **Add data to this collection** drag and drop panel, upload the Hurricanes_Ready.pdf file.  
 
-Using the Discovery Tooling, select your *weather* collection then from the main page use the **Add data to this collection** drag and drop panel
 ![Collection Main](collection-main.png)
 
 You should get a message about successful upload. So let do a simple query.
 
 ## Task 3 - Doing first query
-As soon as one document is uploaded you can start doing some query in plain language. Select your collection from the Discovery tooling main page, then using the *Query this collection* button on the top left, you should reach the *My data insights* page:
+As soon as one document is uploaded you can start doing some query in plain language. Select your collection from the Discovery Tooling main page, then using the *Query this collection* button on the top left, you should reach the *My data insights* page:
 ![](wds-insights1.png)
 
 **Top keywords** displays the most important topics in your documents, discovered by the Keyword Extraction enrichment.
@@ -125,7 +124,12 @@ Using the drag and drop capability in the Collection Main page: ![Collection Mai
  the following documents from the **wds-docs/L0** folder:
 * `Zhang_et_al-2009-Disasters.pdf`  a research paper about the major findings within the business development research
  field and the disaster research field, for evaluating business vulnerability to natural disasters.
-* TBD
+* Deadliest World Tropical Cyclones * Typhoon & Hurricane - Pakistan Weather Forecast and Updates, Satellite Maps, Articles, Cyclones and Earthquake Updates
+* GALVESTON.COM_ Hurricane Preparation Guide
+* Hurricane preparedness - Wikipedia
+* Hurricane Preparedness Tips - Office of Emergency Management
+* Keep-a-hurricane-preparation-checklist-CNN
+After that you should have 7 documents in the collection.
 
 # Level 1 - Collection configuration
 ## Task 5 - Understanding configuration
@@ -238,7 +242,7 @@ Hurricanes_Ready.pdf, this is a PDF print of the website.
 
 Everything inside the red boxes is considered ‘dirty’ and needs to be removed.
 
-This editing can be done in Adabo Acrobat, available via the Mac@IBM App Store application or by exporting the PDF to a Word document and manually editing the content.
+This editing can be done in Adobe Acrobat, or by exporting the PDF to a Word document and manually editing the content.
 
 To export a pdf to word, an in-between step is needed. First, save the document as a plain-text file. Go to:
 
@@ -248,14 +252,17 @@ Now open the plain-text file in document editor compatible with Microsoft Word. 
 ![Plain text](plain-text.png)  
 Now clean it up by removing all HTML Headers and navigation text.
 ![Remove unwanted content](remove-unwanted-content.png)
-The result should be something like this:
+The result should be something like this:  
+
 ![Brut text](brut-text.png)
 In the next step you need to change the font-size of headers, so Watson Discovery can determine the sections and content.
 
 Make the headers font-size 18, sub-headers in font-size 16 and let the body be as-is.
 
-The result should be like this:
-![Change headers](chg-header.png)
+The result should be like this:  
+
+![Change headers](chg-header.png)  
+
 As a final step, save the file as a PDF on your laptop with the same name as the original PDF document. By using the same name, Watson Discovery will not add it as a second document to the collection but will refresh the originally uploaded document.
 
 Upload it to your **Weather** Collection.

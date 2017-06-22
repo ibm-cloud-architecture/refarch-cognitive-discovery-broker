@@ -17,10 +17,10 @@ To understand how to build a **Discovery** collection the following [tutorial](d
 
 # REST APIs exposed
 The broker code offers two entry points and mapping user interface:
-| Description | API  | User interface |
-| ----------- | ---- | -------------- |
-|  | /api/company/production | Query news |
-|  | /api/weather | Weather |
+Description | API  | User interface
+----------- | ---- | --------------
+  | /api/company/production | Query news
+  | /api/weather | Weather
 
 ---
 # Code explanation
@@ -90,3 +90,7 @@ applications:
 cf push refarch-cognitive-discovery-broker
 ```
 * Validate the deployment on your bluemix dashboard and using the defined URL.
+
+
+# Frequent Asked Questions
+They are in a separate document [here](doc/faq.md)
