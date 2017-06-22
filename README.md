@@ -60,7 +60,7 @@ cd refarch-cognitive-discovery-broker
 ```
 
 ### If you do not have git...
-Install git on Mac by installing the Command Line Tools for xCode./nTo do this, open a terminal and execute the following command.
+Install git on Mac by installing the Command Line Tools for xCode.\nTo do this, open a terminal and execute the following command.
 ```
 xcode-select --install
 ```
