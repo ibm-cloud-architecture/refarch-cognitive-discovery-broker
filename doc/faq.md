@@ -20,20 +20,20 @@ npm install nodemon --save
 
 * If you get this issue:
 ```
-      $ng serve
-      As a forewarning, we are moving the CLI npm package to "@angular/cli" with the next release,
-      which will only support Node 6.9 and greater. This package will be officially deprecated
-      shortly after.
+$ng serve
+As a forewarning, we are moving the CLI npm package to "@angular/cli" with the next release,
+which will only support Node 6.9 and greater. This package will be officially deprecated
+shortly after.
 
-      To disable this warning use "ng set --global warnings.packageDeprecation=false".
+To disable this warning use "ng set --global warnings.packageDeprecation=false".
 
-      You have to be inside an angular-cli project in order to use the serve command.
+You have to be inside an angular-cli project in order to use the serve command.
 ```
-    Please make sure you install the latest @angular/cli packages:
-    ```
-    npm install @angular/cli@latest
-    ```
-    You can add the '-g' flag to install it globally
+Please make sure you install the latest @angular/cli packages:
+```
+npm install @angular/cli@latest
+```
+You can add the '-g' flag to install it globally
 
 * If you get unexpected node issues (missing modules, etc) try running
 ```
