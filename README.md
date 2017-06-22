@@ -60,20 +60,21 @@ cd refarch-cognitive-discovery-broker
 ```
 
 ### If you do not have git...
-Install git on Mac:
-Installing Command Line Tools in Mac OS X, open a terminal and execute
+Install git on Mac by installing the Command Line Tools for xCode./nTo do this, open a terminal and execute the following command.
 ```
 xcode-select --install
 ```
 
 On Windows:
-Download and install the package from https://git-for-windows.github.io and install it. 
+Download and install the package from https://git-for-windows.github.io and install it.
 
 
 # Build
 Be sure to run the npm installation to get the dependent javascript modules
 ```
 npm install
+npm install @angular/cli@latest
+
 ```
 Run `ng build` to build the client Angular 2 project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 If you want to work on the user interface only you can use the command
