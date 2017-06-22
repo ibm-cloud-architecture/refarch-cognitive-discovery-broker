@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { DiscoveryService } from './discovery.service';
 import { RoleQuery } from '../model/RoleQuery';
+import {Accordion, AccordionGroup} from './accordion';
 
 @Component({
   selector: 'wdsweather',
   templateUrl: './WDSWeather.component.html',
-  styleUrls: ['./wdsbase.component.css']
+  styleUrls: ['./wdsbase.component.css'],
+
 })
+
 export class WDSWeatherComponent {
   roleQuery: RoleQuery[] = [];
   personas : string[] = ["Resident","Emergency Worker","Store Manager"];
@@ -59,10 +62,23 @@ export class WDSWeatherComponent {
 
   weatherSearch(query:string){
     console.log(query);
-    this.discoveryService.searchWeather(this.query).subscribe(data => {
+    this.discoveryService.searchWeather(this.query).subscribe(
+      data => {
         console.log(data);
         this.searchResults=data;
-      }, error => {
+      },
+      error => {
+        console.log(error);
+        return "Error on discovery service";
+      })
+  }
+
+  weatherMockup(){
+    this.discoveryService.getMockupAnswer().subscribe(
+      data => {
+        this.searchResults=data;
+      },
+      error => {
         console.log(error);
         return "Error on discovery service";
       })

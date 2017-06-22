@@ -35,4 +35,10 @@ export class DiscoveryService {
      .map((res: Response) => res.json())
      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
  }
+
+ getMockupAnswer(){
+   return this.http.get('/api/weather/mockup')
+   .map((res: Response) => res.json())
+   .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+ }
 }

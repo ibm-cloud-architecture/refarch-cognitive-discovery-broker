@@ -1,18 +1,18 @@
 import { Component,Input } from '@angular/core';
-import { SearchResult } from '../model/SearchResult'
+import { SearchResultExtended } from '../model/SearchResultExtended'
 
 @Component({
-  selector: 'baseresults',
+  selector: 'baseresult',
   templateUrl: './discoverybaseresults.component.html',
   styleUrls: ['./base.css']
 })
 
 /*
-Present the list of returned elements from the discovery search
+Present one result element from the discovery search outcome.
 */
 export class DiscoveryBaseResultsComponent {
   @Input()
-  results: SearchResult[];
+  result: SearchResultExtended;
 
 
   constructor () {

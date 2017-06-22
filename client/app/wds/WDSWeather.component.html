@@ -4,14 +4,19 @@
   </ul>
 </div>
 <div class="row">
-  <h4 style="color:darkblue">Weather Search</h4>
-    <div class="col-md-2">
-      <p>Use the form to select a persona and then one of the typical query this persona may do</p>
-      <p>Or use the query field to enter a free plain english query</p>
+
+    <div class="col-md-4">
+      <h4 style="color:darkblue">Weather Search</h4>
+      <p>This demonstration proposes to use a Weather collection deployed on Watson Discovery service</p>
+      <ul>
+        <li>Use the form to select a persona and then one of the typical query this persona may do</li>
+        <li>Or use the query field to enter a free plain english query</li>
+      </ul>
     </div>
     <div class="col-md-4">
       <div class="roundRect">
-      	<form #searchForm="ngForm" (ngSubmit)="weatherSearch(query)">
+        <!-- (ngSubmit)="weatherSearch(query)" -->
+      	<form #searchForm="ngForm" >
               	<label>Persona:</label>
                 <select class="form-control" [(ngModel)]="selectedPersona" name="selectedPersona" (change)="onSelectPersona()">
                   <option *ngFor="let p of personas">
@@ -27,11 +32,30 @@
               	<label>Query:</label>
               	<input class="form-control" [(ngModel)]="query" name="query" type="text">
           	<br/>
-              	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
+              	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid" (click)="weatherSearch(query)">Submit</button>
+
+                <button class="btn btn-secondary" (click)="weatherMockup()">Mockup</button>
       	</form>
       </div>
     </div>
-    <div class="col-md-6">
-		    <baseresults [results]="searchResults"></baseresults>
+    <div class="col-md-4">
+      <h4>Results</h4>
+      <accordion>
+            <accordion-group [heading]="r.extracted_metadata.title" *ngFor="let r of searchResults" [isGroupOpen]="isGroupOpen">
+                    <baseresult *ngIf="r" [result]="r"></baseresult>
+            </accordion-group>
+      </accordion>
+      <!--
+      <div class="panel panel-info" *ngFor="let r of searchResults">
+          <div class="panel-heading" data-toggle="collapse" style="cursor: pointer;" data-target="#"+{{r.id}}>
+            <div class="panel-title">
+              {{r.extracted_metadata.title}}
+            </div>
+          </div>
+          <div id="{{r.id}}" class="panel-body collapse">
+              <baseresult *ngIf="r" [result]="r"></baseresult>
+          </div>
+      </div>
+    -->
     </div>
 </div>
