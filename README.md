@@ -79,10 +79,16 @@ And from the Service Credentials screen in the Bluemix Dashboard
 ```
 And save the file as env.json
 
-Use the command
+Use the following command to start the local server:
 ```
 npm run dev
 ```
+
+If you run into any npm depency issues, or missing modules, add them using the command
+```
+npm install <missing module>
+```
+
 Then use a web browser to http://localhost:6010 which should display a simple form to enter the company name and product name to let Watson search for those information inside the News curated data.
 ![Simple Query](doc/query-results1.png)
 
