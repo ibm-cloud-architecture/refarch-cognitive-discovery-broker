@@ -56,7 +56,19 @@ Go to a directory where you want the source to be created in, clone the repo:
 mkdir ~/stsa/WatsonDiscovery
 cd ~/stsa/WatsonDiscovery
 git clone https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git
+cd refarch-cognitive-discovery-broker
 ```
+
+### If you do not have git...
+Install git on Mac:
+Installing Command Line Tools in Mac OS X, open a terminal and execute
+```
+xcode-select --install
+```
+
+On Windows:
+Download and install the package from https://git-for-windows.github.io and install it. 
+
 
 # Build
 Be sure to run the npm installation to get the dependent javascript modules

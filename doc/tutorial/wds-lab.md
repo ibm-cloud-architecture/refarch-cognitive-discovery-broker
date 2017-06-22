@@ -59,6 +59,7 @@ Go to a directory where you want the source to be created in, clone the repo:
 mkdir ~/stsa/WatsonDiscovery
 cd ~/stsa/WatsonDiscovery
 git clone https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git
+cd refarch-cognitive-discovery-broker
 ```
 
 

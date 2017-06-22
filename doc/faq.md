@@ -24,10 +24,11 @@ https://nodejs.org/dist/v8.1.2/node-v8.1.2.pkg
 
       You have to be inside an angular-cli project in order to use the serve command.
     Please make sure you install the latest @angular/cli packages:
-      $ npm install -g @angular/cli@latest
+      $ npm install @angular/cli@latest
+      add the '-g' flag to install it globally
 
 * If you get unexpected node issues (missing modules, etc) try running
     $ npm link e
     $ npm update
 
-* 
+* Remove conflicting angular installations using 'npm uninstall --save angular-cli' command. Add the '-g' flag to remove the global package.
