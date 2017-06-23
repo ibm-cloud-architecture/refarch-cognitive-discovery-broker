@@ -24,8 +24,7 @@
               },
               "sentiment": {
                 "type": "negative",
-
-          "score": -0.559026,
+                "score": -0.559026,
                 "mixed": false
               },
               "text": "Hurricane",

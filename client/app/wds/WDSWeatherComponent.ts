@@ -6,7 +6,7 @@ import {Accordion, AccordionGroup} from './accordion';
 @Component({
   selector: 'wdsweather',
   templateUrl: './WDSWeather.component.html',
-  styleUrls: ['./wdsbase.component.css'],
+  styleUrls: ['./wdsbase.component.css','./base.css'],
 
 })
 
@@ -41,7 +41,7 @@ export class WDSWeatherComponent {
   }
 
 
-  queries : string[]=["query a","query b","query c"];
+  queries : string[]=[];
   selectedPersona : string;
   selectedQuery : string;
   query : string="";
@@ -61,10 +61,9 @@ export class WDSWeatherComponent {
   }
 
   weatherSearch(query:string){
-    console.log(query);
+      this.searchResults=[];
     this.discoveryService.searchWeather(this.query).subscribe(
       data => {
-        console.log(data);
         this.searchResults=data;
       },
       error => {

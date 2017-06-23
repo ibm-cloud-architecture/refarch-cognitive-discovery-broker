@@ -20,7 +20,7 @@ export class DiscoveryBaseResultsComponent {
   constructor () {
   }
 
-  open(){
+  openText() : void{
       this.modal.open();
   }
 }

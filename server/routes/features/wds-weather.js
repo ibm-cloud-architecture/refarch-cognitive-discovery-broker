@@ -23,7 +23,7 @@ router.post('/query', function(req, res) {
       console.error("Error "+err);
 
     } else {
-      console.log("Discovery response "+JSON.stringify(response, null, 2));
+    //  console.log("Discovery response "+JSON.stringify(response, null, 2));
       res.json(response.results);
     }
   });

@@ -13,39 +13,13 @@ To be able to run this Watson Discovery broker you need your own instance of a b
 Be sure to have setup Cloud Foundry Command line interface and bluemix CLI.
 
 # Skill set
-To understand how to build a **Discovery** collection the following [tutorial](doc/tutorial/wds-lab.md) will help to go step by step with weather related corpus. The audience of this tutorial is for beginner and advanced developer
+To understand how to build a **Discovery** collection the following [tutorial](doc/tutorial/wds-lab.md) will help to go step by step with weather related corpus. The audience of this tutorial is for beginner and developer
 
-# REST APIs exposed
-The broker code offers two entry points and mapping user interface:
-Description | API  | User interface
------------ | ---- | --------------
-  | /api/company/production | Query news
-  | /api/weather | Weather
+# What you will learn from this project
+* Watson Discovery creation and development activities
+* Watson Discovery API and how to integrate within a a web application or a micro service
+* How to add resiliency to your broker
 
----
-# Code explanation
-The client folder includes the angular 2 user interface, the user interface is used for demonstration purpose. As micro service the more important part is on the server side.
-
-This server code use expressjs and its middleware mechanism to map URL to function. The `server.js` declare the component to use and start a web server based on nodejs.
-
-The interesting parts are explained in the snippet below:
-```
-// As the server exposes REST api to be consumed by the UI we delegate to a separate api module
-const api = require('./routes/api');
-
-// Point static path to dist where angular 2 compiled js reside
-app.use(express.static(path.join(__dirname, '../dist')));
-
-// Set our api routes
-app.use('/api', api);
-
-// Catch all other routes and return the index file as single page application
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
-```
-
-When the URL is based as /api/discovery the module in charge is routes/features/discovery.js. This code uses the watson cloud develop api for nodejs.
 
 # Clone the repository to your local machine
 ### If you do not have git...
@@ -75,25 +49,31 @@ cd refarch-cognitive-discovery-broker
 # Build
 Be sure to run the npm installation to get the dependent javascript modules
 ```
+# To update npm tool globally
+sudo npm i -g npm
+# install the following package globally too
+sudo npm i -g node
+sudo npm i -g node-gyp@3.6.2
+# Then install the package from package json
 npm install
 npm install @angular/cli@latest
 
 ```
 Run `ng build` to build the client Angular 2 project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-If you want to work on the user interface only you can use the command (this is for UI work only and will not succesfully connect to the Bluemix instance - to do that perform the next steps)
+If you want to work on the user interface only you can use the command (this is for UI work only and will not successfully connect to the Bluemix instance - to do that perform the next steps)
 ```
 ng serve
 ```
 
 # Test Locally
-Change the env-temp.json file in ./server/routes/env-templ.json to match your environemnt.
+Change the `env-temp.json` file in `./server/routes/env-templ.json` to match your environment, name it `env.json`
 
-The environemnt information can be found in Collection screen:
+The environment information can be found in Collection screen:
 ![Collection information](doc/discovery-screen1.png)
 
 And from the Service Credentials screen in the Bluemix Dashboard
-![Collection information](doc/bmx-service-credentials1.png)
+![Credentials information](doc/bmx-service-credentials1.png)
 
 Add the username, password, environment_id, collection_id and configuration_id parameters where needed.
 
@@ -125,7 +105,7 @@ Use the following command to start the local server:
 npm run dev
 ```
 
-If you run into any npm depency issues, or missing modules, add them using the command
+If you run into any npm dependency issues, or missing modules, add them using the command
 ```
 npm install <missing module>
 ```
@@ -135,9 +115,14 @@ And rerun the command to start the server
 npm run dev
 ```
 
+Then use a web browser to http://localhost:6010 which should display a home page with different choices. (The port number may be different, consult the server trace)  
+![Simple Query](doc/wds-ui-home.png)  
 
-Then use a web browser to http://localhost:6010 which should display a simple form to enter the company name and product name to let Watson search for those information inside the News curated data.
-![Simple Query](doc/query-results1.png)
+The News feature presents a simple form to enter the company name and product name to let Watson search for those information inside the News curated data.   
+![Simple Query](doc/wds-news-results.png)   
+The Weather one is presenting a form to select a persona, predefined query or enter free text query, then returns the results.
+
+
 
 # Deploy to bluemix
 We will not go over the detail on how to create a cloud foundry application in bluemix but you need to do the following steps
@@ -164,6 +149,39 @@ cf push refarch-cognitive-discovery-broker
 ```
 * Validate the deployment on your bluemix dashboard and using the defined URL.
 
+# Code explanation
+The client folder includes the angular 2 user interface, the user interface is used for demonstration purpose. As micro service the more important part is on the server side.
+
+This server code use expressjs and its middleware mechanism to map URL to function. The `server.js` declare the component to use and start a web server based on nodejs.
+
+The interesting parts are explained in the snippet below:
+```
+// As the server exposes REST api to be consumed by the UI we delegate to a separate api module
+const api = require('./routes/api');
+
+// Point static path to dist where angular 2 compiled js reside
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Set our api routes
+app.use('/api', api);
+
+// Catch all other routes and return the index file as single page application
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
+```
+
+When the URL is based as /api/discovery the module in charge is routes/features/discovery.js. This code uses the watson cloud develop api for nodejs.
+
+## REST APIs exposed
+The broker code offers two entry points and mapping user interface:
+
+ Description | API  | User interface
+ ----------- | ---- | --------------
+   | /api/company/production | Query news
+   | /api/weather | Weather
+
+---
 
 # Frequent Asked Questions
 They are in a separate document [here](doc/faq.md)

@@ -4,3 +4,7 @@ ul, ol {
 #accordion1 li.panel{
     margin-bottom: 0px;
 }
+
+.acc {
+    max-width:100px
+}
