@@ -1,5 +1,6 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,ViewChild } from '@angular/core';
 import { SearchResultExtended } from '../model/SearchResultExtended'
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 @Component({
   selector: 'baseresult',
@@ -14,8 +15,12 @@ export class DiscoveryBaseResultsComponent {
   @Input()
   result: SearchResultExtended;
 
+  @ViewChild('textDialog') modal: ModalComponent;
 
   constructor () {
   }
 
+  open(){
+      this.modal.open();
+  }
 }

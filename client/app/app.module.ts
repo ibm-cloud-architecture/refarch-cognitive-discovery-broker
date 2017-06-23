@@ -12,6 +12,7 @@ import { WDSWeatherComponent } from './wds/WDSWeatherComponent';
 import { DiscoveryBaseResultsComponent } from './wds/discoverybaseresults.component';
 import { DiscoveryResultsComponent } from './wds/discoveryresults.component';
 import {Accordion, AccordionGroup} from './wds/accordion';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    Ng2Bs3ModalModule,
     RouterModule.forRoot(routes)
   ],
   providers: [DiscoveryService],
