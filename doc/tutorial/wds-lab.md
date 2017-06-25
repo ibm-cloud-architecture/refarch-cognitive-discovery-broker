@@ -465,7 +465,7 @@ https://github.com/watson-developer-cloud/cm_mc_uid=90789784077014965835593&cm_m
 
 As a next step, this section outlines the steps to train discovery service to return meaningful results. It is important to improve the relevancy of the queries the users issue, at least for the most frequently searched and important queries. 
 
-Conceptually there are two ways to accomplish this task. Both options involve a collaboration between the developer, and an SME / domain expert.
+There are two ways to accomplish this task. Both options involve a collaboration between the developer, and an SME / domain expert.
 
 1)	Using the training query sets with sample results and relevancy scores. Watson Discovery uses machine learning to train the service using this sample query set. There are two ways to do this 
 a.	Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the discovery documentation, and talk to one of the instructors / facilitators. We will be happy to take you through the steps. The product documentation can be accessed at: https://www.ibm.com/watson/developercloud/doc/discovery/train.html
