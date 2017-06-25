@@ -459,6 +459,111 @@ Inspect the Response Body to check the results.
 
 |For earning the badge, use the APIs to load the file Hurricane_noaa.pdf, and run the query “What is Saffir-Simpson scale?”. In the result, find the concept “Beaufort scale” and describe the relevance and other details reported in the response|
 
+At this point, you should feel comfortable with how the APIs work, and how to use them. You are encouraged to try the queries in your language of choice (Python, Java, Node). If you need help please contact the instructors. Installing jupyter notebook locally will help test Python code snippets. The following github page shows the collection of all APIs / SDKs and code snippets.
+
+https://github.com/watson-developer-cloud/cm_mc_uid=90789784077014965835593&cm_mc_sid_50200000=1498163451&cm_mc_sid_52640000=1498163451
+
+As a next step, this section outlines the steps to train discovery service to return meaningful results. It is important to improve the relevancy of the queries the users issue, at least for the most frequently searched and important queries. 
+
+There are two ways to accomplish this task. Both options involve a collaboration between the developer, and an SME / domain expert.
+
+1)	Using the training query sets with sample results and relevancy scores. Watson Discovery uses machine learning to train the service using this sample query set. There are two ways to do this 
+a.	Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the discovery documentation, and talk to one of the instructors / facilitators. We will be happy to take you through the steps. The product documentation can be accessed at: https://www.ibm.com/watson/developercloud/doc/discovery/train.html
+b.	A beta version of training tool that comes with the discovery instance.
+2)	Using Watson Knowledge Studio (WKS). This is a powerful way to teach Watson domain specific constructs such as key words, but note that WKS is a separate offering and not included with Watson Discovery.
+
+Let us explore the option 1-b in this lab, which is building the sample training queries using the tooling option. This uses a UI based ranking process, as opposed to manually building the JSON payloads and queries. Keep in mind that this is still in a beta stage, and the functionality is limited at the moment.
+
+To understand the importance of using training and fine tuning the relevancy, let us do some quick testing by creating a collection, and issuing a few queries to see what kind of results are presented. 
+
+Open the discovery tooling, and create a new collection (you can do this using the tooling as opposed to API because it is faster). Name the collection whatever you want, but in this example, we call it “storm collection”. Load all the documents provided to you in the dataset under the folder “Basic Collections”. This collection includes a whole bunch of PDF files, some prepared well and some others not. Some of these files are relevant to the queries we will be testing, and some other files are not relevant. Load all of them and wait until they are fully ingested by the service. If you forgot the steps, go to the beginning of this tutorial for stepwise instruction on how to create a new collection and load the documents, or you can watch the following video [collection-creation-for-training]
+
+First issue a simple query “how do I prepare for hurricane” on your collection, and make sure it returns some results. Adjust the number of results to some number like 75, so that you can see all the results. For clarity and ease of reading, you may want to turn off the “include relevant passages” radio button (shown in the following screenshot using the green highlight on the lower left corner)
+
+![wds-lab-training-24](wds-lab-training-24.png)
+
+As you may have guessed, this simple query is broad enough to get a large result set. If you look at the yellow highlight in the picture above, you can see the result includes all the documents in the collection (this example collection includes 43 documents, and the result includes all the 43). The reason is, all the files have the keywords “hurricane” and / or “prepare”. But not all the files contain relevant information. In the screenshot shown above, the files highlighted in orange rectangles are invalid results for the given query. Therefore it is important that we fine tune the result set, and teach the discovery instance to filter out invalid results. This process is called training, and we are going to do that using the beta version of the tooling. 
+
+In a real life scenario this training consists of two key steps:
+
+1)	Coming up with sample training queries that are representative of what the users search. There are several ways to accomplish this. One is to search for the query logs to find the frequently searched queries. Alternatively one can harvest queries from a system deployed on a pilot basis or in a test environment. The key point here is, the sample training queries should be a good representation of the queries that the end users will issue.
+2)	Use the discovery service tooling to train the service by ranking each response to the query as relevant or irrelevant. The discovery service uses this ranking to train itself using machine learning algorithms. Note that in the API approach you have some flexibility to configure the relevancy scores using numerical values on a scale of 0 to 100. But in the beta version of the tooling as it stands today, you are limited to two values - relevant or irrelevant.
+
+Now using the tooling, let us train the instance for this basic query to filter out the results that are highlighted in orange color in the screenshot above.
+
+Click on the link “Train Watson to Improve the Results (Beta)” on the top right corner. In the screenshot attached above, this menu is highlighted using blue color at the top right corner. That should take you to the page as shown below:
+
+![wds-lab-training-25](wds-lab-training-25.png)
+
+Click on the link “Add a natural language query”, which should show you the option to add a new sample training query. Type the query “How can I prepare for hurricane?” in the query text field as shown in the following screenshot, and then click on the “Add button”.
+
+![wds-lab-training-26](wds-lab-training-26.png)
+
+Upon clicking the “Add” button the system will add this as a sample training query, and give you the option to rate the reponses. At this point your screen should look like the one shown in the following screenshot. 
+
+![wds-lab-training-27](wds-lab-training-27.png)
+
+Note that you don’t need to do a prior search using this query in order to train Watson. You can directly come to this training tool and start the training using sample queries. In this lab we did a prior search just to show how irrelevant results show up when the system is untrained, and the corpus contains wide ranging information involving the search key words.
+
+Now click on the “Rate results”. This action will take to a different screen where you can see the search results for this query that you can rank on an individual basis as either relevant or irrelevant. The screenshot is shown below.
+
+![wds-lab-training-28](wds-lab-training-28.png)
+
+Start ranking the individual results as relevant or “Not relevant”. For this lab, we will be marking the following 9 results as “Not relevant”. The rest of them should be marked relevant. Keep going through the list and mark the following as “Not relevant” and finish the whole search result set. To move along the search results click on the right arrow “>” mark on the bottom of the page as highlighted in the screenshot above.
+
+1)	Microsoft Word - article - Supply Chain - Economic Consequences of Disruptions- w Tom Schmidt, Kathy Stecke, et al.docx
+2)	Simulating Effects of Transportation Disruption on Supply Chain Based on Vendor Managed Inventory Approach
+3)	Climate Change An Information Statement of the American Meteorological Society
+4)	Managing Supply Chain Health
+5)	c1306_ch6_f.pdf20170624-8-jjxed6.pdf
+6)	What's in a Name?
+7)	How Do Supply Chain Networks Affect the Resilience of Firms to Natural Disasters? Evidence from the Great East Japan Earthquake
+8)	Increasing destructiveness of tropical cyclones over the past 30 years
+9)	Hurricane Katrina's effects on industry employment and wages
+
+After rating the documents using the above guidelines, you should be on the last page of the search results as shown in the following screenshot
+
+![wds-lab-training-29](wds-lab-training-29.png)
+
+Click on “Back to queries” link highlighted in green in the screenshot above.
+
+This should bring you back to the main page as shown below. If you followed the steps exactly, you should see 34 documents rated as “relevant” and 9 documents rated as “not relevant” as shown in the following screenshot using the green rectangle. 
+
+![wds-lab-training-30](wds-lab-training-30.png)
+
+In a real life scenario, you will add more training queries and rate the responses. But for this lab we will stop with this example. If you have the time, you can try more queries. Some sample queries are listed below for your experiment. 
+
+It takes about 30 minutes for the system to train itself based on the ratings you just submitted. Roughly 30 minutes after you performed this training, you could go back to the query page and try a similar query. The sampling query isn’t meant to cause “over fitting” in the system, so try queries that are similar to, but not necessarily identical to the sample query that you just used to train the system.
+
+Also note that this training doesn’t necessarily have to be a one time task. In a real life use case this could be a continuous process. As more documents are ingested, and as you identify more queries, you would come periodically train the system to fine tune the results in order to improve the accuracy. 
+
+Here are some sample queries that you can try if you have the time. Keep in mind that we have very few documents in the collection for this lab, so you may not find enough results to separate as relevant versus not relevant. Some of the following queries may have only one relevant response in the system, making it less meaningful to train. For those cases, you can avoid using them as sample queries. Feel free to take a “scenic tour” by adding more documents to the collection, and coming up with your own sample training queries. The list of sample queries are as follows:
+
+*	How do I prepare for hurricane as a home owner?
+*	What should I do to prepare for hurricane as a resident of the leon county?
+*	How should I prepare for hurricanes as a business owner?
+*	How can I prepare for the hurricane as a person with disabilities?
+*	How should I prepare for the hurricane with an elderly person, senior citizen in the household?
+*	As a pet owner, what additional preparations I need for the hurricane?
+*	From the standpoint of a business owner, what can I do to safeguard myself from hurricane?
+*	I need some guidance for putting up the shutters
+*	What do I need to do given I am a resident of Miami dade county?
+*	I decided to stay home, and not evacuate. What are the must have things for me?
+*	If I go to a shelter, what should I bring?
+*	Show me a check list and the list of supplies I need to buy (or stock up)
+*	How should I deal with trees during and after the hurricane?
+*	As an emergency worker, what is the process for me to deal with downed power lines?
+*	What are some of the deadliest hurricanes?
+*	Tell me about the science of hurricanes?
+*	What is Saffir-Simpson scale?
+*	What are different categories of hurricane?
+*	What do categories mean in the context of hurricanes?
+*	I am a media person, and where can I find channels to connect with FPL?
+*	What is the social media handle for Florida’s power & electricity department?
+*	As a resident of Florida, I want to know how long will it take to restore the power after the hurricane
+*	How are hurricanes named?
+
+
 # Configure Watson Discovery Service via APIs
 We will use API to do training set and test set to validate accuracy.
 https://watson-api-explorer.mybluemix.net/apis/discovery-v1
