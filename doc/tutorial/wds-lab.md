@@ -539,29 +539,29 @@ Also note that this training doesn’t necessarily have to be a one time task. I
 
 Here are some sample queries that you can try if you have the time. Keep in mind that we have very few documents in the collection for this lab, so you may not find enough results to separate as relevant versus not relevant. Some of the following queries may have only one relevant response in the system, making it less meaningful to train. For those cases, you can avoid using them as sample queries. Feel free to take a “scenic tour” by adding more documents to the collection, and coming up with your own sample training queries. The list of sample queries are as follows:
 
-•	How do I prepare for hurricane as a home owner?
-•	What should I do to prepare for hurricane as a resident of the leon county?
-•	How should I prepare for hurricanes as a business owner?
-•	How can I prepare for the hurricane as a person with disabilities?
-•	How should I prepare for the hurricane with an elderly person, senior citizen in the household?
-•	As a pet owner, what additional preparations I need for the hurricane?
-•	From the standpoint of a business owner, what can I do to safeguard myself from hurricane?
-•	I need some guidance for putting up the shutters
-•	What do I need to do given I am a resident of Miami dade county?
-•	I decided to stay home, and not evacuate. What are the must have things for me?
-•	If I go to a shelter, what should I bring?
-•	Show me a check list and the list of supplies I need to buy (or stock up)
-•	How should I deal with trees during and after the hurricane?
-•	As an emergency worker, what is the process for me to deal with downed power lines?
-•	What are some of the deadliest hurricanes?
-•	Tell me about the science of hurricanes?
-•	What is Saffir-Simpson scale?
-•	What are different categories of hurricane?
-•	What do categories mean in the context of hurricanes?
-•	I am a media person, and where can I find channels to connect with FPL?
-•	What is the social media handle for Florida’s power & electricity department?
-•	As a resident of Florida, I want to know how long will it take to restore the power after the hurricane
-•	How are hurricanes named?
+How do I prepare for hurricane as a home owner?
+What should I do to prepare for hurricane as a resident of the leon county?
+How should I prepare for hurricanes as a business owner?
+How can I prepare for the hurricane as a person with disabilities?
+How should I prepare for the hurricane with an elderly person, senior citizen in the household?
+As a pet owner, what additional preparations I need for the hurricane?
+From the standpoint of a business owner, what can I do to safeguard myself from hurricane?
+I need some guidance for putting up the shutters
+What do I need to do given I am a resident of Miami dade county?
+I decided to stay home, and not evacuate. What are the must have things for me?
+If I go to a shelter, what should I bring?
+Show me a check list and the list of supplies I need to buy (or stock up)
+How should I deal with trees during and after the hurricane?
+As an emergency worker, what is the process for me to deal with downed power lines?
+What are some of the deadliest hurricanes?
+Tell me about the science of hurricanes?
+What is Saffir-Simpson scale?
+What are different categories of hurricane?
+What do categories mean in the context of hurricanes?
+I am a media person, and where can I find channels to connect with FPL?
+What is the social media handle for Florida’s power & electricity department?
+As a resident of Florida, I want to know how long will it take to restore the power after the hurricane
+How are hurricanes named?
 
 
 # Configure Watson Discovery Service via APIs
