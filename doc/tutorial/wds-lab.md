@@ -478,7 +478,7 @@ To understand the importance of using training and fine tuning the relevancy, le
 
 Open the discovery tooling, and create a new collection (you can do this using the tooling as opposed to API because it is faster). Name the collection whatever you want, but in this example, we call it “storm collection”. Load all the documents provided to you in the dataset under the folder “Basic Collections”. This collection includes a whole bunch of PDF files, some prepared well and some others not. Some of these files are relevant to the queries we will be testing, and some other files are not relevant. Load all of them and wait until they are fully ingested by the service. If you forgot the steps, go to the beginning of this tutorial for stepwise instruction on how to create a new collection and load the documents, or you can watch the following video [collection-creation-for-training]
 
-First issue a simple query “how do I prepare for hurricane” on your collection, and make sure it returns some results. Adjust the number of results to some number like 75, so that you can see all the results. For clarity and ease of reading, you may want to turn off the “include relevant passages” radio button (shown in the following screenshot using the green highlight on the lower left corner)
+First issue a simple query “how do I prepare for hurricane” on your collection, and make sure it returns some results. Adjust the number of results to some number like 50, so that you can see all the results. For clarity and ease of reading, you may want to turn off the “include relevant passages” radio button (shown in the following screenshot using the green highlight on the lower left corner)
 
 ![wds-lab-training-24](wds-lab-training-24.png)
 
@@ -499,7 +499,7 @@ Click on the link “Add a natural language query”, which should show you the 
 
 ![wds-lab-training-26](wds-lab-training-26.png)
 
-Upon clicking the “Add” button the system will add this as a sample training query, and give you the option to rate the reponses. At this point your screen should look like the one shown in the following screenshot. 
+Upon clicking the “Add” button the system will add this as a sample training query, and give you the option to rate the responses. At this point your screen should look like the one shown in the following screenshot. 
 
 ![wds-lab-training-27](wds-lab-training-27.png)
 
@@ -531,9 +531,12 @@ This should bring you back to the main page as shown below. If you followed the 
 
 ![wds-lab-training-30](wds-lab-training-30.png)
 
-In a real life scenario, you will add more training queries and rate the responses. But for this lab we will stop with this example. If you have the time, you can try more queries. Some sample queries are listed below for your experiment. 
+A tip – for some results, you may not be able to clearly decide between relevant and not relevant. The result may apply to a certain extent so you may find it somewhat relevant. IN this case, pick neither option – relevant or not relevant, and move on to rating other results. Mark only those results you can clearly indicate as either relevant or not relevant.
 
-It takes about 30 minutes for the system to train itself based on the ratings you just submitted. Roughly 30 minutes after you performed this training, you could go back to the query page and try a similar query. The sampling query isn’t meant to cause “over fitting” in the system, so try queries that are similar to, but not necessarily identical to the sample query that you just used to train the system.
+At this point you just trained Watson discovery service with 1 sample training query. Watson discovery service keeps learning as you submit more training queries, and it indicates when it has enough to complete the training. The indication is provided by means of green tick mark on the three buttons as highlighted using brown rectangle in the screenshot above. In this particular case, the system indicates there is enough variety in the ratings (note the green tick mark on that button). But the other two buttons without a green tick mark indicate that you need to add more queries and rate more results for Watson to understand. In a real life scenario, you will add lot more training queries and rate the responses. But for this lab we will stop with this example due to paucity of time. But if you have the time, you can try more queries and do it until you see tick marks on the other two buttons. Some sample queries are listed below for your experiment. 
+
+Once you are done with that, it will take about 30 minutes for the system to complete the training and reflect in the results. Roughly 30 minutes after you performed this training, you could go back to the query page and try a similar query. The sampling query isn’t meant to cause “over fitting” in the system, so try queries that are similar to, but not necessarily identical to the sample query that you just used to train the system.
+
 
 Also note that this training doesn’t necessarily have to be a one time task. In a real life use case this could be a continuous process. As more documents are ingested, and as you identify more queries, you would come periodically train the system to fine tune the results in order to improve the accuracy. 
 
