@@ -469,7 +469,7 @@ There are two ways to accomplish this task. Both options involve a collaboration
 
 1)	Using the training query sets with sample results and relevancy scores. Watson Discovery uses machine learning to train the service using this sample query set. There are two ways to do this 
 a.	Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the discovery documentation, and talk to one of the instructors / facilitators. We will be happy to take you through the steps. The product documentation can be accessed at: https://www.ibm.com/watson/developercloud/doc/discovery/train.html
-b.	A beta version of training tool that comes with the discovery instance.
+b.	A beta version of training tool that comes with the discovery instance. https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
 2)	Using Watson Knowledge Studio (WKS). This is a powerful way to teach Watson domain specific constructs such as key words, but note that WKS is a separate offering and not included with Watson Discovery.
 
 Let us explore the option 1-b in this lab, which is building the sample training queries using the tooling option. This uses a UI based ranking process, as opposed to manually building the JSON payloads and queries. Keep in mind that this is still in a beta stage, and the functionality is limited at the moment.
