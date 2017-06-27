@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -X PUT -u "e99796c1-3ece-469b-b92a-cb0bace684f9":"ke4LPVTar5ZR" -H "Content-Type: application/json" -F "configuration=@my_config.json" "https://gateway.watsonplatform.net/discovery/api/v1/environments/b11cca07-ea37-4567-8845-3736ca4b435a/configurations/3274af5c-1e45-4416-b124-d80281b50957?version=2017-06-25" 

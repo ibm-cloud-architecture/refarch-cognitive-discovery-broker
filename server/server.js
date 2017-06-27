@@ -2,7 +2,6 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
-const cfenv = require('cfenv');
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 
@@ -30,15 +29,14 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-// get the app environment from Cloud Foundry
-var appEnv = cfenv.getAppEnv();
+
 /**
  * Get port from environment and store in Express.
  */
-const port =appEnv.port || '3000';
+const port ='6010';
 
 // start server on the specified port and binding host
 app.listen(port, '0.0.0.0', function() {
   // print a message when the server starts listening
-  console.log("Server v0.0.3 06/20/17 starting on " + appEnv.url);
+  console.log("Server v0.0.3 06/20/17 starting on port " + port );
 });

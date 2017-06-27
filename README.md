@@ -149,6 +149,9 @@ cf push refarch-cognitive-discovery-broker
 ```
 * Validate the deployment on your bluemix dashboard and using the defined URL.
 
+# Deploy to Kubernetes cluster
+See the note [here](doc/wds-broker-kube.md)
+
 # Code explanation
 The client folder includes the angular 2 user interface, the user interface is used for demonstration purpose. As micro service the more important part is on the server side.
 
