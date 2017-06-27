@@ -293,8 +293,67 @@ Upload it to your **Weather** Collection.
 
 
 ### Advanced queries
-Discovery comes with a query language ...
+Discovery service supports a form of structured query using discovery query language. This is an alternative to natural language query. This option is powerful because this helps create things like filters and aggregations that help format the results, and gain insights into the result set. The complete documentation for structured query is available at https://www.ibm.com/watson/developercloud/doc/discovery/using.html
 
+First to you need to understand the components of the result set returned by the discovery service. To do this first run a sample query. Open the query tooling, set the radio button “Include relevant passages” to “No” and leave the query field empty, and press “Run query” button. Once the result set appears on the left pane, look at the structure. The screenshot is shown below.
+
+![wds-lab-dql-32.png](wds-lab-dql-32.png)
+
+The specific portion that you need to see is the structure on the right side which is highlighted in the screenshot above. An expanded view of that section is shown in the screenshot below.
+
+![wds-lab-dql-33.png](wds-lab-dql-33.png)
+
+Expand each member of that enriched_text structure to study the way enrichment is returned in a JSON object. For your convenience additional screenshots are provided below that highlight the text.
+
+Entity – the “text” field contains the actual entity. The rest of the parameters provide additional characterization on the entity
+
+![wds-lab-dql-34.png](wds-lab-dql-34.png)
+
+taxonomy – Look at the label field, which is expressed in terms of a score.
+
+![wds-lab-dql-35.png](wds-lab-dql-35.png)
+
+Concepts – Look at the text portion for the concept along with the relevance score and the DBpedia resource identifiers.
+
+![wds-lab-dql-36.png](wds-lab-dql-36.png)
+
+docSentiments – gives the overall sentiment of the document in the type field.
+
+![wds-lab-dql-37.png](wds-lab-dql-37.png)
+
+keywords – look at the text field for the actual keyword, and the associated sentiments.
+
+![wds-lab-dql-38.png](wds-lab-dql-38.png)
+
+With the familiarity of the structure of the JSON object, here is how you can compose the query. 
+
+* Begin with enriched_text
+* Followed by a period
+* Followed by of the member objects of the enriched_text that you want to search for (entities, concepts, keywords, docSentiments, taxonomy)
+* Followed by a period
+* Followed by the field that contains the actual value for that object (like text, label, type etc)
+* Followed by one of the operators mentioned in the table at (https://www.ibm.com/watson/developercloud/doc/discovery/query-reference.html#operators)
+* Followed by the value you want to search
+
+An example of this structure is shown in the following picture:
+
+![wds-lab-dql-39.png](wds-lab-dql-39.png)
+
+To test that out, open the query tooling, and click on the button “Use the discovery query language”. The screenshot is shown below.
+
+![wds-lab-dql-40.png](wds-lab-dql-40.png)
+
+Type the query enriched_text.concepts.text:storm and click the button “Run query” and see the results specific to storm on the right side.
+
+Likewise you can try queries like the following:
+
+* enriched_text.entities.text:hurricane
+* enriched_text.taxonomy.label:supply chain
+* enriched_text.keywords.text:fema
+* enriched_text.docSentiment.type:positive (this kind of query will fetch all the documents that have overall positive undertone or sentiment. Try it…)
+* enriched_text.keywords.text:hurricane,enriched_text.keywords.text:!storm (search for documents that contain the word hurricane but not storm, though there is no good reason why anyone would search for that combination)
+
+If you have the time you are encouraged to try additional queries with different operators to familiarize yourself with the query structure.
 
 # Level 2 - API and training
 ## Task 7 - Explore Watson Discovery API
