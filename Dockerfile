@@ -1,5 +1,5 @@
 FROM node:alpine
-MAINTAINER https://github.com/jbcodeforce/ - IBM
+MAINTAINER https://github.com/ibm-cloud-architecture/ - IBM
 RUN mkdir -p /wds-broker
 COPY . /wds-broker
 

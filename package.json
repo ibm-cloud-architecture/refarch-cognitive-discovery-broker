@@ -3,14 +3,16 @@
   "version": "0.0.0",
   "license": "MIT",
   "author": "Jerome Boyer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "node server/server",
     "dev": "concurrently \"ng build\" \"nodemon server/server\" ",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "mocha"
   },
   "private": true,
   "dependencies": {
@@ -35,7 +37,7 @@
     "zone.js": "^0.7.8"
   },
   "devDependencies": {
-    "@angular/cli": "^1.1.3",
+    "@angular/cli": "latest",
     "@angular/compiler": "^2.4.10",
     "@angular/compiler-cli": "^2.4.10",
     "@types/node": "~6.0.60",
