@@ -695,8 +695,66 @@ For information about containerizing the broker see [note](../wds-broker-kube.md
 ### Link between Conversation and Discovery
 To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned. As the path is initiated from a Watson conversation, the core of the integration with both service is done in the Conversation Broker which can be found in this repository: https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker and the long tail query is defined in a dialog node as part of the context variable and managed by the Conversation Broker as explained in the note: [Delegate to Watson Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker//tree/master/doc/wds-itg.md)
 
-## task 11 - Enhance with Watson Studio
+## Task 11 - Enhance with Watson Studio
+You can enhance the discovery service capabilities by applying a custom model built using Watson Knowledge Studio (WKS). This helps improve the discovery service's in-built enrichments. A potential usecase for this is bringing information specific to a given domain so that discovery can perform more custom document enrichments appropriate to the discipline.
 
+The following screenshots show a simple illustration of WKS annotations specific to our storm related collection.
+
+![wds-lab-wks-44](wds-lab-wks-44.png)
+
+![wds-lab-wks-45](wds-lab-wks-45.png)
+
+In order to be able to integrate a WKS model, you need WKS subscription (paid or free one), and document sets to create annotations or rules in WKS. A full hands-on tutorial of WKS is beyond the scope of this lab, so we assume you already know how to build the type systems, relations, models using WKS, and create a snapshot of the model. 
+
+To perform this exercise, you can try taking the .txt files provided in the subfolder "/WKS/ML Training" and import them into your document set. Starting with defining the type systems, go through the WKS workflow, create annotation sets, tasks, and perform the annotations. Alternatively you can choose to build a rules based model insetad of ML model. Look at the model details and statistics, and if you are satisfied, take a snapshot. Once you have the snapshot ready, integrating this with Discovery is a two step process. The first step is model deployment, and the second step is model association with the specific collection.
+
+To perform the first step, open the model in WKS, and click on "Deploy" against the version of the model you want to deploy into the discovery instance. That should bring you a screen like the one shown in the following screenshot:
+
+![wds-lab-wks-46](wds-lab-wks-46.png)
+
+Select "Discovery" and click "Next". In the resulting page pick the Region, Space, and Service Instance where you want your WKS model deployed. The following screenshot illustrates this step.
+
+![wds-lab-wks-47](wds-lab-wks-47.png)
+
+Click on "Deploy" and finish the deployment process. Note down the model id that is displayed. This is your WKS model Id. A screenshot is attached below to show this screen and the model id. Now you have deployed your WKS model to a discovery instance.
+
+The next step is you need to associate this model to one or more collections in your discovery instance. This has to be done using CURL command. This process involves downloading your collection configuration as a JSON file, updating the JSON file with WKS model Id, and then sending it back to your collection over a PUT request, to update the configuration. This also implies that you should have a custom configuration associated with your collection to begin with. The reason is you cannot update the default configuration. If the collection that you want to use with WKS uses the default configuration, now is the time for you to switch it to a custom configuration. Once you are sure your collection uses a custom configuration, note down the configuration id, environment id and collection id. In addition you will also need the credentials (user id and password) for your discovery instance.
+
+First issue the following command using command prompt (replace the userid, password, etc with appropriate values)
+
+curl -u "{userid}":"{password}" "https://gateway.watsonplatform.net/discovery/api/v1/environments/{environment id}/configurations/{configuration id}?version=2017-06-25" > current_config.json
+
+Open the current_config.json file (or whatever name you used for the file), and save it as a copy. Call it "wks-updated-config.json". You can either do this using a text editor, or use one of the JSON editing tools. Perform the following updates to the wks-updated-config.json file
+
+* Change the description (optional)
+* Go to the "enrichments" section of the file, and add any additional items under the options/extract field.
+* In the options section, add a new field "model" as shown in the following example, and assign the value of your WKS model id that you got after deploying the WKS model in the previous step [caution - if you are adding the model field at the end, don't forget to add a comma after the previous line "quotations":true]
+
+Once you are done your "enrichments" section should look somewhat like the following.
+
+"enrichments": [
+  {
+    "destination_field": "enriched_text",
+    "source_field": "text",
+    "enrichment": "alchemy_language",
+    "options": {
+      "extract": "keyword, entity, doc-sentiment, taxonomy, concept, relation",type
+      "sentiment": true,
+      "quotations": true,
+      "model": "{your WKS model id}"
+    }
+  }
+]
+
+Save the wks-updated-config.json file (or whatever name you used for the file). 
+
+Issue the following command to send this configuration to discovery using a PUT command. Keep in mind that in this example, we are using the file name "wks-updated-config.json". If you used a different name, make sure the command reflects the right file name. Replace the values appropriately and execute the command.
+
+curl -X PUT -u "{userid}":"{password}" -H "Content-Type: application/json" -d @wks-updated-config.json "https://gateway.watsonplatform.net/discovery/api/v1/environments/{environment id}/configurations/{configuration id}?version=2017-06-25"
+
+If the result is updated json, then your command is successfully executed. 
+
+This completes the second step of associating your WKS model with a specific collection. You can go back to your collection or the application that uses the collection, and issue queries as before. If your model was built using right set of document sets, and well annotated, then it should reflect in thes search results. In this lab example, we are using less than 50 documents in the collection, and a few others to build the WKS annotation. Hence this is not the realistic scenario for you to expect remarkable differences in the outcome. If time permits, you are encouraged to add more documents into your collection, and build meaningful annotations involving larger document sets.  
 
 # References
 * [Discovery main page](https://www.ibm.com/watson/developercloud/discovery.html)
