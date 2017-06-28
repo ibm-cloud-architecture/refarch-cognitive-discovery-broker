@@ -4,6 +4,7 @@
   </ul>
 </div>
 <div class="row">
+   <div class="col-md-4">
       <h4 style="color:darkblue">Search Supplier and Product</h4>
       <div class="roundRect">
       	<form #searchForm="ngForm" (ngSubmit)="supplierSearch(company.value, product.value)">
@@ -18,5 +19,8 @@
           	</p>
       	</form>
       </div>
-		<results [results]="searchResults"></results>
+    </div>
+    <div class="col-md-8">
+		    <results [results]="searchResults"></results>
+    </div>
 </div>

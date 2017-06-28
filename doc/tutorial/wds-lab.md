@@ -4,7 +4,7 @@ IBM [Watson Discovery Service](https://www.ibm.com/watson/developercloud/discove
 The purpose of this section is to show how to set up and configure Watson Discovery Service and how to inject documents about hurricane and weather management. Watson Discovery Service is only available on Bluemix.
 Once created WDS instance allows you to ingest (convert, enrich, clean, normalize), store and query data to extract actionable insights.
 
-You can create and configure a Watson Discovery service instance by using either the Discovery Tooling or the Discovery API. In the beginning of this tutorial we are using the Discovery Tooling to prepare the Discovery content and perform query, as most users will do, and then we go over the API for doing training, and access the service from a Web Application or a microservice.
+You can create and configure a Watson Discovery service instance by using either the Discovery Tooling or the Discovery API. In the beginning of this tutorial we are using the Discovery Tooling to prepare the Discovery content and perform query, as most users will do, and then we go over the API for doing training, and API to access the service from a Web Application or a microservice.
 
 The standard development path for using Watson Discovery is presented in the following diagram:
 ![D-Flow.](discovery-flow.png)
@@ -23,8 +23,14 @@ At the end of this tutorial you will be able to create a Discovery service and t
 * [Execute query](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-3---doing-first-query)
 * [Work on more content](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-4---upload-more-content)
 * [Understanding Collection Configuration](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-5---understanding-configuration)
-* [Preparing document and more complex queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-6---preparing-documents-and-more-advanced-queries)
-* [Explore Discovery API](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-7---explore-watson-discovery-api)
+* [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-6---preparing-documents)
+* [Perform Advanced Queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-7--performing-advanced-queries)
+* []
+* [Explore Discovery API](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-8---explore-watson-discovery-api)
+* [Training Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-9---training-discovery)
+* [Review integration code](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-10---broker-code-explanation)
+* [Enhance results with Watson Knowledge Studio](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-11---enhance-with-watson-studio)
+
 
 
 
@@ -279,7 +285,8 @@ Now clean it up by removing all HTML Headers and navigation text.
 ![Remove unwanted content](remove-unwanted-content.png)
 The result should be something like this:  
 
-![Brut text](brut-text.png)
+![Brut text](brut-text.png)  
+
 In the next step you need to change the font-size of headers, so Watson Discovery can determine the sections and content.
 
 Make the headers font-size 18, sub-headers in font-size 16 and let the body be as-is.
@@ -681,14 +688,20 @@ Here are some sample queries that you can try if you have the time. Keep in mind
 ## Task 10 - Broker code explanation
 The Watson Discovery Service can be integrated in a Web application or wrapped as a micro service deployable on Kubernetes cluster. As developer you will use the Watson developer API which is offered as different programming language.
 
-The current broker code is defining a server layer to support simple RESTful api, mostly used by a front end. The code explanation is in [this note](../doc/broker-code.md)
+The current broker code is defining a server layer to support simple RESTful api, mostly used by a front end. The code explanation is in [this note](../broker-code.md)
 
 For information about containerizing the broker see [note](../wds-broker-kube.md)
 
-## Link between Conversation and Discovery
+### Link between Conversation and Discovery
 To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned. As the path is initiated from a Watson conversation, the core of the integration with both service is done in the Conversation Broker which can be found in this repository: https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker and the long tail query is defined in a dialog node as part of the context variable and managed by the Conversation Broker as explained in the note: [Delegate to Watson Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker//tree/master/doc/wds-itg.md)
+
+## task 11 - Enhance with Watson Studio
+
 
 # References
 * [Discovery main page](https://www.ibm.com/watson/developercloud/discovery.html)
 * Discovery [API](https://www.ibm.com/watson/developercloud/discovery/api/v1/#introduction)
+* https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
+* Some SDK https://github.com/watson-developer-cloud/cm_mc_uid=90789784077014965835593&cm_mc_sid_50200000=1498163451&cm_mc_sid_52640000=1498163451
+* Query reference: https://www.ibm.com/watson/developercloud/doc/discovery/query-reference.html
 * Mix of Image Recognition and Discovery  http://watson.ted.com/
