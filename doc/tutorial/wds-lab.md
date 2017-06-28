@@ -355,6 +355,52 @@ Likewise you can try queries like the following:
 
 If you have the time you are encouraged to try additional queries with different operators to familiarize yourself with the query structure.
 
+In addition to that you can perform filtering using the structured queries. Filters help qualify the queries with additional constraints to get specific results. Try the following exercise to get a feel for how it works.
+
+Open the discovery tooling and switch to “Use Discovery Query Language” option. Type the following query: 
+
+enriched_text.concepts.text:cyclone
+
+Then suppress the passages, and change the number of results per page to 45, and click “Run Query”. Look at the result set and note down how many search results were returned. You may want to take a screenshot at this point so that you can compare this with the result set after applying the filtering. In our example, here is how the query performed, returning 18 results as highlighted in the following screenshot
+
+![wds-lab-dql-41.png](wds-lab-dql-41.png)
+
+Now let us add some filters and see how the result set changes. Type for example, the following in the “Limit which documents you query” text field (as shown in the screenshot below) and click the “Run Query” button. 
+
+enriched_text.concepts.text:!cyclone
+
+Compare the results now to see if there is any difference. You should see one or two documents filtered out in the search results because this filter requires the result to include only those documents that don’t contain the concept “cyclone”. In this example, the screenshot looks like the following, where you can see it filtered out 14 out of 16 results.
+
+![wds-lab-dql-42.png](wds-lab-dql-42.png)
+
+You can try additional complex filters to make sure you can filter things out by relevancy score, keywords, sentiments etc.
+
+Another important thing you can do with discovery query language is aggregations. Aggregations help you perform analysis and quantify various aspects of the search results. For example, you can use aggregation to get a count of top keywords, maximum and minimum values of fields in the metadata or enriched data, even plot a histogram if your field involves a numeric value. For the set of aggregations supported, refer to the following documentation page:
+
+https://www.ibm.com/watson/developercloud/doc/discovery/query-reference.html#aggregations
+
+As an example, go back to the previous query that you just tried, remove the filter, and type the following query: 
+
+enriched_text.concepts.text:cyclone. 
+
+In the input field “Include Analysis of Your results”, type the following expression 
+
+term(enriched_text.keywords.text,count:15)
+ 
+Click “Run Query”. This aggregation expression requires the discovery instance to publish the top 15 keywords. You can see the result as illustrated in the following screenshot. You can see the keywords listed on the right side, with the count in brackets adjacent to each one of them.
+
+![wds-lab-dql-43.png](wds-lab-dql-43.png)
+
+As another example, try the following aggregation expression with the same search query as in the above example:
+
+ term(enriched_text.entities.text).top_hits(5)
+
+That should give you the top 5 hits in the list of entities. A screenshot is attached below for illustration.
+
+![wds-lab-dql-44.png](wds-lab-dql-44.png)
+
+At this point you should have a good idea of how to use standard queries using Discovery Query Language and perform things like filtering, and aggregation.
+
 # Level 2 - API and training
 ## Task 7 - Explore Watson Discovery API
 The objective of this step is to explore the power of Watson Discovery Service APIs. After completing this section, you will be able to perform the following:
