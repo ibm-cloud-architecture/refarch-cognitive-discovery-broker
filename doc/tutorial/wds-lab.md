@@ -1,22 +1,22 @@
 # Building a Discovery Service for Weather data
 
-IBM [Watson Discovery Service](https://www.ibm.com/watson/developercloud/discovery.html) (WDS) is a Watson service that provides the developers the ability to rapidly add a cognitive, search and content analytics engine to application to identify patterns, trends and insights from **unstructured data**, that drive better decision making.
+IBM [Watson Discovery Service](https://www.ibm.com/watson/developercloud/discovery.html) (WDS) is a Watson service which provides the developers the ability to rapidly add a cognitive, search and content analytics engine to application to identify patterns, trends and insights from **unstructured data**, that drive better decision making.
 The purpose of this section is to show how to set up and configure Watson Discovery Service and how to inject documents about hurricane and weather management. Watson Discovery Service is only available on Bluemix.
 Once created WDS instance allows you to ingest (convert, enrich, clean, normalize), store and query data to extract actionable insights.
 
 You can create and configure a Watson Discovery service instance by using either the Discovery Tooling or the Discovery API. In the beginning of this tutorial we are using the Discovery Tooling to prepare the Discovery content and perform query, as most users will do, and then we go over the API for doing training, and access the service from a Web Application or a microservice.
 
 The standard development path for using Watson Discovery is presented in the following diagram:
-![D-Flow.](discovery-flow.png) {#fig:flow}
+![D-Flow.](discovery-flow.png)
 
-To summarize this diagram: to be able to do search / query we need content, that needs to be injected and persisted in *collection*. We are addressing these steps in this lab.
+To summarize this diagram: to be able to do search / query we need content, which needs to be injected and persisted in *collection*. We are addressing these steps in this lab.
 
 The labs files used for creating collection of documents are under the wds-docs folder.
 
 The current working application to demonstrate the end product of this tutorial is here: [WDS Broker on Bluemix](https://refarch-wds-broker.mybluemix.net/)  
 
 # Table of content
-At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business analysts can use a custom bluemix web application to enter queries related to a specific subject, like weather to find interesting relation, concepts, a solution. As a developer you will have The sections are:
+At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business analysts can use a custom bluemix web application to enter queries related to a specific subject, like weather, to find interesting relation, concepts, and drive better decisions. As a developer you will have The sections are:
 
 * [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-1---create-a-watson-discovery-instance)
 * [Prepare Data / Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-2---prepare-data--documents)
@@ -33,16 +33,15 @@ We organize this tutorial in layers to address different skill set.
 
 * **Level 0** - Data ingestion, Discovery tooling, and simple querying, seeing the output in the browser
 * **Level 1** - Collection configuration, enrichment, filters, content / data preparation
-* **Level 2** - API based access and refinement of results, Watson knowledge Studio, Watson API explorer, CURL or nodejs script to use API
-* **Level 3** - Advanced topics. Explore the Discovery broker,  connecting discovery and conversation, using Speech To Text
+* **Level 2** - Advanced search, API based access and refinement of results, Watson API explorer, CURL or nodejs script to use API
+* **Level 3** - Advanced topics. Explore the Discovery broker,  connecting discovery and conversation, using Speech To Text, Watson knowledge Studio.
 
 For beginner you need to do this tutorial for level 0 and 1 which map to tasks from 1 to 6, so you will be able to understand how Discovery works.
 
-For developer try to do all the 4 levels to get a deep understanding of the service.
+For developer, try to do all the 4 levels to get a deep understanding of the service.
 
 # Prerequisites
-* Create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
-* Execute the Task 1 in advance
+* If you do not have one already, create a Bluemix account: Go to Bluemix (https://console.ng.bluemix.net) and use the **Create a Bluemix account** if you do not have one.
 
 For developer the following are assumed
 * Having a Bluemix account, how to search the service catalog and how to create services
@@ -51,6 +50,8 @@ For developer the following are assumed
 * Having a github account and know how to use git commands
 
 # Clone the repository to your local machine
+The Weather documents used in this labs are in the project under the wds-docs, so you need to get a local copy of this git repository on your local computer by doing a `git clone` or download a zip.
+
 ### If you do not have git...
 Install git on Mac by installing the Command Line Tools for xCode.
 
@@ -183,7 +184,7 @@ The second configuration is related to **Enrich** step.
 ![](wds-cfg-enrish.png)
 By default, Discovery will enrich (add cognitive metadata to) the **text** field of your ingested documents with semantic information collected by these six Watson functions - Entity Extraction, Keyword Extraction, Taxonomy Classification, Concept Tagging, Relation Extraction, and Sentiment Analysis.
 
-For example *Entity extraction* adds semantic knowledge to content to help understand the subject and context of the text that is being analyzed. In the example below, the term 'Hurricane' was classified as 'NaturalDisaster' with a 86% relevance.
+For example, *Entity extraction* adds semantic knowledge to content to help understand the subject and context of the text that is being analyzed. In the example below, the term 'Hurricane' was classified as 'NaturalDisaster' with a 86% relevance.
 
 ```JSON
 {
@@ -255,7 +256,7 @@ You can remove *Sentiment Analysis* in the text field as for the weather semanti
 ### Normalize
 The last step in customizing your configuration file is doing **normalization**. From Discovery Tooling you can select the 'do not publish empty content'.
 
-## Task 6 - Preparing documents and more advanced queries
+## Task 6 - Potentially prepare documents
 Normally with Custom configuration and document conversion capability you should be able to ingest any documents. But we did observe that you need to do some document review and may do some cleaning upfront to get cleaner results.
 
 ### Preparing documents
@@ -291,9 +292,10 @@ As a final step, save the file as a PDF on your laptop with the same name as the
 
 Upload it to your **Weather** Collection.
 
+# Level 2 - Advanced Query, API and Training
 
-### Advanced queries
-Discovery service supports a form of structured query using discovery query language. This is an alternative to natural language query. This option is powerful because this helps create things like filters and aggregations that help format the results, and gain insights into the result set. The complete documentation for structured query is available at https://www.ibm.com/watson/developercloud/doc/discovery/using.html
+## Task 7- Performing advanced queries
+Watson Discovery Service supports a form of structured query using **discovery query language**. This is an alternative to natural language query. This option is powerful because this helps create things like filters and aggregations that help format the results, and gain insights into the result set. The complete documentation for structured query is available at https://www.ibm.com/watson/developercloud/doc/discovery/using.html
 
 First to you need to understand the components of the result set returned by the discovery service. To do this first run a sample query. Open the query tooling, set the radio button “Include relevant passages” to “No” and leave the query field empty, and press “Run query” button. Once the result set appears on the left pane, look at the structure. The screenshot is shown below.
 
@@ -305,27 +307,27 @@ The specific portion that you need to see is the structure on the right side whi
 
 Expand each member of that enriched_text structure to study the way enrichment is returned in a JSON object. For your convenience additional screenshots are provided below that highlight the text.
 
-Entity – the “text” field contains the actual entity. The rest of the parameters provide additional characterization on the entity
+**Entity** – the “text” field contains the actual entity. The rest of the parameters provide additional characterization on the entity
 
 ![wds-lab-dql-34.png](wds-lab-dql-34.png)
 
-taxonomy – Look at the label field, which is expressed in terms of a score.
+**Taxonomy** – Look at the label field, which is expressed in terms of a score.
 
 ![wds-lab-dql-35.png](wds-lab-dql-35.png)
 
-Concepts – Look at the text portion for the concept along with the relevance score and the DBpedia resource identifiers.
+**Concepts** – Look at the text portion for the concept along with the relevance score and the DBpedia resource identifiers.
 
 ![wds-lab-dql-36.png](wds-lab-dql-36.png)
 
-docSentiments – gives the overall sentiment of the document in the type field.
+**DocSentiments** – gives the overall sentiment of the document in the type field.
 
 ![wds-lab-dql-37.png](wds-lab-dql-37.png)
 
-keywords – look at the text field for the actual keyword, and the associated sentiments.
+**Keywords** – look at the text field for the actual keyword, and the associated sentiments.
 
 ![wds-lab-dql-38.png](wds-lab-dql-38.png)
 
-With the familiarity of the structure of the JSON object, here is how you can compose the query. 
+With the familiarity of the structure of the JSON object, here is how you can compose the query.
 
 * Begin with enriched_text
 * Followed by a period
@@ -346,28 +348,29 @@ To test that out, open the query tooling, and click on the button “Use the dis
 Type the query enriched_text.concepts.text:storm and click the button “Run query” and see the results specific to storm on the right side.
 
 Likewise you can try queries like the following:
-
+```
 * enriched_text.entities.text:hurricane
 * enriched_text.taxonomy.label:supply chain
 * enriched_text.keywords.text:fema
 * enriched_text.docSentiment.type:positive (this kind of query will fetch all the documents that have overall positive undertone or sentiment. Try it…)
 * enriched_text.keywords.text:hurricane,enriched_text.keywords.text:!storm (search for documents that contain the word hurricane but not storm, though there is no good reason why anyone would search for that combination)
+```
 
 If you have the time you are encouraged to try additional queries with different operators to familiarize yourself with the query structure.
 
 In addition to that you can perform filtering using the structured queries. Filters help qualify the queries with additional constraints to get specific results. Try the following exercise to get a feel for how it works.
 
-Open the discovery tooling and switch to “Use Discovery Query Language” option. Type the following query: 
+Open the discovery tooling and switch to “Use Discovery Query Language” option. Type the following query:
 
-enriched_text.concepts.text:cyclone
+`enriched_text.concepts.text:cyclone`
 
 Then suppress the passages, and change the number of results per page to 45, and click “Run Query”. Look at the result set and note down how many search results were returned. You may want to take a screenshot at this point so that you can compare this with the result set after applying the filtering. In our example, here is how the query performed, returning 18 results as highlighted in the following screenshot
 
 ![wds-lab-dql-41.png](wds-lab-dql-41.png)
 
-Now let us add some filters and see how the result set changes. Type for example, the following in the “Limit which documents you query” text field (as shown in the screenshot below) and click the “Run Query” button. 
+Now let us add some filters and see how the result set changes. Type for example, the following in the “Limit which documents you query” text field (as shown in the screenshot below) and click the “Run Query” button.
 
-enriched_text.concepts.text:!cyclone
+`enriched_text.concepts.text:!cyclone`
 
 Compare the results now to see if there is any difference. You should see one or two documents filtered out in the search results because this filter requires the result to include only those documents that don’t contain the concept “cyclone”. In this example, the screenshot looks like the following, where you can see it filtered out 14 out of 16 results.
 
@@ -379,21 +382,21 @@ Another important thing you can do with discovery query language is aggregations
 
 https://www.ibm.com/watson/developercloud/doc/discovery/query-reference.html#aggregations
 
-As an example, go back to the previous query that you just tried, remove the filter, and type the following query: 
+As an example, go back to the previous query that you just tried, remove the filter, and type the following query:
 
-enriched_text.concepts.text:cyclone. 
+`enriched_text.concepts.text:cyclone.`
 
-In the input field “Include Analysis of Your results”, type the following expression 
+In the input field “Include Analysis of Your results”, type the following expression
 
 term(enriched_text.keywords.text,count:15)
- 
+
 Click “Run Query”. This aggregation expression requires the discovery instance to publish the top 15 keywords. You can see the result as illustrated in the following screenshot. You can see the keywords listed on the right side, with the count in brackets adjacent to each one of them.
 
 ![wds-lab-dql-43.png](wds-lab-dql-43.png)
 
 As another example, try the following aggregation expression with the same search query as in the above example:
 
- term(enriched_text.entities.text).top_hits(5)
+ `term(enriched_text.entities.text).top_hits(5)`
 
 That should give you the top 5 hits in the list of entities. A screenshot is attached below for illustration.
 
@@ -401,15 +404,12 @@ That should give you the top 5 hits in the list of entities. A screenshot is att
 
 At this point you should have a good idea of how to use standard queries using Discovery Query Language and perform things like filtering, and aggregation.
 
-# Level 2 - API and training
-## Task 7 - Explore Watson Discovery API
+## Task 8 - Explore Watson Discovery API
 The objective of this step is to explore the power of Watson Discovery Service APIs. After completing this section, you will be able to perform the following:
 
 1.	Exercise the APIs to create and alter the discovery service instance (including collections and documents)
 2.	Exercise the APIs to issue queries
 3.	Fine tune the results using training
-
-Note: Like the previous sections, this section has certain verification steps that you need to complete to get Think40 credit and earn the badge. These steps are described in shaded boxes.
 
 Watson Discovery Service provides a rich set of APIs to work with the environments, configurations, collections, documents and issuing queries. In the previous section, you explored the same features using the discovery tooling. In this section we will do the same using the APIs.
 
@@ -436,7 +436,7 @@ https://watson-api-explorer.mybluemix.net/apis/discovery-v1
 
 ![wds-lab-api-explorer-3](wds-lab-api-explorer-3.png)
 
-In the rest of the remaining exercise we will try a few APIs using this explorer tool. To invoke the APIs, you need the credentials configured with your discovery instance. The steps to get the credentials (username and password) is outlined in one of the earlier sections [refer to that section from here once the documentation is complete].
+In the rest of the remaining exercise we will try a few APIs using this explorer tool. To invoke the APIs, you need the credentials configured with your discovery instance. The steps to get the service credentials (username and password) is outlined [here](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker#test-locally).
 
 First get your credentials, and input them in the username and password fields at the top right of the page as indicated by a yellow rectangle in the following screenshot. [There is no button like submit or any thing. Just make sure those two fields filled in throughout this exercise. The values are not erased after each API invocation, so you shouldn’t have to fill-in those values each time]
 
@@ -452,7 +452,7 @@ The resulting screen with the API details should appear like the following. The 
 
 ![wds-lab-api-explorer-listenv-req-6](wds-lab-api-explorer-listenv-req-6.png)
 
-The first few sections starting from “Implementation Notes” outline the signature and the response structure of the API. The text field “Example Value” shows the example output value for a fictitious “Test environment”. The actual value for this may be different for your case. If you want to see the schema of the output, you can click on the “Model” (greyed option left of the title “Example Value”). That will refresh the text field with the structure of the response. As for the “Parameters” section, don’t change the value for “version” shown in the screen (should be 2016-12-01), as that is the only available version of the discovery service. In the “name” field you can input any value you want, though, for this exercise, you can leave it empty and press the button “Try it out”. This will show you the response like the following. A “Response code” of 200 indicates successful invocation, and with the response filled in the text box “Response Body”.
+The first few sections starting from “Implementation Notes” outline the signature and the response structure of the API. The text field “Example Value” shows the example output value for a fictitious “Test environment”. The actual value for this may be different for your case. If you want to see the schema of the output, you can click on the “Model” (greyed option left of the title “Example Value”). That will refresh the text field with the structure of the response. As for the “Parameters” section, don’t change the value for “version” shown in the screen (should be 20176-25-06). In the “name” field you can input any value you want, though, for this exercise, you can leave it empty and press the button “Try it out”. This will show you the response like the following. A “Response code” of 200 indicates successful invocation, and with the response filled in the text box “Response Body”.
 Look at the Curl command, which you can execute from the command prompt if you want (those of you not familiar with Curl, no need to try it because we are testing the APIs using an alternative mechanism, which is this explorer tool).
 
 Look at the request URL and familiarize yourself as to how the parameters are passed.
@@ -540,6 +540,7 @@ Once you get the collection_id using one of the methods outlined above, use that
 
 At this point you should be able to try additional APIs without the help of screenshots. You should also be able to retrieve things like environment_id, collection_id etc. From this point onwards the remaining instructions will assume you can create a collection, retrieve the metadata about the collection.
 
+### Add documents using API
 Now let us try adding a new document through the APIs. Create a new collection for this purpose, or you can work with one of your existing collections. The following example uses a newly created collection called “StormCollection”. It is easier if you stick with the same subject (like hurricane, storm, cyclones, weather etc.) because you can use one of the existing documents provided with this tutorial.
 
 Let us use the API to add the document “FloodSmart_FEMA.pdf” which is included in the data set. Expand the API “Add a document” and fill in the input parameters. You can leave the configuration, metadata etc. empty. Choose the file “FloodSmart_FEMA.pdf” using the “Browse…” button. The input parameters should be configured as shown in the following screenshot (with the exception of environment_id and collection_id which will be unique to your own environment and collection)
@@ -568,18 +569,21 @@ At this point, you should feel comfortable with how the APIs work, and how to us
 
 https://github.com/watson-developer-cloud/cm_mc_uid=90789784077014965835593&cm_mc_sid_50200000=1498163451&cm_mc_sid_52640000=1498163451
 
-As a next step, this section outlines the steps to train discovery service to return meaningful results. It is important to improve the relevancy of the queries the users issue, at least for the most frequently searched and important queries. 
+# Level 3 - Advanced Topics - Developer centric
+## Task 9 - Training Discovery
+As a next step, this section outlines the steps to train discovery service to return meaningful results. It is important to improve the relevancy of the queries the users issue, at least for the most frequently searched and important queries.
 
 There are two ways to accomplish this task. Both options involve a collaboration between the developer, and an SME / domain expert.
 
-1)	Using the training query sets with sample results and relevancy scores. Watson Discovery uses machine learning to train the service using this sample query set. There are two ways to do this 
-a.	Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the discovery documentation, and talk to one of the instructors / facilitators. We will be happy to take you through the steps. The product documentation can be accessed at: https://www.ibm.com/watson/developercloud/doc/discovery/train.html
+1)	Using the training query sets with sample results and relevancy scores. Watson Discovery uses *machine learning* to train the service using this sample query set. There are two ways to do this
+a.	Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the [product discovery documentation]( https://www.ibm.com/watson/developercloud/doc/discovery/train.html)
+
 b.	A beta version of training tool that comes with the discovery instance. https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
 2)	Using Watson Knowledge Studio (WKS). This is a powerful way to teach Watson domain specific constructs such as key words, but note that WKS is a separate offering and not included with Watson Discovery.
 
 Let us explore the option 1-b in this lab, which is building the sample training queries using the tooling option. This uses a UI based ranking process, as opposed to manually building the JSON payloads and queries. Keep in mind that this is still in a beta stage, and the functionality is limited at the moment.
 
-To understand the importance of using training and fine tuning the relevancy, let us do some quick testing by creating a collection, and issuing a few queries to see what kind of results are presented. 
+To understand the importance of using training and fine tuning the relevancy, let us do some quick testing by creating a collection, and issuing a few queries to see what kind of results are presented.
 
 Open the discovery tooling, and create a new collection (you can do this using the tooling as opposed to API because it is faster). Name the collection whatever you want, but in this example, we call it “storm collection”. Load all the documents provided to you in the dataset under the folder “Basic Collections”. This collection includes a whole bunch of PDF files, some prepared well and some others not. Some of these files are relevant to the queries we will be testing, and some other files are not relevant. Load all of them and wait until they are fully ingested by the service. If you forgot the steps, go to the beginning of this tutorial for stepwise instruction on how to create a new collection and load the documents, or you can watch the following video [collection-creation-for-training]
 
@@ -587,7 +591,7 @@ First issue a simple query “how do I prepare for hurricane” on your collecti
 
 ![wds-lab-training-24](wds-lab-training-24.png)
 
-As you may have guessed, this simple query is broad enough to get a large result set. If you look at the yellow highlight in the picture above, you can see the result includes all the documents in the collection (this example collection includes 43 documents, and the result includes all the 43). The reason is, all the files have the keywords “hurricane” and / or “prepare”. But not all the files contain relevant information. In the screenshot shown above, the files highlighted in orange rectangles are invalid results for the given query. Therefore it is important that we fine tune the result set, and teach the discovery instance to filter out invalid results. This process is called training, and we are going to do that using the beta version of the tooling. 
+As you may have guessed, this simple query is broad enough to get a large result set. If you look at the yellow highlight in the picture above, you can see the result includes all the documents in the collection (this example collection includes 43 documents, and the result includes all the 43). The reason is, all the files have the keywords “hurricane” and / or “prepare”. But not all the files contain relevant information. In the screenshot shown above, the files highlighted in orange rectangles are invalid results for the given query. Therefore it is important that we fine tune the result set, and teach the discovery instance to filter out invalid results. This process is called training, and we are going to do that using the beta version of the tooling.
 
 In a real life scenario this training consists of two key steps:
 
@@ -604,7 +608,7 @@ Click on the link “Add a natural language query”, which should show you the 
 
 ![wds-lab-training-26](wds-lab-training-26.png)
 
-Upon clicking the “Add” button the system will add this as a sample training query, and give you the option to rate the responses. At this point your screen should look like the one shown in the following screenshot. 
+Upon clicking the “Add” button the system will add this as a sample training query, and give you the option to rate the responses. At this point your screen should look like the one shown in the following screenshot.
 
 ![wds-lab-training-27](wds-lab-training-27.png)
 
@@ -632,7 +636,7 @@ After rating the documents using the above guidelines, you should be on the last
 
 Click on “Back to queries” link highlighted in green in the screenshot above.
 
-This should bring you back to the main page as shown below. If you followed the steps exactly, you should see 34 documents rated as “relevant” and 9 documents rated as “not relevant” as shown in the following screenshot using the green rectangle. 
+This should bring you back to the main page as shown below. If you followed the steps exactly, you should see 34 documents rated as “relevant” and 9 documents rated as “not relevant” as shown in the following screenshot using the green rectangle.
 
 ![wds-lab-training-30](wds-lab-training-30.png)
 
@@ -644,10 +648,10 @@ At this point you just trained Watson discovery service with 1 sample training q
 
 Once you are done with that, it will take about 30 minutes for the system to complete the training and reflect in the results. Roughly 30 minutes after you performed this training, you could go back to the query page and try a similar query. The sampling query isn’t meant to cause “over fitting” in the system, so try queries that are similar to, but not necessarily identical to the sample query that you just used to train the system.
 
-Also note that this training doesn’t necessarily have to be a one time task. In a real life use case this could be a continuous process. As more documents are ingested, and as you identify more queries, you would come periodically train the system to fine tune the results in order to improve the accuracy. 
+Also note that this training doesn’t necessarily have to be a one time task. In a real life use case this could be a continuous process. As more documents are ingested, and as you identify more queries, you would come periodically train the system to fine tune the results in order to improve the accuracy.
 
 Here are some sample queries that you can try if you have the time. Keep in mind that we have very few documents in the collection for this lab, so you may not find enough results to separate as relevant versus not relevant. Some of the following queries may have only one relevant response in the system, making it less meaningful to train. For those cases, you can avoid using them as sample queries. Feel free to take a “scenic tour” by adding more documents to the collection, and coming up with your own sample training queries. The list of sample queries are as follows:
-
+```
 *	How do I prepare for hurricane as a home owner?
 *	What should I do to prepare for hurricane as a resident of the leon county?
 *	How should I prepare for hurricanes as a business owner?
@@ -671,19 +675,18 @@ Here are some sample queries that you can try if you have the time. Keep in mind
 *	What is the social media handle for Florida’s power & electricity department?
 *	As a resident of Florida, I want to know how long will it take to restore the power after the hurricane
 *	How are hurricanes named?
+```
 
 
-# Configure Watson Discovery Service via APIs
-We will use API to do training set and test set to validate accuracy.
-https://watson-api-explorer.mybluemix.net/apis/discovery-v1
+## Task 10 - Broker code explanation
+The Watson Discovery Service can be integrated in a Web application or wrapped as a micro service deployable on Kubernetes cluster. As developer you will use the Watson developer API which is offered as different programming language.
 
-## Task 7 - Training with API
+The current broker code is defining a server layer to support simple RESTful api, mostly used by a front end. The code explanation is in [this note](../doc/broker-code.md)
 
-# Level 3 - Advanced Topics - Developer centric
-## Task 9 - Broker code explanation
+For information about containerizing the broker see [note](../wds-broker-kube.md)
 
 ## Link between Conversation and Discovery
-To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned.
+To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned. As the path is initiated from a Watson conversation, the core of the integration with both service is done in the Conversation Broker which can be found in this repository: https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker and the long tail query is defined in a dialog node as part of the context variable and managed by the Conversation Broker as explained in the note: [Delegate to Watson Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker//tree/master/doc/wds-itg.md)
 
 # References
 * [Discovery main page](https://www.ibm.com/watson/developercloud/discovery.html)

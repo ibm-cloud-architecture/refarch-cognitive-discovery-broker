@@ -13,7 +13,7 @@ To be able to run this Watson Discovery broker you need your own instance of a b
 Be sure to have setup Cloud Foundry Command line interface and bluemix CLI.
 
 # Skill set
-To understand how to build a **Discovery** collection the following [tutorial](doc/tutorial/wds-lab.md) will help to go step by step with weather related corpus. The audience of this tutorial is for beginner and developer
+To understand how to build a **Discovery** collection the following [tutorial](doc/tutorial/wds-lab.md) will help to go step by step with weather related corpus. The audience of this tutorial is for beginner and developer and support different level of knowledge from simple to deeper dive.
 
 # What you will learn from this project
 * Watson Discovery creation and development activities
@@ -125,7 +125,7 @@ The Weather one is presenting a form to select a persona, predefined query or en
 
 
 # Deploy to bluemix
-We will not go over the detail on how to create a cloud foundry application in bluemix but you need to do the following steps
+We will not go over the detail on how to create a cloud foundry application in bluemix as it is covered a lot within other Bluemix blogs, but you need to do the following steps
 * create a nodejs SDK cloud foundry application, be sure to use a name not in conflict with existing application under the mybluemix.net domain.
 ![Bluemix Cloud Foundry App](doc/bmx-cf-nodesdk.png)
 * Using cloud foundry command line interface login to your region, organization and space.
@@ -150,41 +150,10 @@ cf push refarch-cognitive-discovery-broker
 * Validate the deployment on your bluemix dashboard and using the defined URL.
 
 # Deploy to Kubernetes cluster
-See the note [here](doc/wds-broker-kube.md)
+As of June 2017 the **Cyan compute** uses Bluemix Kubernetes Service and containerized application, like this Discovery broker microservice, so it can be deployed to public and private cloud platform. You can read detail in [this note](doc/wds-broker-kube.md)
 
 # Code explanation
-The client folder includes the angular 2 user interface, the user interface is used for demonstration purpose. As micro service the more important part is on the server side.
-
-This server code use expressjs and its middleware mechanism to map URL to function. The `server.js` declare the component to use and start a web server based on nodejs.
-
-The interesting parts are explained in the snippet below:
-```
-// As the server exposes REST api to be consumed by the UI we delegate to a separate api module
-const api = require('./routes/api');
-
-// Point static path to dist where angular 2 compiled js reside
-app.use(express.static(path.join(__dirname, '../dist')));
-
-// Set our api routes
-app.use('/api', api);
-
-// Catch all other routes and return the index file as single page application
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
-```
-
-When the URL is based as /api/discovery the module in charge is routes/features/discovery.js. This code uses the watson cloud develop api for nodejs.
-
-## REST APIs exposed
-The broker code offers two entry points and mapping user interface:
-
- Description | API  | User interface
- ----------- | ---- | --------------
-   | /api/company/production | Query news
-   | /api/weather | Weather
-
----
+To get detail on how the code is working and organized see the node [here](doc/broker-code.md)
 
 # Frequent Asked Questions
 They are in a separate document [here](doc/faq.md)
