@@ -700,9 +700,9 @@ You can enhance the discovery service capabilities by applying a custom model bu
 
 The following screenshots show a simple illustration of WKS annotations specific to our storm related collection.
 
-![wds-lab-wks-44](wds-lab-wks-44.png)
-
 ![wds-lab-wks-45](wds-lab-wks-45.png)
+
+![wds-lab-wks-46](wds-lab-wks-46.png)
 
 In order to be able to integrate a WKS model, you need WKS subscription (paid or free one), and document sets to create annotations or rules in WKS. A full hands-on tutorial of WKS is beyond the scope of this lab, so we assume you already know how to build the type systems, relations, models using WKS, and create a snapshot of the model. 
 
@@ -710,13 +710,15 @@ To perform this exercise, you can try taking the .txt files provided in the subf
 
 To perform the first step, open the model in WKS, and click on "Deploy" against the version of the model you want to deploy into the discovery instance. That should bring you a screen like the one shown in the following screenshot:
 
-![wds-lab-wks-46](wds-lab-wks-46.png)
+![wds-lab-wks-47](wds-lab-wks-47.png)
 
 Select "Discovery" and click "Next". In the resulting page pick the Region, Space, and Service Instance where you want your WKS model deployed. The following screenshot illustrates this step.
 
-![wds-lab-wks-47](wds-lab-wks-47.png)
+![wds-lab-wks-48](wds-lab-wks-48.png)
 
 Click on "Deploy" and finish the deployment process. Note down the model id that is displayed. This is your WKS model Id. A screenshot is attached below to show this screen and the model id. Now you have deployed your WKS model to a discovery instance.
+
+![wds-lab-wks-49](wds-lab-wks-49.png)
 
 The next step is you need to associate this model to one or more collections in your discovery instance. This has to be done using CURL command. This process involves downloading your collection configuration as a JSON file, updating the JSON file with WKS model Id, and then sending it back to your collection over a PUT request, to update the configuration. This also implies that you should have a custom configuration associated with your collection to begin with. The reason is you cannot update the default configuration. If the collection that you want to use with WKS uses the default configuration, now is the time for you to switch it to a custom configuration. Once you are sure your collection uses a custom configuration, note down the configuration id, environment id and collection id. In addition you will also need the credentials (user id and password) for your discovery instance.
 
