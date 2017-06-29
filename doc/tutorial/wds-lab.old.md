@@ -29,9 +29,7 @@ At the end of this tutorial you will be able to create a Discovery service and t
 * [Explore Discovery API](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-8---explore-watson-discovery-api)
 * [Training Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-9---training-discovery)
 * [Review integration code](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-10---broker-code-explanation)
-* [Enhance results with Watson Knowledge Studio](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-11---enhance-with-watson-studio)
-
-
+* [Enhance results with Watson Knowledge Studio](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-11---enhance-with-watson-studio)
 
 
 # Tutorial Structure
@@ -115,7 +113,7 @@ Each collection you create is a logical division of your data in the environment
 ## Task 2 - Prepare Data / Documents
 As illustrated in the development path diagram above, the data acquisition work is very important and may take some time depending of the document quality. Let illustrate that: Our use case is related to hurricane knowledge, so searching for source of knowledge we can use private data owned by our company or public content.
 
-Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#preparing-document).  First, from the web browser, we can *print* the page as pdf file. This page was saved as pdf document, for you to use, as wds-docs/L0/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created: Using the Discovery Tooling, select your *weather* collection then from the main page use the **Add data to this collection** drag and drop panel, upload the Hurricanes_Ready.pdf file.  
+Let start simple going to [https://www.ready.gov/hurricanes](https://www.ready.gov/hurricanes) URL with a web browser we can see interesting source of knowledge about being ready for hurricane. The HTML page also contents noisy data, like menu links, images, ads... so we may need to prepare the document, by removing unwanted content and how to prepare passage extraction: we will address that in later section [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#preparing-document).  First, from the web browser, we can *print* the page as pdf file. This page was saved as pdf document, for you to use, as wds-docs/L0/Hurricanes_Ready.pdf. Next step is to upload it to the collection just created: Using the Discovery Tooling, select your *weather* collection then from the main page use the **Add data to this collection** drag and drop panel, upload the Hurricanes_Ready.pdf file.  
 
 ![Collection Main](collection-main.png)
 
@@ -535,11 +533,11 @@ Now invoke the “List collections” API again and verify this newly collection
 
 Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined along with the screenshots.
 
-* Go back to the tooling as shown above and click on the AnimalKingdomCollection (or the one you just created, if you used a different name). You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
+•	Go back to the tooling as shown above and click on the AnimalKingdomCollection (or the one you just created, if you used a different name). You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
 
 ![wds-lab-api-explorer-disctooling-collid-18](wds-lab-api-explorer-disctooling-collid-18.png)
 
-* Invoke the API “List collections” and retrieve the collection_id. The response is shown in the following screenshot along with the collection_id.
+•	Invoke the API “List collections” and retrieve the collection_id. The response is shown in the following screenshot along with the collection_id.
 
 ![wds-lab-api-explorer-listenv-collid-19](wds-lab-api-explorer-listenv-collid-19.png)
 
@@ -570,7 +568,7 @@ As the last step, let us see how to issue queries using the APIs. Expand the “
 
 Inspect the Response Body to check the results.
 
-Checkpoint question - use the APIs to load the file Hurricane_noaa.pdf, and run the query “What is Saffir-Simpson scale?”. In the result, find the concept “Beaufort scale” and describe the relevance and other details reported in the response.
+|For earning the badge, use the APIs to load the file Hurricane_noaa.pdf, and run the query “What is Saffir-Simpson scale?”. In the result, find the concept “Beaufort scale” and describe the relevance and other details reported in the response|
 
 At this point, you should feel comfortable with how the APIs work, and how to use them. You are encouraged to try the queries in your language of choice (Python, Java, Node). If you need help please contact the instructors. Installing jupyter notebook locally will help test Python code snippets. The following github page shows the collection of all APIs / SDKs and code snippets.
 
@@ -583,11 +581,10 @@ As a next step, this section outlines the steps to train discovery service to re
 There are two ways to accomplish this task. Both options involve a collaboration between the developer, and an SME / domain expert.
 
 1)	Using the training query sets with sample results and relevancy scores. Watson Discovery uses *machine learning* to train the service using this sample query set. There are two ways to do this
-	* Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the [product discovery documentation]( https://www.ibm.com/watson/developercloud/doc/discovery/train.html)
+a.	Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the [product discovery documentation]( https://www.ibm.com/watson/developercloud/doc/discovery/train.html)
 
-	* A beta version of training tool that comes with the discovery instance. https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
-
-2) Using Watson Knowledge Studio (WKS). This is a powerful way to teach Watson domain specific constructs such as key words, but note that WKS is a separate offering and not included with Watson Discovery.
+b.	A beta version of training tool that comes with the discovery instance. https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
+2)	Using Watson Knowledge Studio (WKS). This is a powerful way to teach Watson domain specific constructs such as key words, but note that WKS is a separate offering and not included with Watson Discovery.
 
 Let us explore the option 1-b in this lab, which is building the sample training queries using the tooling option. This uses a UI based ranking process, as opposed to manually building the JSON payloads and queries. Keep in mind that this is still in a beta stage, and the functionality is limited at the moment.
 
@@ -696,68 +693,8 @@ For information about containerizing the broker see [note](../wds-broker-kube.md
 ### Link between Conversation and Discovery
 To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned. As the path is initiated from a Watson conversation, the core of the integration with both service is done in the Conversation Broker which can be found in this repository: https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker and the long tail query is defined in a dialog node as part of the context variable and managed by the Conversation Broker as explained in the note: [Delegate to Watson Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker//tree/master/doc/wds-itg.md)
 
-## Task 11 - Enhance with Watson Studio
-You can enhance the discovery service capabilities by applying a custom model built using Watson Knowledge Studio (WKS). This helps improve the discovery service's in-built enrichments. A potential usecase for this is bringing information specific to a given domain so that discovery can perform more custom document enrichments appropriate to the discipline.
+## task 11 - Enhance with Watson Studio
 
-The following screenshots show a simple illustration of WKS annotations specific to our storm related collection.
-
-![wds-lab-wks-45](wds-lab-wks-45.png)
-
-![wds-lab-wks-46](wds-lab-wks-46.png)
-
-In order to be able to integrate a WKS model, you need WKS subscription (paid or free one), and document sets to create annotations or rules in WKS. A full hands-on tutorial of WKS is beyond the scope of this lab, so we assume you already know how to build the type systems, relations, models using WKS, and create a snapshot of the model.
-
-To perform this exercise, you can try taking the .txt files provided in the subfolder "/WKS/ML Training" and import them into your document set. Starting with defining the type systems, go through the WKS workflow, create annotation sets, tasks, and perform the annotations. Alternatively you can choose to build a rules based model insetad of ML model. Look at the model details and statistics, and if you are satisfied, take a snapshot. Once you have the snapshot ready, integrating this with Discovery is a two step process. The first step is model deployment, and the second step is model association with the specific collection.
-
-To perform the first step, open the model in WKS, and click on "Deploy" against the version of the model you want to deploy into the discovery instance. That should bring you a screen like the one shown in the following screenshot:
-
-![wds-lab-wks-47](wds-lab-wks-47.png)
-
-Select "Discovery" and click "Next". In the resulting page pick the Region, Space, and Service Instance where you want your WKS model deployed. The following screenshot illustrates this step.
-
-![wds-lab-wks-48](wds-lab-wks-48.png)
-
-Click on "Deploy" and finish the deployment process. Note down the model id that is displayed. This is your WKS model Id. A screenshot is attached below to show this screen and the model id. Now you have deployed your WKS model to a discovery instance.
-
-![wds-lab-wks-49](wds-lab-wks-49.png)
-
-The next step is you need to associate this model to one or more collections in your discovery instance. This has to be done using CURL command. This process involves downloading your collection configuration as a JSON file, updating the JSON file with WKS model Id, and then sending it back to your collection over a PUT request, to update the configuration. This also implies that you should have a custom configuration associated with your collection to begin with. The reason is you cannot update the default configuration. If the collection that you want to use with WKS uses the default configuration, now is the time for you to switch it to a custom configuration. Once you are sure your collection uses a custom configuration, note down the configuration id, environment id and collection id. In addition you will also need the credentials (user id and password) for your discovery instance.
-
-First issue the following command using command prompt (replace the userid, password, etc with appropriate values)
-
-curl -u "{userid}":"{password}" "https://gateway.watsonplatform.net/discovery/api/v1/environments/{environment_id}/configurations/{configuration_id}?version=2017-06-25" > current_config.json
-
-Open the current_config.json file (or whatever name you used for the file), and save it as a copy. Call it "wks-updated-config.json". You can either do this using a text editor, or use one of the JSON editing tools. Perform the following updates to the wks-updated-config.json file
-
-* Change the description (optional)
-* Go to the "enrichments" section of the file, and add any additional items under the options/extract field.
-* In the options section, add a new field "model" as shown in the following example, and assign the value of your WKS model id that you got after deploying the WKS model in the previous step [caution - if you are adding the model field at the end, don't forget to add a comma after the previous line "quotations":true]
-
-Once you are done your "enrichments" section should look somewhat like the following.
-
-"enrichments": [
-  {
-    "destination_field": "enriched_text",
-    "source_field": "text",
-    "enrichment": "alchemy_language",
-    "options": {
-      "extract": "keyword, entity, doc-sentiment, taxonomy, concept, relation",type
-      "sentiment": true,
-      "quotations": true,
-      "model": "{your WKS model id}"
-    }
-  }
-]
-
-Save the wks-updated-config.json file (or whatever name you used for the file).
-
-Issue the following command to send this configuration to discovery using a PUT command. Keep in mind that in this example, we are using the file name "wks-updated-config.json". If you used a different name, make sure the command reflects the right file name. Replace the values appropriately and execute the command.
-
-curl -X PUT -u "{userid}":"{password}" -H "Content-Type: application/json" -d @wks-updated-config.json "https://gateway.watsonplatform.net/discovery/api/v1/environments/{environment_id}/configurations/{configuration_id}?version=2017-06-25"
-
-If the result is updated json, then your command is successfully executed.
-
-This completes the second step of associating your WKS model with a specific collection. You can go back to your collection or the application that uses the collection, and issue queries as before. If your model was built using right set of document sets, and well annotated, then it should reflect in thes search results. In this lab example, we are using less than 50 documents in the collection, and a few others to build the WKS annotation. Hence this is not the realistic scenario for you to expect remarkable differences in the outcome. If time permits, you are encouraged to add more documents into your collection, and build meaningful annotations involving larger document sets.  
 
 # References
 * [Discovery main page](https://www.ibm.com/watson/developercloud/discovery.html)

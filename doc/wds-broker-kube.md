@@ -8,7 +8,7 @@ The docker file is using the node:alpine image from docker public repository. Al
 It can be run locally instead of using the npm run dev by using the command:
 `docker run -d -p 6010:6010 -t case/wdsbroker`
 
-The image once built is uploaded to the Bluemix private container registry `registry.ng.bluemix.net/<namespace>/<imagename>`  with commands like:
+Once built, the image is uploaded to the Bluemix private container registry `registry.ng.bluemix.net/<namespace>/<imagename>`  with commands like:
 
 ```
 bx login -a https://api.ng.bluemix.net
