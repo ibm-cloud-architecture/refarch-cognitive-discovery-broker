@@ -535,11 +535,11 @@ Now invoke the “List collections” API again and verify this newly collection
 
 Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined along with the screenshots.
 
-•	Go back to the tooling as shown above and click on the AnimalKingdomCollection (or the one you just created, if you used a different name). You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
+* Go back to the tooling as shown above and click on the AnimalKingdomCollection (or the one you just created, if you used a different name). You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
 
 ![wds-lab-api-explorer-disctooling-collid-18](wds-lab-api-explorer-disctooling-collid-18.png)
 
-•	Invoke the API “List collections” and retrieve the collection_id. The response is shown in the following screenshot along with the collection_id.
+* Invoke the API “List collections” and retrieve the collection_id. The response is shown in the following screenshot along with the collection_id.
 
 ![wds-lab-api-explorer-listenv-collid-19](wds-lab-api-explorer-listenv-collid-19.png)
 
@@ -570,7 +570,7 @@ As the last step, let us see how to issue queries using the APIs. Expand the “
 
 Inspect the Response Body to check the results.
 
-|For earning the badge, use the APIs to load the file Hurricane_noaa.pdf, and run the query “What is Saffir-Simpson scale?”. In the result, find the concept “Beaufort scale” and describe the relevance and other details reported in the response|
+Checkpoint question - use the APIs to load the file Hurricane_noaa.pdf, and run the query “What is Saffir-Simpson scale?”. In the result, find the concept “Beaufort scale” and describe the relevance and other details reported in the response.
 
 At this point, you should feel comfortable with how the APIs work, and how to use them. You are encouraged to try the queries in your language of choice (Python, Java, Node). If you need help please contact the instructors. Installing jupyter notebook locally will help test Python code snippets. The following github page shows the collection of all APIs / SDKs and code snippets.
 
@@ -583,10 +583,11 @@ As a next step, this section outlines the steps to train discovery service to re
 There are two ways to accomplish this task. Both options involve a collaboration between the developer, and an SME / domain expert.
 
 1)	Using the training query sets with sample results and relevancy scores. Watson Discovery uses *machine learning* to train the service using this sample query set. There are two ways to do this
-a.	Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the [product discovery documentation]( https://www.ibm.com/watson/developercloud/doc/discovery/train.html)
+	* Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the [product discovery documentation]( https://www.ibm.com/watson/developercloud/doc/discovery/train.html)
 
-b.	A beta version of training tool that comes with the discovery instance. https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
-2)	Using Watson Knowledge Studio (WKS). This is a powerful way to teach Watson domain specific constructs such as key words, but note that WKS is a separate offering and not included with Watson Discovery.
+	* A beta version of training tool that comes with the discovery instance. https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
+	
+2) Using Watson Knowledge Studio (WKS). This is a powerful way to teach Watson domain specific constructs such as key words, but note that WKS is a separate offering and not included with Watson Discovery.
 
 Let us explore the option 1-b in this lab, which is building the sample training queries using the tooling option. This uses a UI based ranking process, as opposed to manually building the JSON payloads and queries. Keep in mind that this is still in a beta stage, and the functionality is limited at the moment.
 
@@ -724,7 +725,7 @@ The next step is you need to associate this model to one or more collections in 
 
 First issue the following command using command prompt (replace the userid, password, etc with appropriate values)
 
-curl -u "{userid}":"{password}" "https://gateway.watsonplatform.net/discovery/api/v1/environments/{environment id}/configurations/{configuration id}?version=2017-06-25" > current_config.json
+curl -u "{userid}":"{password}" "https://gateway.watsonplatform.net/discovery/api/v1/environments/{environment_id}/configurations/{configuration_id}?version=2017-06-25" > current_config.json
 
 Open the current_config.json file (or whatever name you used for the file), and save it as a copy. Call it "wks-updated-config.json". You can either do this using a text editor, or use one of the JSON editing tools. Perform the following updates to the wks-updated-config.json file
 
@@ -752,7 +753,7 @@ Save the wks-updated-config.json file (or whatever name you used for the file).
 
 Issue the following command to send this configuration to discovery using a PUT command. Keep in mind that in this example, we are using the file name "wks-updated-config.json". If you used a different name, make sure the command reflects the right file name. Replace the values appropriately and execute the command.
 
-curl -X PUT -u "{userid}":"{password}" -H "Content-Type: application/json" -d @wks-updated-config.json "https://gateway.watsonplatform.net/discovery/api/v1/environments/{environment id}/configurations/{configuration id}?version=2017-06-25"
+curl -X PUT -u "{userid}":"{password}" -H "Content-Type: application/json" -d @wks-updated-config.json "https://gateway.watsonplatform.net/discovery/api/v1/environments/{environment_id}/configurations/{configuration_id}?version=2017-06-25"
 
 If the result is updated json, then your command is successfully executed. 
 
