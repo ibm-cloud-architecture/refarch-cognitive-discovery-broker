@@ -13,10 +13,10 @@ To summarize this diagram: to be able to do search / query we need content, whic
 
 The labs files used for creating collection of documents are under the wds-docs folder.
 
-The current working application to demonstrate the end product of this tutorial is here: [WDS Broker on Bluemix](https://refarch-wds-broker.mybluemix.net/)  
+The current working application to demonstrate the end product of this tutorial is here: [WDS Broker on Bluemix](https://refarch-wds-broker.mybluemix.net/) or http://184.172.242.164:32571/home which is the kubernetes deployment. If you want to see the demonstration script [here](../demo-script.md)
 
 # Table of content
-At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business analysts can use a custom bluemix web application to enter queries related to a specific subject, like weather, to find interesting relation, concepts, and drive better decisions. As a developer you will have The sections are:
+At the end of this tutorial you will be able to create a Discovery service and to prepare private document collection so a business analysts can use a custom bluemix web application to enter queries related to a specific subject, like weather, to find interesting relation, concepts, and drive better decisions.
 
 * [Create a Watson Discovery Instance](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-1---create-a-watson-discovery-instance)
 * [Prepare Data / Documents](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-2---prepare-data--documents)
@@ -25,10 +25,9 @@ At the end of this tutorial you will be able to create a Discovery service and t
 * [Understanding Collection Configuration](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-5---understanding-configuration)
 * [Preparing document](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-6---preparing-documents)
 * [Perform Advanced Queries](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-7--performing-advanced-queries)
-* []
 * [Explore Discovery API](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-8---explore-watson-discovery-api)
 * [Training Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-9---training-discovery)
-* [Review integration code](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-10---broker-code-explanation)
+* [Review broker code](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md#task-10---broker-code-explanation)
 * [Enhance results with Watson Knowledge Studio](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/docs/tutorial/wds-lab.md#task-11---enhance-with-watson-studio)
 
 
