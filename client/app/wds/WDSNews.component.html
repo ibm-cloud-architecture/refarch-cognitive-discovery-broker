@@ -8,15 +8,17 @@
       <h4 style="color:darkblue">Search Supplier and Product</h4>
       <div class="roundRect">
       	<form #searchForm="ngForm" (ngSubmit)="supplierSearch(company.value, product.value)">
-          	<p>
-              	<label>Company:</label>
-              	<input #company type="text" required>
+          <div class="form-group">
+             	<label>Company:</label>
+              <input  autofocus type="text" class="form-control" required #company name="company" id="company">
+          </div>
+          <div class="form-group">
               	<label>Product:</label>
-              	<input #product type="text" required>
-          	</p>
-          	<p>
+              	<input #product type="text" class="form-control" required name="product" id="product">
+          </div>
+          <div class="form-group">
               	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
-          	</p>
+          </div>
       	</form>
       </div>
     </div>

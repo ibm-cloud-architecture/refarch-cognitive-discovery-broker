@@ -535,7 +535,7 @@ Now invoke the “List collections” API again and verify this newly collection
 
 Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined along with the screenshots.
 
-* Go back to the tooling as shown above and click on the AnimalKingdomCollection (or the one you just created, if you used a different name). You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
+* Go back to the tooling as shown above and click on the Collection. You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
 
 ![wds-lab-api-explorer-disctooling-collid-18](wds-lab-api-explorer-disctooling-collid-18.png)
 

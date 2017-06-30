@@ -20,8 +20,9 @@ You can fork it for your own purpose and develop your own solution by reusing th
 ## Table of content
 * [What you will learn](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker#what-you-will-learn-from-this-project)
 * [Run and test locally](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker#run-and-test-locally)  
-* [Deploy](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker#deploy)
-* [Tutorial](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md)
+* [Demonstration script](doc/demo-script.md)
+* [Deploy](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker#deploy-to-bluemix)
+* [Deep Dive Tutorial for Watson Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/tutorial/wds-lab.md)
 * [Code Explanation](doc/broker-code.md)
 * [FAQ](doc/faq.md)
 
@@ -128,11 +129,7 @@ npm run dev
 Then use a web browser to http://localhost:6010 which should display a home page with different choices. (The port number may be different, consult the server trace)  
 ![Simple Query](doc/wds-ui-home.png)  
 
-The News feature presents a simple form to enter the company name and product name to let Watson search for those information inside the News curated data.   
-![Simple Query](doc/wds-news-results.png)   
-The Weather one is presenting a form to select a persona, predefined query or enter free text query, then returns the results.
-
-
+See the demonstration script [here](doc/demo-script.md)
 
 ## Deploy to Bluemix
 We have two choices, using Cloud Foundry or using Docker container to be deployed on Kubernetes Cluster. We recommend the second choice.
