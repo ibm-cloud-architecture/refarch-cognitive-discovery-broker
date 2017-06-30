@@ -632,15 +632,15 @@ Now click on the “Rate results”. This action will take to a different screen
 
 Start ranking the individual results as relevant or “Not relevant”. For this lab, we will be marking the following 9 results as “Not relevant”. The rest of them should be marked relevant. Keep going through the list and mark the following as “Not relevant” and finish the whole search result set. To move along the search results click on the right arrow “>” mark on the bottom of the page as highlighted in the screenshot above.
 
-1)	Microsoft Word - article - Supply Chain - Economic Consequences of Disruptions- w Tom Schmidt, Kathy Stecke, et al.docx
-2)	Simulating Effects of Transportation Disruption on Supply Chain Based on Vendor Managed Inventory Approach
-3)	Climate Change An Information Statement of the American Meteorological Society
-4)	Managing Supply Chain Health
-5)	c1306_ch6_f.pdf20170624-8-jjxed6.pdf
-6)	What's in a Name?
-7)	How Do Supply Chain Networks Affect the Resilience of Firms to Natural Disasters? Evidence from the Great East Japan Earthquake
-8)	Increasing destructiveness of tropical cyclones over the past 30 years
-9)	Hurricane Katrina's effects on industry employment and wages
+* 1)Microsoft Word - article - Supply Chain - Economic Consequences of Disruptions- w Tom Schmidt, Kathy Stecke, et al.docx
+* 2)Simulating Effects of Transportation Disruption on Supply Chain Based on Vendor Managed Inventory Approach
+* 3)Climate Change An Information Statement of the American Meteorological Society
+* 4)Managing Supply Chain Health
+* 5)c1306_ch6_f.pdf20170624-8-jjxed6.pdf
+* 6)What's in a Name?
+* 7)How Do Supply Chain Networks Affect the Resilience of Firms to Natural Disasters? Evidence from the Great East Japan Earthquake
+* 8)Increasing destructiveness of tropical cyclones over the past 30 years
+* 9)Hurricane Katrina's effects on industry employment and wages
 
 After rating the documents using the above guidelines, you should be on the last page of the search results as shown in the following screenshot
 
@@ -700,7 +700,7 @@ For information about containerizing the broker see [note](../wds-broker-kube.md
 ### Link between Conversation and Discovery
 To support long tail interaction, Watson Discovery in conjunction with Conversation is used to support end user's query which could not be completed with pre-defined dialog flow. So the broker code is propagating the query or transform it so it can be processed by WDS and the results are returned. As the path is initiated from a Watson conversation, the core of the integration with both service is done in the Conversation Broker which can be found in this repository: https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker and the long tail query is defined in a dialog node as part of the context variable and managed by the Conversation Broker as explained in the note: [Delegate to Watson Discovery](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker//tree/master/doc/wds-itg.md)
 
-## Task 11 - Enhance with Watson Studio
+## Task 11 - Enhance with Watson Knowledge Studio
 You can enhance the discovery service capabilities by applying a custom model built using Watson Knowledge Studio (WKS). This helps improve the discovery service's in-built enrichments. A potential usecase for this is bringing information specific to a given domain so that discovery can perform more custom document enrichments appropriate to the discipline.
 
 The following screenshots show a simple illustration of WKS annotations specific to our storm related collection.
@@ -711,7 +711,7 @@ The following screenshots show a simple illustration of WKS annotations specific
 
 In order to be able to integrate a WKS model, you need WKS subscription (paid or free one), and document sets to create annotations or rules in WKS. A full hands-on tutorial of WKS is beyond the scope of this lab, so we assume you already know how to build the type systems, relations, models using WKS, and create a snapshot of the model.
 
-To perform this exercise, you can try taking the .txt files provided in the subfolder "/WKS/ML Training" and import them into your document set. Starting with defining the type systems, go through the WKS workflow, create annotation sets, tasks, and perform the annotations. Alternatively you can choose to build a rules based model insetad of ML model. Look at the model details and statistics, and if you are satisfied, take a snapshot. Once you have the snapshot ready, integrating this with Discovery is a two step process. The first step is model deployment, and the second step is model association with the specific collection.
+To perform this exercise, you can try taking the .txt files provided in the subfolder "/WKS/ML Training" and import them into your document set. Starting with defining the type systems, go through the WKS workflow, create annotation sets, tasks, and perform the annotations. Alternatively you can choose to build a rules based model instead of ML model. Look at the model details and statistics, and if you are satisfied, take a snapshot. Once you have the snapshot ready, integrating this with Discovery is a two step process. The first step is model deployment, and the second step is model association with the specific collection.
 
 To perform the first step, open the model in WKS, and click on "Deploy" against the version of the model you want to deploy into the discovery instance. That should bring you a screen like the one shown in the following screenshot:
 
@@ -738,7 +738,7 @@ Open the current_config.json file (or whatever name you used for the file), and 
 * In the options section, add a new field "model" as shown in the following example, and assign the value of your WKS model id that you got after deploying the WKS model in the previous step [caution - if you are adding the model field at the end, don't forget to add a comma after the previous line "quotations":true]
 
 Once you are done your "enrichments" section should look somewhat like the following.
-
+```
 "enrichments": [
   {
     "destination_field": "enriched_text",
@@ -752,7 +752,7 @@ Once you are done your "enrichments" section should look somewhat like the follo
     }
   }
 ]
-
+```
 Save the wks-updated-config.json file (or whatever name you used for the file).
 
 Issue the following command to send this configuration to discovery using a PUT command. Keep in mind that in this example, we are using the file name "wks-updated-config.json". If you used a different name, make sure the command reflects the right file name. Replace the values appropriately and execute the command.
@@ -761,7 +761,7 @@ curl -X PUT -u "{userid}":"{password}" -H "Content-Type: application/json" -d @w
 
 If the result is updated json, then your command is successfully executed.
 
-This completes the second step of associating your WKS model with a specific collection. You can go back to your collection or the application that uses the collection, and issue queries as before. If your model was built using right set of document sets, and well annotated, then it should reflect in thes search results. In this lab example, we are using less than 50 documents in the collection, and a few others to build the WKS annotation. Hence this is not the realistic scenario for you to expect remarkable differences in the outcome. If time permits, you are encouraged to add more documents into your collection, and build meaningful annotations involving larger document sets.  
+This completes the second step of associating your WKS model with a specific collection. You can go back to your collection or the application that uses the collection, and issue queries as before. If your model was built using right set of document sets, and well annotated, then it should reflect in the search results. In this lab example, we are using less than 50 documents in the collection, and a few others to build the WKS annotation. Hence this is not a realistic scenario for you to expect remarkable differences in the outcome. The objective here is to explain the mechanics, and show conceptually how you can do it in a real usecase. If time permits, you are encouraged to add more documents into your collection, and build meaningful annotations involving larger document sets.
 
 # References
 * [Discovery main page](https://www.ibm.com/watson/developercloud/discovery.html)
