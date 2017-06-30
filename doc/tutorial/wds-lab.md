@@ -535,7 +535,7 @@ In the resulting screen you should be able to see the newly created collection.
 
 Now invoke the “List collections” API again and verify this newly collection creation shows up in the response section.
 
-Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined along with the screenshots.
+Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. One is through the tooling, and the other way is using the APIs to get the collection related details. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined along with the screenshots.
 
 * Go back to the tooling as shown above and click on the Collection. You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
 
