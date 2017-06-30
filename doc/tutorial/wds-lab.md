@@ -446,11 +446,11 @@ https://watson-api-explorer.mybluemix.net/apis/discovery-v1
 
 In the rest of the remaining exercise we will try a few APIs using this explorer tool. To invoke the APIs, you need the credentials configured with your discovery instance. The steps to get the service credentials (username and password) is outlined [here](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker#test-locally).
 
-First get your credentials, and input them in the username and password fields at the top right of the page as indicated by a yellow rectangle in the following screenshot. [There is no button like submit or any thing. Just make sure those two fields filled in throughout this exercise. The values are not erased after each API invocation, so you shouldn’t have to fill-in those values each time]
+First get your credentials, and input them in the username and password fields at the top right of the page as indicated by a yellow rectangle in the following screenshot. [There is no button like submit or any thing. Just make sure those two fields are filled in throughout this exercise. The values are not erased after each API invocation, so you shouldn’t have to fill-in those values each time]
 
 ![wds-lab-api-explorer-credentials-4](wds-lab-api-explorer-credentials-4.png)
 
-The credentials you just configured acts as the credential for all the API invocation.
+The credentials you just configured act as the credential for all the API invocation.
 
 To start with a simple one, let us list the available environments. On the API page (same page shown above) go to the “Environments” section, and click on “List environments” (on the right most column as highlighted in the following picture).
 
@@ -461,6 +461,7 @@ The resulting screen with the API details should appear like the following. The 
 ![wds-lab-api-explorer-listenv-req-6](wds-lab-api-explorer-listenv-req-6.png)
 
 The first few sections starting from “Implementation Notes” outline the signature and the response structure of the API. The text field “Example Value” shows the example output value for a fictitious “Test environment”. The actual value for this may be different for your case. If you want to see the schema of the output, you can click on the “Model” (greyed option left of the title “Example Value”). That will refresh the text field with the structure of the response. As for the “Parameters” section, don’t change the value for “version” shown in the screen (should be 20176-25-06). In the “name” field you can input any value you want, though, for this exercise, you can leave it empty and press the button “Try it out”. This will show you the response like the following. A “Response code” of 200 indicates successful invocation, and with the response filled in the text box “Response Body”.
+
 Look at the Curl command, which you can execute from the command prompt if you want (those of you not familiar with Curl, no need to try it because we are testing the APIs using an alternative mechanism, which is this explorer tool).
 
 Look at the request URL and familiarize yourself as to how the parameters are passed.
@@ -498,7 +499,7 @@ Now click “Try it out” button. The result should look like the following.
 
 ![wds-lab-api-explorer-testconfig-resp-11](wds-lab-api-explorer-testconfig-resp-11.png)
 
-As a check point questin, test the configuration for the file “CDC_Plan_Hurricanes.pdf” and find the relevance score for the concept “wind shear”.
+As a check point question, test the configuration for the file “CDC_Plan_Hurricanes.pdf” and find the relevance score for the concept “wind shear”.
 
 As a next exercise, let us try working with collections. Collections are the most important, and fundamental artifacts you need in order to be able to make queries and use the features of discovery service.
 
