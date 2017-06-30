@@ -427,6 +427,7 @@ https://www.ibm.com/watson/developercloud/discovery/api/v1/
 In this exercise we will use the API Explorer tool to get comfortable with the APIs. You are encouraged to test the APIs using your language of choice on your own. The steps involved in using the APIs are as follows –
 
 (1) Obtain the connection to your discovery service instance
+
 (2) use one of the standard HTTP requests like GET, PUT, POST, DELETE with parameters appropriate for the given invocation
 
 Open a browser and access the Watson API Explorer page  https://watson-api-explorer.mybluemix.net/. The screenshot of the page is shown below
@@ -472,8 +473,8 @@ That was a simple API call for you to get a feel for how this works. When you in
 
 Now go ahead and collapse this API by clicking on the “List Environments” for this API, and click on “Update an environment”. As for the input values –
 
-•	environment_id: Copy the environment_id for the collection you created earlier. The steps to find the environment_id is outlined in one of the earlier sections
-•	body: Click on the text box with label “Example Value” (on the right side of the “body” input text field). This will copy the skeleton payload in the “body” input text field. Change the values for “name” and “description” to whatever values you like.
+* environment_id: Copy the environment_id for the collection you created earlier. The steps to find the environment_id is outlined in one of the earlier sections
+* body: Click on the text box with label “Example Value” (on the right side of the “body” input text field). This will copy the skeleton payload in the “body” input text field. Change the values for “name” and “description” to whatever values you like.
 
 With all the input fields filled in, the screen should look like the following. Click on “Try it out” button.
 
@@ -497,7 +498,7 @@ Now click “Try it out” button. The result should look like the following.
 
 ![wds-lab-api-explorer-testconfig-resp-11](wds-lab-api-explorer-testconfig-resp-11.png)
 
-|To verify that you worked through the exercise, test the configuration for the file “CDC_Plan_Hurricanes.pdf” and provide the relevance score for the concept “wind shear”.|
+As a check point questin, test the configuration for the file “CDC_Plan_Hurricanes.pdf” and find the relevance score for the concept “wind shear”.
 
 As a next exercise, let us try working with collections. Collections are the most important, and fundamental artifacts you need in order to be able to make queries and use the features of discovery service.
 
