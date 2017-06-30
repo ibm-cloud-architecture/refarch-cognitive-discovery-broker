@@ -9,16 +9,34 @@ This use case is linked to the Supplier on boarding process described in the Arc
 So the approach is very simple.
 * First from the home page:  
 
-![](wds-ui-home.png)
+![](wds-ui-home.png)  
+
 select the News link to reach the following page:  
 
 ![](wds-ui-news1.png)  
 
-Enter a company name and a product. IBM and API connect, then you should get the list of the top 5 most accurate responses with a score and sentiment   
+Enter a company name and a product. For example: "IBM" and "API connect", then you should get the list of the top 5 most accurate responses with a score and sentiment:   
 
 ![](wds-ui-news2.png)
 
+The scores are the document and sentiment scores computed by Discovery Service. Clicking on th url link goes to the article page.
 
-The News feature presents a simple form to enter the company name and product name to let Watson search for those information inside the News curated data.   
-![Simple Query](doc/wds-news-results.png)   
-The Weather one is presenting a form to select a persona, predefined query or enter free text query, then returns the results.
+## Weather query
+### The business challenge
+Residents  from counties and cities  who are prone to weather related  events  like hurricanes  rely  on news organizations,  TV, radio, mobile,  web and their own knowledge to do preparations  in case their city or county might get hit by a hurricane or are in the path of a potential  hurricane.  Counties deploy  emergency  workers who are temporary  workers who respond to common questions  related to hurricane  preparedness.  These emergency  resources  most of the time may not have the right information.  So the residents  sometimes  get the wrong information  and have to put in some effort to get the right information. The time it takes to get a response is important for events  like hurricane. Counties, cities  and states  work with utilities  etc. for emergency  preparedness.  Since the human resources  are temporary  resources,  these resources struggle  to find the right information. Enterprises  also struggle  to understand the impact of the hurricane to their business  (Supply chain disruption etc)Discovery  service  can be a decision  assistant  which can be trained  by ingesting  documents like How to install  hurricane shutters,  hurricane preparedness  guide, historical  supply  chain disruption information  and emergency  workers operations  guide etc.
+
+### Script
+From the home page select the Weather link.
+![](wds-ui-home.png)  
+
+Within the form in the middle select a *Persona*, like **Resident**, then the *Predefined query*: **How do I prepare for the Hurricane. The Query field is automatically populated from the selected query.
+![](wds-ui-weather1.png)  
+
+You could enter your own free text query, then hit the *Submit* button.
+
+The 3 top results, sorted by accuracy score are returned. Click on one of the accordion and then explain the meta-data. They should be similar to the ones used by the Discovery Tooling Query.
+
+The *Text* button open a modal to see the original paragraph. The text could have bean a HTML content, but the Weather collection configuration removed this attribute.
+
+What is interesting for an analyst is to assess the taxonomy classification, the concepts and entities extracted. 
+You can play with other queries.
