@@ -1,8 +1,8 @@
 # Watson Discovery Broker User Interface Demonstration
 
 We are addressing two use cases:
-* [Querying the Watson News collection]() to search for information about a company and a product
-* [Searching information about Hurricane]() in a private created collection. As part of the [tutorial](tutorial/wds-lab.md)
+* [Querying the Watson News collection](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/demo-script.md#supplier-query) to search for information about a company and a product
+* [Searching information about Hurricane](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker/blob/master/doc/demo-script.md#weather-query) in a private created collection. As part of the [tutorial](tutorial/wds-lab.md)
 
 ## Supplier query
 This use case is linked to the Supplier on boarding process described in the Architecture Center [here](https://www.ibm.com/devops/method/content/architecture/cognitiveDiscoveryDomain2/1_2). Supplier due diligence business process involves assessing supplier risk and reputation.
@@ -34,9 +34,11 @@ Within the form in the middle select a *Persona*, like **Resident**, then the *P
 
 You could enter your own free text query, then hit the *Submit* button.
 
-The 3 top results, sorted by accuracy score are returned. Click on one of the accordion and then explain the meta-data. They should be similar to the ones used by the Discovery Tooling Query.
+![](wds-ui-weather.png)   
+
+The 3 top results, sorted by accuracy score are returned. Click on one of the accordion and then explain the meta-data: Concepts, Entities, Taxonomy. They should be similar to the ones used by the Discovery Tooling Query.
 
 The *Text* button open a modal to see the original paragraph. The text could have bean a HTML content, but the Weather collection configuration removed this attribute.
 
-What is interesting for an analyst is to assess the taxonomy classification, the concepts and entities extracted. 
+What is interesting for an analyst is to assess the taxonomy classification, the concepts and entities extracted.
 You can play with other queries.
