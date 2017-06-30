@@ -302,7 +302,10 @@ Upload it to your **Weather** Collection.
 # Level 2 - Advanced Query, API and Training
 
 ## Task 7- Performing advanced queries
+
 Watson Discovery Service supports a form of structured query using **discovery query language**. This is an alternative to natural language query. This option is powerful because this helps create things like filters and aggregations that help format the results, and gain insights into the result set. The complete documentation for structured query is available at https://www.ibm.com/watson/developercloud/doc/discovery/using.html
+
+The data or documents for this section is provided in the subfolder L2.
 
 First to you need to understand the components of the result set returned by the discovery service. To do this first run a sample query. Open the query tooling, set the radio button “Include relevant passages” to “No” and leave the query field empty, and press “Run query” button. Once the result set appears on the left pane, look at the structure. The screenshot is shown below.
 
@@ -424,7 +427,7 @@ As you know, Watson Discovery Service provides APIs in various languages like Py
 
 https://www.ibm.com/watson/developercloud/discovery/api/v1/
 
-In this exercise we will use the API Explorer tool to get comfortable with the APIs. You are encouraged to test the APIs using your language of choice on your own. The steps involved in using the APIs are as follows –
+In this exercise we will use the API Explorer tool to get comfortable with the APIs. All the documents you need to create and manage your collections are provided in the folder "L2". You are encouraged to test the APIs using your language of choice on your own. The steps involved in using the APIs are as follows –
 
 (1) Obtain the connection to your discovery service instance
 
