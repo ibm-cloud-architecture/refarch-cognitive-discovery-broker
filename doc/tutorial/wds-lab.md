@@ -537,7 +537,7 @@ In the resulting screen you should be able to see the newly created collection.
 
 Now invoke the “List collections” API again and verify this newly collection creation shows up in the response section.
 
-Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. One is through the tooling, and the other way is using the APIs to get the collection related details. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined along with the screenshots.
+Now try the API to delete the newly created collection. You need the collection_id for the newly created collection in addition to the environment_id. You can get the collection_id in one of the two ways. One is through the tooling, and the other way is using the APIs to get the collection related details. At this point of the tutorial you should be able to do both the following with ease, but for your reference the steps to find the collection_id are outlined below along with the screenshots.
 
 * Go back to the tooling as shown above and click on the Collection. You should be able to see the collection_id. The screenshot is shown below, and the collection_id is highlighted for your reference.
 
@@ -545,7 +545,7 @@ Now try the API to delete the newly created collection. You need the collection_
 
 * Invoke the API “List collections” and retrieve the collection_id. The response is shown in the following screenshot along with the collection_id.
 
-![wds-lab-api-explorer-listenv-collid-19](wds-lab-api-explorer-listenv-collid-19.png)
+![wds-lab-api-explorer-listcoll-collid-19](wds-lab-api-explorer-listcoll-collid-19.png)
 
 Once you get the collection_id using one of the methods outlined above, use that to invoke the API “Delete a collection”. Now go to the tooling and make sure the collection is deleted, and optionally you can try the “List collections” API again to verify the newly created collection no longer shows in the response.
 
@@ -632,15 +632,18 @@ Now click on the “Rate results”. This action will take to a different screen
 
 Start ranking the individual results as relevant or “Not relevant”. For this lab, we will be marking the following 9 results as “Not relevant”. The rest of them should be marked relevant. Keep going through the list and mark the following as “Not relevant” and finish the whole search result set. To move along the search results click on the right arrow “>” mark on the bottom of the page as highlighted in the screenshot above.
 
-* 1)Microsoft Word - article - Supply Chain - Economic Consequences of Disruptions- w Tom Schmidt, Kathy Stecke, et al.docx
-* 2)Simulating Effects of Transportation Disruption on Supply Chain Based on Vendor Managed Inventory Approach
-* 3)Climate Change An Information Statement of the American Meteorological Society
-* 4)Managing Supply Chain Health
-* 5)c1306_ch6_f.pdf20170624-8-jjxed6.pdf
-* 6)What's in a Name?
-* 7)How Do Supply Chain Networks Affect the Resilience of Firms to Natural Disasters? Evidence from the Great East Japan Earthquake
-* 8)Increasing destructiveness of tropical cyclones over the past 30 years
-* 9)Hurricane Katrina's effects on industry employment and wages
+```
+* Microsoft Word - article - Supply Chain - Economic Consequences of Disruptions- w Tom Schmidt, Kathy Stecke, et al.docx
+* Simulating Effects of Transportation Disruption on Supply Chain Based on Vendor Managed Inventory Approach
+* Climate Change An Information Statement of the American Meteorological Society
+* Managing Supply Chain Health
+* c1306_ch6_f.pdf20170624-8-jjxed6.pdf
+* What's in a Name?
+* How Do Supply Chain Networks Affect the Resilience of Firms to Natural Disasters? Evidence from the Great East Japan Earthquake
+* Increasing destructiveness of tropical cyclones over the past 30 years
+* Hurricane Katrina's effects on industry employment and wages
+
+```
 
 After rating the documents using the above guidelines, you should be on the last page of the search results as shown in the following screenshot
 
