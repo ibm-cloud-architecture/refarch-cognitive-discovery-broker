@@ -36,7 +36,9 @@ app.get('*', (req, res) => {
 const port ='6010';
 
 // start server on the specified port and binding host
-app.listen(port, '0.0.0.0', function() {
+var server=app.listen(port, '0.0.0.0', function() {
   // print a message when the server starts listening
   console.log("Server v0.0.3 06/20/17 starting on port " + port );
 });
+
+module.exports = server;
