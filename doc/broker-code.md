@@ -1,5 +1,5 @@
 # Discovery Broker Code Explanation
-The code is structured into two parts to follow clear separation of concerns. As of now the user interface is served from the same web server implementing the Backend For Frontend features. In the future it may be relevant to separate the two if the development team add more reusable RESTful verbs in the current server content. In that case the life cycle and scope diverge and so separation should be applied.
+The code is structured into two parts to follow clear separation of concerns. As of now the user interface is served from the same web server implementing the Backend For Frontend features. In the future it may be relevant to separate the server code into two component if the development team add more reusable RESTful verbs in the current server content. In that case the life cycle and scope diverge and so separation should be applied.
 
 The **client** folder includes the Angular 2 user interface, the user interface is used for demonstration purpose. As micro service the more important part is on the server side.
 
@@ -124,3 +124,8 @@ export class WDSWeatherComponent {
 ```
 
 The last part of the screen use some accordion controls to present the results.
+
+## Test
+Under the test folder there are a set of interesting test cases. The first `testRequest.js` is demonstrating how to use node `request` module to do a direct call to Watson Discovery API withour using the Watson SDK. The test is documented so you can use it as base for possible pure node tools to go to the WDS API, instead of using `curl`.
+
+The second test introduce how to wrap the call to WDS using request inside a Command for Hystrixjs so we can control timeout, error management, number of concurrent requests...
