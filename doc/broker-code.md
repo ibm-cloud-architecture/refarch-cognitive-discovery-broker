@@ -129,3 +129,5 @@ The last part of the screen use some accordion controls to present the results.
 Under the test folder there are a set of interesting test cases. The first `testRequest.js` is demonstrating how to use node `request` module to do a direct call to Watson Discovery API withour using the Watson SDK. The test is documented so you can use it as base for possible pure node tools to go to the WDS API, instead of using `curl`.
 
 The second test introduce how to wrap the call to WDS using request inside a Command for Hystrixjs so we can control timeout, error management, number of concurrent requests...
+
+The test `testBrokerResilience` validates the hystrix integration inside the server feature. 
