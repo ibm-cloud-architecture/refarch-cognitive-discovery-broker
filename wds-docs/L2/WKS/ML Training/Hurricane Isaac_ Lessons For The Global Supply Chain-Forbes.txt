@@ -1,0 +1,46 @@
+  6/20/2017 Hurricane Isaac: Lessons For The Global Supply Chain 
+
+  http://onforb.es/Oa6aqa 
+
+  CIO Network 
+
+  Insights and ideas for technology leaders. 
+
+  Opinions expressed by Forbes Contributors are their own. 
+
+  TECH 8/31/2012 @ 3:14PM 2,407 views Hurricane Isaac: Lessons For The Global Supply Chain 
+
+  Eric Savitz , Forbes Staff 
+
+  Guest post written by Greg Johnsen 
+
+  Greg Johnsen is co­founder and chief marketing officer of GT Nexus . a provider of cloud­based collaboration software. 
+
+  As Hurricane Isaac pounded the Gulf Coast this week, several major ports were forced to shut down. When disruptions like this happen, business is impacted in several ways. First, companies have to re-route carefully orchestrated supply lines, which adds days and extra logistics costs. More importantly, companies must scramble, without good information, to get the right inventory to the right place at the right time. Failure to do so means empty shelves, assembly line shutdowns, lost profits and unhappy customers. 
+
+Today’s global supply chains are long, complex and variable. They’re also extremely sensitive to regional disruptions like Hurricane Isaac. The tsunami in Japan and the floods in Thailand last year are other recent examples where disruptions impacted companies around the world.
+
+With Isaac receding now, another storm is fast approaching – and its impact could be even more serious to companies. Labor negotiations have stalled between shipping industry management and the longshoremen across Eastern and Gulf Coast seaports. Product moving in containers on ocean vessels represents the majority of commerce among U.S. companies and their trading partners around the world. If half of the ports go offline even for a few days, the impact on the economy overall will be staggering. The 2002 West Coast labor dispute and subsequent port lockouts cost the economy $2 billion per day. In 2012, costs will be much higher. 
+
+  The threat of a strike, and thus, port closings, is especially alarming for retailers who are preparing for their most important time of year – the holidays. Retailers who lack the ability to quickly sense and respond to infrastructure meltdowns will be forced to execute expensive, complicated changes to get their merchandise to stores before peak season sales. 
+
+  As Matthew Shay, the National Retail Federation president and CEO said just days ago: “Now that there is a real risk of disruption, most retailers using the East and Gulf Coast ports will be forced to execute contingency plans within the next week to meet in-store holiday deadlines. These plans carry great expense, but they are necessary to avoid disruptions that will add costly delays to our members’ supply chains.” 
+
+  The sheer number of shipments that could be affected is eye-popping. East Coast and Gulf inbound shipments alone account for nearly half of all inbound shipment volume. U.S. exports will also stop flowing, impacting industries like agriculture and heavy manufacturing. 
+
+  Information systems play a critical role in helping companies orchestrate planning and execution operations in their supply networks, but few companies today have the type of technology needed to rapidly sense and respond to changes when things don’t go as planned. Surprisingly, even seemingly simple tasks – like confirming the contents of key containers headed into a given port or pool point – has meant a slew of e-mails, spreadsheet and frantic phone calls among companies and their partners. The mad scramble is the norm. And it doesn’t scale. 
+
+
+The hard reality is that supply chains weren’t built to withstand the unpredictable spikes of hurricanes and labor strikes. They were designed for operations that can be predicted. Companies have insured against turbulence by padding inventories and accepting the high costs of reactive orchestration. 
+
+  Similarly, traditional IT systems weren’t built for the scale and reach of the modern supply network and its inherent disruptions. Traditional systems were designed around the operations of a single company attempting to streamline and “lean out” its own internal processes. Despite decades of big investments in ERP and other enterprise systems, companies still remain isolated and unplugged from their larger trading networks. They still cannot quickly and efficiently orchestrate across their networks. 
+
+  But now more than any time in history, it is an information game. Fast, up-to-date, detailed, complete, and reliably accurate information – plus the systems to share and collaborate around that information base – is the key. The best operators use information systems built for sharing and collaborating across networks of companies, not just for sharing within their own companies. These are new systems, and they represent a radical departure from the IT systems we have been using for the past 30 years and on which most of the business world still relies. 
+
+  They also represent a radical departure from the way companies have been operating since the dawn of the industrial age. The best companies must operate as integrated, hyper-connected networks. In networks, companies will not only be able to sense disruptions and risks much earlier – and with a significantly more information – they’ll be able to re-plan and execute much more quickly, with less turbulence and a lot less cost. 
+
+  This is exactly where Cloud-based systems become center stage. Newer Cloud-based systems provide not just a better way for companies to buy and use sophisticated supply chain software quickly and economically, but they provide the only way companies can begin to orchestrate as collaborative networks. By putting the common information base at the center of the network, in the Cloud, the entire community of partners can suddenly see the same “high definition” single version of supply chain truth. They’re suddenly on the same page, orchestrating as a united network. 
+
+We are more than 15 years beyond the birth of the commercial Internet, and Cloud-based systems are not only here, they’re proven. Leading companies from nearly every sector have begun to put their supply chains in the Cloud to sense and respond with far greater speed and economy than their silo-based “land- locked” counterparts. In the Cloud, they’re agile, and this is what will set them apart in their markets. 
+
+  This week it was Hurricane Isaac. In the next few weeks, we could be looking at port shutdowns. While the prevailing view might be that nothing can be done to predict these disruptions, the future belongs to companies that can orchestrate across their global networks to recalibrate and respond with hyper efficiency and precision. To do that, they’ll need newer Cloud-based information systems that get their entire networks on the same page.
