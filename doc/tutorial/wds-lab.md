@@ -639,7 +639,6 @@ Start ranking the individual results as relevant or “Not relevant”. For this
 * Simulating Effects of Transportation Disruption on Supply Chain Based on Vendor Managed Inventory Approach
 * Climate Change An Information Statement of the American Meteorological Society
 * Managing Supply Chain Health
-* c1306_ch6_f.pdf20170624-8-jjxed6.pdf
 * What's in a Name?
 * How Do Supply Chain Networks Affect the Resilience of Firms to Natural Disasters? Evidence from the Great East Japan Earthquake
 * Increasing destructiveness of tropical cyclones over the past 30 years
