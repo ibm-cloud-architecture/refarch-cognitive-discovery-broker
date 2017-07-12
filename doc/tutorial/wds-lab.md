@@ -55,7 +55,9 @@ For developer the following are assumed
 * Having a github account and know how to use git commands
 
 # Clone the repository to your local machine
-The Weather documents used in this labs are in the project under the wds-docs, so you need to get a local copy of this git repository on your local computer by doing a `git clone` or download a zip.
+The Weather documents used in this labs are in the project under the wds-docs, so you need to get a local copy of this git repository on your local computer by doing a `git clone` or download a zip. 
+
+If you want to download the zip file, look for the green colored, "clone or downlaod" button on this github project's page at https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker. Click the button and choose "Download Zip".
 
 ### If you do not have git...
 Install git on Mac by installing the Command Line Tools for xCode.
