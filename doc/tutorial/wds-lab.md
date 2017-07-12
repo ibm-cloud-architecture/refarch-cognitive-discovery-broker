@@ -178,7 +178,7 @@ Then use the *Create new configuration* link, and finally in the next form enter
 ![](create-cfg.png)
 
 ### Convert
-The first step is the document conversion. Depending of the source type, you can specify the conversion rules:  
+The first step is for the document conversion. Depending of the source type, you can specify the conversion rules:  
 
 ![](wds-cfg-convert.png)
 
@@ -274,10 +274,10 @@ The last step of ingestion is to do normalization of the json documents that wil
 There is no more to do here.
 
 ## Task 6 - Potentially prepare documents
-Normally with Custom configuration and document conversion capability you should be able to ingest any documents. But we did observe that you need to do some document review and may do some cleaning upfront to get cleaner results. This section is just here to explain how it is done, do not perform the 'monkey' work use the documents prepared for you in the L1 folder.
+Normally with Custom configuration and document conversion capability you should be able to ingest any documents. But we did observe that you need to do some document review and may do some cleaning upfront to get cleaner results. This section is just here to explain how it is done, do not perform the 'monkey' work use the documents prepared for you in the L1 folder. So you still need to upload the document named **"Hurricanes_Ready.pdf"** into your **Weather** collection.
 
 ### Preparing documents
-For example starting with the following PDF file:
+As a preparation step we started with the following PDF file:
 Hurricanes_Ready.pdf, this is a PDF print of the website.
 
 ![](huri-ready-web.png)  
