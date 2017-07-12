@@ -306,7 +306,7 @@ Upload it to your **Weather** Collection.
 
 Watson Discovery Service supports a form of structured query using **discovery query language**. This is an alternative to natural language query. This option is powerful because this helps create things like filters and aggregations that help format the results, and gain insights into the result set. The complete documentation for structured query is available at https://www.ibm.com/watson/developercloud/doc/discovery/using.html
 
-The data or documents for this section is provided in the subfolder L2.
+The data or documents for this section is provided in the subfolder L2. You must either load these documents in one of your existing collections, or in a new collection that you want to work on for this section of the tutorial.
 
 First to you need to understand the components of the result set returned by the discovery service. To do this first run a sample query. Open the query tooling, set the radio button “Include relevant passages” to “No” and leave the query field empty, and press “Run query” button. Once the result set appears on the left pane, look at the structure. The screenshot is shown below.
 
