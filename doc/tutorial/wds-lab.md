@@ -271,7 +271,7 @@ The last step of ingestion is to do normalization of the json documents that wil
 
 ![](wds-cfg-json2.png)
 
-Add or remove fields, in this tutorial just enable  the 'do not publish empty content' check box. There is no more to do here.
+There is no more to do here.
 
 ## Task 6 - Potentially prepare documents
 Normally with Custom configuration and document conversion capability you should be able to ingest any documents. But we did observe that you need to do some document review and may do some cleaning upfront to get cleaner results. This section is just here to explain how it is done, do not perform the 'monkey' work use the documents prepared for you in the L1 folder.
