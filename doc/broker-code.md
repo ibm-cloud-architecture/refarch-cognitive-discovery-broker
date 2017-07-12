@@ -1,5 +1,8 @@
 # Discovery Broker Code Explanation
-The code is structured into two parts to follow clear separation of concerns. As of now the user interface is served from the same web server implementing the Backend For Frontend features. In the future it may be relevant to separate the server code into two component if the development team add more reusable RESTful verbs in the current server content. In that case the life cycle and scope diverge and so separation should be applied.
+The code is structured into two parts to follow clear separation of concerns. As of now the user interface is served from the same web server implementing the Backend For Frontend features. It uses Angular 2 for the user interface implementation so the components view looks like:   
+![](wds-broker-comp.png)   
+
+In the future it may be relevant to separate the server code into two component if the development team add more reusable RESTful verbs in the current server content. In that case the life cycle and scope diverge and so separation should be applied.
 
 The **client** folder includes the Angular 2 user interface, the user interface is used for demonstration purpose. As micro service the more important part is on the server side.
 
@@ -130,4 +133,4 @@ Under the test folder there are a set of interesting test cases. The first `test
 
 The second test introduce how to wrap the call to WDS using request inside a Command for Hystrixjs so we can control timeout, error management, number of concurrent requests...
 
-The test `testBrokerResilience` validates the hystrix integration inside the server feature. 
+The test `testBrokerResilience` validates the hystrix integration inside the server feature.

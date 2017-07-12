@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "^2.4.10",
     "@angular/router": "^3.4.10",
     "@ngtools/json-schema": "^1.1.0",
-    "@ngtools/webpack": "^1.4.2",
+    "@ngtools/webpack": "^1.5.0",
     "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "cookie-parser": "^1.4.3",
@@ -33,19 +33,19 @@
     "express-session": "^1.13.0",
     "hystrixjs": "^0.2.0",
     "ng2-bs3-modal": "^0.10.4",
-    "rxjs": "^5.4.1",
-    "watson-developer-cloud": "^2.32.1",
+    "rxjs": "^5.4.2",
+    "watson-developer-cloud": "^2.34.0",
     "zone.js": "^0.7.8"
   },
   "devDependencies": {
     "@angular/cli": "latest",
     "@angular/compiler": "^2.4.10",
     "@angular/compiler-cli": "^2.4.10",
-    "@types/node": "~6.0.60",
-    "concurrently": "^3.1.0",
-    "nodemon": "^1.11.0",
+    "@types/node": "^6.0.81",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "concurrently": "^3.1.0",
+    "nodemon": "^1.11.0",
     "tslint": "~4.4.2",
     "typescript": "~2.2.2"
   }
