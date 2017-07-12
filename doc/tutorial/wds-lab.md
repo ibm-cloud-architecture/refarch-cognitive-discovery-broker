@@ -641,6 +641,7 @@ Start ranking the individual results as relevant or “Not relevant”. For this
 * Managing Supply Chain Health
 * What's in a Name?
 * How Do Supply Chain Networks Affect the Resilience of Firms to Natural Disasters? Evidence from the Great East Japan Earthquake
+* Wind Damage and Salinity Effects of Hurricanes Katrina and Rita on Coastal Baldcypress Forests of Louisiana
 * Increasing destructiveness of tropical cyclones over the past 30 years
 * Hurricane Katrina's effects on industry employment and wages
 
