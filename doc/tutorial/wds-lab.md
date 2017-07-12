@@ -269,7 +269,7 @@ The last step of ingestion is to do normalization of the json documents that wil
 * Remove the doc sentiment (enriched_text.docSentiment)
 * Do not present empty fields
 
-![](wds-cfg-json.png)
+![](wds-cfg-json2.png)
 
 Add or remove fields, in this tutorial just enable  the 'do not publish empty content' check box. There is no more to do here.
 
