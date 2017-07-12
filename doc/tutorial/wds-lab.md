@@ -57,9 +57,13 @@ For developer the following are assumed
 # Clone the repository to your local machine
 The Weather documents used in this labs are in the project under the wds-docs, so you need to get a local copy of this git repository on your local computer by doing a `git clone` or download a zip.
 
-If you want to download the zip file, look for the green colored, "clone or downlaod" button on this github project's page at https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker. Click the button and choose "Download Zip".
+If you want to download the zip file, look for the green colored, "clone or download" button on this github project's page at https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker.  
 
-### If you do not have git...
+![](download-proj.png)
+
+Click the button and choose "Download Zip".
+
+### If you do not have git and want to use it in the future..
 Install git on Mac by installing the Command Line Tools for xCode.
 
 To do this, open a terminal and execute the following command.
@@ -261,10 +265,10 @@ You can remove *Sentiment Analysis* in the text field as for the weather semanti
 ![](wds-cfg-add-enrish.png)
 
 ### Normalize
-The last step in customizing your configuration file is doing **normalization**. From Discovery Tooling you can select the 'do not publish empty content'.
+The last step of ingestion is to do normalization of the json documents that will be persisted in the collection. It is possible to do light customization by looking at the **normalization** tab. In this tab you could Add or remove fields, in this tutorial just enable  the 'do not publish empty content' check box. There is no more to do here.
 
 ## Task 6 - Potentially prepare documents
-Normally with Custom configuration and document conversion capability you should be able to ingest any documents. But we did observe that you need to do some document review and may do some cleaning upfront to get cleaner results. This section is just here to explain how it is done, do not perform the 'monkey' work use the documents prepared for you in the L1 folder. 
+Normally with Custom configuration and document conversion capability you should be able to ingest any documents. But we did observe that you need to do some document review and may do some cleaning upfront to get cleaner results. This section is just here to explain how it is done, do not perform the 'monkey' work use the documents prepared for you in the L1 folder.
 
 ### Preparing documents
 For example starting with the following PDF file:
