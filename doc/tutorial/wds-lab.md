@@ -450,7 +450,15 @@ https://watson-api-explorer.mybluemix.net/apis/discovery-v1
 
 In the rest of the remaining exercise we will try a few APIs using this explorer tool. To invoke the APIs, you need the credentials configured with your discovery instance. The steps to get the service credentials (username and password) is outlined [here](https://github.com/ibm-cloud-architecture/refarch-cognitive-discovery-broker#test-locally).
 
-First get your credentials, and input them in the username and password fields at the top right of the page as indicated by a yellow rectangle in the following screenshot. [There is no button like submit or any thing. Just make sure those two fields are filled in throughout this exercise. The values are not erased after each API invocation, so you shouldn’t have to fill-in those values each time]
+Go back to the discovery launch page from where you launched the tooling. The screenshot is shown below for your reference.
+
+![wds-discovery-launch-page-51](wds-discovery-launch-page-51.png)
+
+Click on the "Service Credentials" option on the left margin as highlighted in the screenshot above. That should bring you to the following screen. Expand the credentials and you can see the user name and the password as highlighted in the screenshot below
+
+![wds-discovery-credentials-page-52](wds-discovery-credentials-page-52.png)
+
+Get your credentials as outlined above, and input them in the username and password fields at the top right of the page as indicated by a yellow rectangle in the following screenshot. [There is no button like submit or any thing. Just make sure those two fields are filled in throughout this exercise. The values are not erased after each API invocation, so you shouldn’t have to fill-in those values each time]
 
 ![wds-lab-api-explorer-credentials-4](wds-lab-api-explorer-credentials-4.png)
 
