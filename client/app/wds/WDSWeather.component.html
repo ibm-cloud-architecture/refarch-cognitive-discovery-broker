@@ -34,8 +34,6 @@
               	<input class="form-control" [(ngModel)]="query" name="query" type="text">
           	<br/>
               	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid" (click)="weatherSearch(query)">Submit</button>
-
-                <button class="btn btn-secondary" (click)="weatherMockup()">Mockup</button>
       	</form>
       </div>
     </div>

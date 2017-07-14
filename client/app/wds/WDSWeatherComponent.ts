@@ -90,15 +90,4 @@ export class WDSWeatherComponent {
         return "Error on discovery service";
       })
   }
-
-  weatherMockup(){
-    this.discoveryService.getMockupAnswer().subscribe(
-      data => {
-        this.searchResults=data;
-      },
-      error => {
-        console.log(error);
-        return "Error on discovery service";
-      })
-  }
 }

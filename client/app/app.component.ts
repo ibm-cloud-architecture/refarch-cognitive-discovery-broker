@@ -23,5 +23,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-   version:string ="v0.0.3 06/29/2017"
+   version:string ="v0.0.4 07/14/2017"
 }

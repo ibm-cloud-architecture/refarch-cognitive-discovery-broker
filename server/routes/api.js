@@ -15,7 +15,7 @@
  */
 const express = require('express');
 const discoveryNewsBroker = require('./features/wds-news');
-const discoveryWeatherBroker = require('./features/wds-weather');
+const discoveryWeatherBroker = require('./features/wds-weather-hs');
 const router = express.Router();
 
 router.use('/news', discoveryNewsBroker);

@@ -48,7 +48,7 @@ module.exports = {
     return params;
   },
 
-  
+
   /**
   For weather the query is the question
   */

@@ -10,15 +10,24 @@ var server = require('../server/server.js');
 chai.use(chaiHttp);
 
 describe('Test Resiliency', function() {
+  beforeEach(function () {
+    server.listen(8000);
+  });
 
-  it('Test Weather Call',function() {
+  afterEach(function () {
+    server.close();
+  });
+
+  it('Test Weather Call: How to protect against huricane',function() {
     this.timeout(4000);
-    var serviceCommand = require('../server/routes/features/wds-weather-hs');
-    return serviceCommand.execute("How to protect against huricane?")
-    .then(function(rep) {
-          console.log(rep);
-          should.exist(rep);
-       }
-     );
+    chai.request(server)
+    .post('/api/weather/query',"How to protect against huricane?")
+    .end(function(err, res) {
+      expect(err).to.be.null;
+      expect(res).to.have.status(200);
+      res.body.should.be.a('array');
+      done();
+    });
+
    });
 });

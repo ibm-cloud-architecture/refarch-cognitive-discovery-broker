@@ -1,3 +1,6 @@
+/**
+Wrapper to discovery. Not Used anymore as hystrix is used to inject control and retries.
+*/
 
 const express = require('express');
 const router = express.Router();
@@ -27,14 +30,6 @@ router.post('/query', function(req, res) {
       res.json(response.results);
     }
   });
-});
-
-
-router.get('/mockup',function(req,res) {
-  console.log("Mockup called");
-  var fs = require('fs');
-  var response = JSON.parse(fs.readFileSync('server/routes/features/rep.json', 'utf8'));
-  res.send(response.results);
 });
 
 module.exports = router;

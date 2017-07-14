@@ -31,7 +31,7 @@ When the URL starts with `/api/` the code delegates to the module api which defi
 The `/api/news` or `/api/weather` URLs are supported by the module `routes/api.js`.
 ```javascript
 const discoveryNewsBroker = require('./features/wds-news');
-const discoveryWeatherBroker = require('./features/wds-weather');
+const discoveryWeatherBroker = require('./features/wds-weather-hs');
 const router = express.Router();
 
 router.use('/news', discoveryNewsBroker);
@@ -40,7 +40,7 @@ router.use('/weather', discoveryWeatherBroker);
 
 As the broker is supporting two different collections in Watson Discovery there are two entry points defined.
 
-The `routes/features/wds-weather.js` code uses the Watson cloud api for nodejs as illustrated below:
+The `routes/features/wds-weather-hs.js` code uses the Watson cloud api for nodejs as illustrated below and the Command pattern with [Hystrixjs]():
 
 ```javascript
 const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
