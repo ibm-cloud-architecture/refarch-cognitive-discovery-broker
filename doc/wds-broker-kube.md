@@ -115,4 +115,4 @@ $
 ```
 
 ## Kubernetes Compendum
-See the note [here](https://github.com/ibm-cloud-architecture/refarch-cognitive#kubernetes-compendum)
+See the note [here](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/doc/cyancluster.md#kubernetes-compendum)
