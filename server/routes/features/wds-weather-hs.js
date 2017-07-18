@@ -1,6 +1,6 @@
 /*
 Using the command pattern calls the external WDS service.
-The Hystrix js module is used to 
+The Hystrix js module is used to
 */
 var CommandsFactory = require('hystrixjs').commandFactory;
 const config = require('../env.json');
@@ -39,7 +39,6 @@ var serviceCommand =CommandsFactory.getOrCreate("WDSOnWeather")
   .build();
 
 router.post('/query', function(req, res) {
-    console.log(req.body);
   var params = queryBuilder.buildForWeather(req.body.query);
   console.log(params);
   serviceCommand.execute(params).then(function(response){

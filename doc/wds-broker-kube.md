@@ -17,8 +17,8 @@ CMD node server/server
 ```
 
 ## Build
-To build the image:
-` docker build -t case/wdsbroker .`
+To build the image: (adapt the version number and the namespace)
+` docker build -t registry.ng.bluemix.net/ibm_mls/case/wdsbroker:v0.0.1 .`
 
 Then it can be run locally by using the command:
 `docker run -d -p 6010:6010 -t case/wdsbroker`
