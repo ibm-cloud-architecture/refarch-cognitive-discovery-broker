@@ -1,6 +1,6 @@
 /*
 Using the command pattern calls the external WDS service.
-The Hystrix js module is used to
+The Hystrix js module is used to implement circuit breaker, timeout, retries, ....
 */
 var CommandsFactory = require('hystrixjs').commandFactory;
 const config = require('../env.json');
