@@ -609,7 +609,7 @@ There are two ways to accomplish this task. Both options involve a collaboration
 1)	Using the training query sets with sample results and relevancy scores. Watson Discovery uses *machine learning* to train the service using this sample query set. There are two ways to do this
 	* Composing sample training queries as JSON payload, and posting them to the discovery service using either command line tool (like CURL) or using programming languages like Python / Java or Node. This option is relatively more powerful than the following because you can get very flexible with things like filters, cross reference etc. But this requires manually preparing the queries, or building a special application to do things programmatically. If you are interested in this option, please check the [product discovery documentation]( https://www.ibm.com/watson/developercloud/doc/discovery/train.html)
 
-	* A beta version of training tool that comes with the discovery instance. https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
+	* A training tool that comes with the discovery instance. https://www.ibm.com/watson/developercloud/doc/discovery/train-tooling.html
 
 2) Using Watson Knowledge Studio (WKS). This is a powerful way to teach Watson domain specific constructs such as key words, but note that WKS is a separate offering and not included with Watson Discovery.
 
@@ -623,16 +623,16 @@ First issue a simple query “how do I prepare for hurricane” on your collecti
 
 ![wds-lab-training-24](wds-lab-training-24.png)
 
-As you may have guessed, this simple query is broad enough to get a large result set. If you look at the yellow highlight in the picture above, you can see the result includes all the documents in the collection (this example collection includes 43 documents, and the result includes all the 43). The reason is, all the files have the keywords “hurricane” and / or “prepare”. But not all the files contain relevant information. In the screenshot shown above, the files highlighted in orange rectangles are invalid results for the given query. Therefore it is important that we fine tune the result set, and teach the discovery instance to filter out invalid results. This process is called training, and we are going to do that using the beta version of the tooling.
+As you may have guessed, this simple query is broad enough to get a large result set. If you look at the yellow highlight in the picture above, you can see the result includes all the documents in the collection (this example collection includes 43 documents, and the result includes all the 43). The reason is, all the files have the keywords “hurricane” and / or “prepare”. But not all the files contain relevant information. In the screenshot shown above, the files highlighted in orange rectangles are invalid results for the given query. Therefore it is important that we fine tune the result set, and teach the discovery instance to filter out invalid results. This process is called training, and we are going to do that using the training tooling.
 
 In a real life scenario this training consists of two key steps:
 
 1)	Coming up with sample training queries that are representative of what the users search. There are several ways to accomplish this. One is to search for the query logs to find the frequently searched queries. Alternatively one can harvest queries from a system deployed on a pilot basis or in a test environment. The key point here is, the sample training queries should be a good representation of the queries that the end users will issue.
-2)	Use the discovery service tooling to train the service by ranking each response to the query as relevant or irrelevant. The discovery service uses this ranking to train itself using machine learning algorithms. Note that in the API approach you have some flexibility to configure the relevancy scores using numerical values on a scale of 0 to 100. But in the beta version of the tooling as it stands today, you are limited to two values - relevant or irrelevant.
+2)	Use the discovery service tooling to train the service by ranking each response to the query as relevant or irrelevant. The discovery service uses this ranking to train itself using machine learning algorithms. Note that in the API approach you have some flexibility to configure the relevancy scores using numerical values on a scale of 0 to 100.
 
 Now using the tooling, let us train the instance for this basic query to filter out the results that are highlighted in orange color in the screenshot above.
 
-Click on the link “Train Watson to Improve the Results (Beta)” on the top right corner. In the screenshot attached above, this menu is highlighted using blue color at the top right corner. That should take you to the page as shown below:
+Click on the link “Train Watson to Improve the Results” on the top right corner. In the screenshot attached above, this menu is highlighted using blue color at the top right corner. That should take you to the page as shown below:
 
 ![wds-lab-training-25](wds-lab-training-25.png)
 
