@@ -1,7 +1,8 @@
 # Building a Discovery Service for Weather data
 
 IBM [Watson Discovery Service](https://www.ibm.com/watson/developercloud/discovery.html) (WDS) is a Watson service which provides the developers the ability to rapidly add a cognitive, search and content analytics engine to application to identify patterns, trends and insights from **unstructured data**, that drive better decision making.
-The following [Create a collection and explore Watson Discovery tutorial](https://www.ibm.com/cloud/garage/tutorials/cognitive_discovery/) shows how to set up and configure Watson Discovery Service and how to inject documents about hurricane and weather management.
+
+The following [create a collection and explore Watson Discovery tutorial in IBM Cloud garage method](https://www.ibm.com/cloud/garage/tutorials/cognitive_discovery/) shows how to set up and configure Watson Discovery Service and how to inject documents about hurricane and weather management.
 
 The labs files used for creating collection of documents are under the wds-docs folder.
 
