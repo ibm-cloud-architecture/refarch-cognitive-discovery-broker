@@ -13,19 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const express = require('express');
 const discoveryNewsBroker = require('./features/wds-news');
 const discoveryWeatherBroker = require('./features/wds-weather-hs');
-const router = express.Router();
 
-router.use('/news', discoveryNewsBroker);
-router.use('/weather', discoveryWeatherBroker);
+module.exports = function(app,config) {
+  /* GET api listing. */
+  app.get('/api', (req, res) => {
+    res.send('API supported:  POST /api/news/company/product and POST /api/weather/query');
+  })
 
-/* GET api listing. */
-router.get('/', (req, res) => {
-  res.send('API supported: GET /api/all; POST /api/company/product');
-});
+ app.post('/api/news/company/product', (req,res) => {
+   discoveryNewsBroker.search(config,req,res);
+ })
 
-
-
-module.exports = router;
+ app.post('/api/weather/query', (req,res) => {
+   discoveryWeatherBroker.search(config,req,res);
+ })
+} // export

@@ -33,8 +33,8 @@ module.exports = {
     else  productQuery = "language:english";
 
     const params = {
-      count: 5,
-      return: 'title,docSentiment,enrichedTitle.text,url,host,enrichedTitle.entities.text',
+      count: 3,
+      return: 'title,doc-sentiment,enrichedTitle.text,url,host,enrichedTitle.entities.text',
       query: productQuery,
       aggregations: [].concat(entities, sentiments, mentions),
       filter: companyQuery

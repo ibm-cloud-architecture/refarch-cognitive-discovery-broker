@@ -1,0 +1,20 @@
+{ "discovery": {
+          "version_date": "2018-03-05",
+          "url": "https://gateway.watsonplatform.net/discovery/api",
+          "username": "150a6f9d-87da-49c2-9f37-174e3e541160",
+          "password": "bKUBJEl6VYEf",
+          "environment_id": "system",
+          "collection_id": "news-en"
+  },
+  "weatherCollection" : {
+      "url": "https://gateway.watsonplatform.net/discovery/api",
+      "username": "150a6f9d-87da-49c2-9f37-174e3e541160",
+      "password": "bKUBJEl6VYEf",
+      "version_date": "2018-03-05",
+      "environment_id": "d98678fb-c8f8-4ef0-a3a0-2ea2d941d716",
+      "collection_id": "7bf105a6-604f-4709-87e5-50a9ee2998c3",
+      "configuration_id":"604999f0-4ec8-43c4-824a-8c233f6b056e"
+  },
+  "port" : 6100,
+  "version": "v0.0.5"
+}

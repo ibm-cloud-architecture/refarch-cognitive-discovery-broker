@@ -1,63 +1,49 @@
 
 const DiscoveryV1 = require('watson-developer-cloud/discovery/v1');
-const express = require('express');
 const async = require('async');
-
 const queryBuilder = require('./query-builder');
 
-var app = express();
-const router = express.Router();
+module.exports = {
+  search : function(config,req,res){
 
-const config = require('../env.json');
-
-const discovery = new DiscoveryV1({
-  username: config.discovery.username,
-  password: config.discovery.password,
-  version_date: config.discovery.version_date,
-  path: {
-    environment_id: config.discovery.environment_id,
-    collection_id: config.discovery.collection_id
-  },
-  qs: { aggregation: `[${queryBuilder.aggregations.join(',')}]` },
-});
-
-router.get('/all', function(req, res) {
-  discovery.query({}, function(err, response) {
-        if (err) {
-          console.error(err);
-        } else {
-          res.json(response);
-        }
-   });
-});
-
-router.post('/company/product', function(req, res) {
-  const params = queryBuilder.buildForNews(req.body);
-  discovery.query(params, function(err, response) {
-    if (err) {
-      console.error("Error "+err);
-    } else {
-      var returnJSON = [];
-      console.log("Discovery response "+response.results)
-      async.forEach(response.results, function(result, callback) {
-        returnEntities = [];
-        	async.forEach(result.enrichedTitle.entities, function(entity, callback) {
-        		returnEntities.push(entity.text);
-      			callback();
-      		}, function(err) {
-            // data mapping can be done here
-      			returnJSON.push({score: result.score,
-              url: result.url,
-              title: result.title,
-              sentiment:result.docSentiment.score, entities: returnEntities
+    const discovery = new DiscoveryV1({
+      username: config.discovery.username,
+      password: config.discovery.password,
+      version: config.discovery.version_date,
+      url: config.discovery.url,
+      qs: { aggregation: `[${queryBuilder.aggregations.join(',')}]` },
+    });
+    console.log(req.body);
+    const queryString = queryBuilder.buildForNews(req.body);
+    discovery.query({
+      environment_id: config.discovery.environment_id,
+      collection_id: config.discovery.collection_id,
+      query: queryString
+    }, function(err, response) {
+      if (err) {
+        console.error("Error " + err);
+      } else {
+        var returnJSON = [];
+        console.log("Discovery response "+ JSON.stringify(response.results[0],null,3));
+        async.forEach(response.results, function(result, callback) {
+            returnEntities = [];
+          	async.forEach(result.enriched_title.entities, function(entity, callback) {
+          		returnEntities.push(entity.text);
+        			callback();
+        		}, function(err) {
+              // data mapping to target UI data model
+        			returnJSON.push({
+                score: result.result_metadata.score,
+                url: result.url,
+                title: result.title,
+                entities: returnEntities
+              });
+              callback();
             });
-            callback();
-          });
-        }, function(err) {
-          res.json(returnJSON);
-      });
-    }
-  });
-});
-
-module.exports = router;
+          }, function(err) {
+            res.json(returnJSON);
+        });
+      }
+    });
+  }
+};

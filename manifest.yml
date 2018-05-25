@@ -6,3 +6,4 @@ applications:
   name: refarch-wds-broker
   host: refarch-wds-broker
   disk_quota: 1024M
+  buildpack: sdk-for-nodejs

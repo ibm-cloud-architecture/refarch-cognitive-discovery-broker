@@ -1,35 +1,43 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 # Logs
 logs
 *.log
 npm-debug.log*
 
-server/routes/env.json
-
-
-# Coverage directory used by tools like istanbul
-coverage
-
-# nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-#Product of ng build
+# compiled output
 /dist
+/tmp
+/out-tsc
 
-# node-waf configuration
-.lock-wscript
+# dependencies
+/node_modules
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Dependency directories
-node_modules
-jspm_packages
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# Optional npm cache directory
-.npm
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
 
-# Optional REPL history
-.node_repl_history
+# System Files
+.DS_Store
+Thumbs.db
