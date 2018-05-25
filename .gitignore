@@ -4,6 +4,7 @@ logs
 *.log
 npm-debug.log*
 
+server/config/config.json
 # compiled output
 /dist
 /tmp

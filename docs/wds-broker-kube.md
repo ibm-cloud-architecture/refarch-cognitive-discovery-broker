@@ -1,6 +1,6 @@
-# WDS Broker deployment as container on Kubernetes pods
+# WDS Broker deployment as container on Kubernetes
 
-The Watson Discovery Broker code is packaged as a container and deployed to Bluemix Kubernetes Service.
+The Watson Discovery Broker code is packaged as a container and deployed to  Kubernetes like IBM Cloud or IBM Cloud Private.
 
 ## Docker File
 The docker file is using the node:alpine image from docker public repository. Alpine is the lightweight operating system so using the minimum set of resources, and it includes a nodejs and npm. The exposed port is 6010.
@@ -16,15 +16,26 @@ EXPOSE 6010
 CMD node server/server
 ```
 
-## Build
+## Build docker image
+The following steps are what we are doing to build the app, build a docker image and push it to the dockerhub public image registry.
+```
+Build the code
+$ ng build
+$ docker build -t ibmcase/cyancompute-wds-broker .
+# test the image
+$ docker run -ti -p 6010:6010 --name frog ibmcase/cyancompute-wds-broker
+$ docker login
+$ docker push
+```
+
 To build the image: (adapt the version number and the namespace)
 ` docker build -t registry.ng.bluemix.net/ibm_mls/case/wdsbroker:v0.0.1 .`
 
-Then it can be run locally by using the command:
-`docker run -d -p 6010:6010 -t case/wdsbroker`
 
-## Deploy
-Once built, the image is uploaded to the Bluemix private container registry `registry.ng.bluemix.net/<namespace>/<imagename>`  with commands like:
+## Deploy to IBM Cloud Private
+In this example we will deploy the image
+## Deploy to IBM Cloud Container Service
+Once built, we need to upload the image to the IBM private container registry `registry.ng.bluemix.net/<namespace>/<imagename>`  with commands like:
 
 ```
 # connect to bluemix

@@ -1,0 +1,20 @@
+{ "discovery": {
+          "version_date": "2018-03-05",
+          "url": "https://gateway.watsonplatform.net/discovery/api",
+          "username": "",
+          "password": "",
+          "environment_id": "system",
+          "collection_id": "news-en"
+  },
+  "weatherCollection" : {
+      "url": "https://gateway.watsonplatform.net/discovery/api",
+      "username": "",
+      "password": "",
+      "version_date": "2018-03-05",
+      "environment_id": "",
+      "collection_id": "",
+      "configuration_id":""
+  },
+  "port" : 6100,
+  "version": "v0.0.5"
+}
