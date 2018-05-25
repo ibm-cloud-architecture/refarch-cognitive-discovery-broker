@@ -1,0 +1,46 @@
+<div class="row">
+  <table id="dataTable" class="table table-striped table-condensed">
+    <tbody>
+       <tr>
+         <td class="acc"><b>Score</b></td>
+         <td>{{result.score}}</td>
+       </tr>
+       <tr>
+         <td class="acc"><b>FileName</b></td>
+         <td>{{result.extracted_metadata.filename}}</td>
+       </tr>
+       <tr>
+         <td><span><button class="btn btnbg" type="button" (click)="openText()">Text</button></span></td>
+         <td class="acc" style="white-space: nowrap;overflow: hidden;  text-overflow: ellipsis;">{{result.text}}
+         </td>
+       </tr>
+       <tr>
+         <td><b>Concepts</b></td>
+         <td class="acc">
+           <ul>
+            <li *ngFor="let c of result.enriched_text.concepts">
+              {{c.text}} - {{c.relevance | number:'1.2-2'}}</li>
+           </ul>
+         </td>
+       </tr>
+       <tr>
+         <td><b>Entities</b></td>
+         <td class="acc">
+           <ul>
+            <li *ngFor="let e of result.enriched_text.entities">
+              {{e.text}} - c: {{e.count}} r: {{e.relevance  | number:'1.2-2'}}</li>
+           </ul>
+         </td>
+       </tr>
+       <tr>
+         <td><b>Taxonomy</b></td>
+         <td class="acc">
+           <ul>
+            <li *ngFor="let t of result.enriched_text.taxonomy">
+              {{t.label}} - s: {{t.score  | number:'1.2-2'}}</li>
+           </ul>
+         </td>
+       </tr>
+    </tbody>
+  </table>
+</div>

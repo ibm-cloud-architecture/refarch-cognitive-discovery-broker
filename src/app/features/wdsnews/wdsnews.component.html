@@ -1,0 +1,23 @@
+<div class="row">
+   <div class="col-md-4">
+      <h4 style="color:darkblue">Search Supplier and Product in Watson Discovery</h4>
+      <div class="roundRect">
+      	<form #searchForm="ngForm" (ngSubmit)="supplierSearch(company.value, product.value)">
+          <div class="form-group">
+             	<label>Company:</label>
+              <input  autofocus type="text" class="form-control" required #company name="company" id="company">
+          </div>
+          <div class="form-group">
+              	<label>Product:</label>
+              	<input #product type="text" class="form-control" required name="product" id="product">
+          </div>
+          <div class="form-group">
+              	<button class="btn btn-primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
+          </div>
+      	</form>
+      </div>
+    </div>
+    <div class="col-md-8">
+		    <app-wdsresult [results]="searchResults"></app-wdsresult>
+    </div>
+</div>
